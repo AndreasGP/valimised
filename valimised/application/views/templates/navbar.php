@@ -15,7 +15,7 @@
               <li><a href="valimistulemused">Valimistulemused</a></li>
               <li><a href="kandidaadid">Kandidaadid</a></li>
 			  <li><a href="#kandideerimine">Kandideerimine</a></li>
-			  <li><a href="#h‰‰letamine">H‰‰letamine</a></li>
+			  <li><a href="#hÔøΩÔøΩletamine">H√§√§letamine</a></li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Sisene portaali <span class="caret"></span></a>
                 <ul class="dropdown-menu" role="menu">
