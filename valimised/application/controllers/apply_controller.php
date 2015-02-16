@@ -4,6 +4,7 @@ class Apply_Controller extends CI_Controller {
 
 	public function index()
 	{
+            	$this->load->helper(array('form'));
 		$this->load->view('templates/header.php');
 		$this->load->view('templates/navbar.php');
 		$this->load->view('apply.php');
