@@ -1,9 +1,11 @@
 <div class="content">
-    <div class="col-sm-4">
+    <div class="col-sm-4" ng-app="formvalidation" ng-controller="stageController">
         
-        <?php echo form_open('applyform');?>
-                <label for="firstname" style="text-align:right">Eesnimi</label>
-                <input type="text" placeholder="Eesnimi" name="firstname"><br>
+        <form name="form" novalidate ng-submit="submitForm();">
+                <label for="firstname">Eesnimi</label>
+                <input type="text" name="firstname" ng-model="firstname" required/>
+                <div ng-show="form.firstname.$dirty && form.firstname.$invalid">Puudub:
+                    <span ng-show="form.firstname.$error.required"> Sisestada eesnimi.</span></div><br>
                 <label for="lastname">Perekonnanimi</label>
                 <input type="text" placeholder="Perekonnanimi" name="lastname"><br>
                 <label for="date">Sünniaeg:</label>
