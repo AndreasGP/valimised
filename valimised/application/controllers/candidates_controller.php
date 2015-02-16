@@ -8,9 +8,12 @@ class Candidates_Controller extends CI_Controller {
     public function index() {
 
         $this->load->library("area_factory");
+        $this->load->library("party_factory");
         $data = array(
-            //Fetch all areas
-            "areas" => $this->area_factory->getArea()
+        //Fetch all areas
+        "areas" => $this->area_factory->getArea(),
+        //Fetch all parties
+        "parties" => $this->party_factory->getParty()
         );
 
         $this->load->view('templates/header.php');

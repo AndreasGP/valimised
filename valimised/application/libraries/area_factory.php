@@ -13,9 +13,9 @@ class Area_Factory {
     }
 
     public function getArea($id = 0) {
-        //Are we getting an individual user or are we getting them all
+        //Are we getting an individual area or are we getting them all
         if ($id > 0) {
-            //Getting an individual user
+            //Getting an individual area
             $query = $this->_ci->db->get_where("area", array("id" => $id));
             //Check if any results were returned
             if ($query->num_rows() > 0) {
@@ -24,7 +24,7 @@ class Area_Factory {
             }
             return false;
         } else {
-            //Getting all the users
+            //Getting all the areas
             $query = $this->_ci->db->select("*")->from("area")->get();
             //Check if any results were returned
             if ($query->num_rows() > 0) {

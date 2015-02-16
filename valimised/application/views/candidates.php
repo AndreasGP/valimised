@@ -41,11 +41,9 @@
                     <label for="pwd">Erakonna järgi:</label>
                     <select class="form-control" id="party">
                         <option value="" style="display:none;"></option>
-                        <option>Üksikkandidaat</option>
-                        <option>Keskerakond</option>
-                        <option>Isamaa ja Res Publica Liit</option>
-                        <option>Reformierakond</option>
-                        <option>Sotsiaal Demokraadid</option>
+                        <?php foreach ($parties as $row): ?>
+                            <option><?php echo $row->getName(); ?></option>
+                        <?php endforeach; ?>
                     </select>
                     <label for="area">Piirkonna järgi:</label>
                     <select class="form-control" id="area">

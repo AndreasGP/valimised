@@ -1,7 +1,7 @@
 <?php
 
-class Area_Model extends CI_Model {
-    
+class Party_Model extends CI_Model {
+
     private $_id;
     private $_name;
 
