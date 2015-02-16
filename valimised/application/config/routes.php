@@ -39,7 +39,7 @@
 */
 
 $route['default_controller'] = "home_controller";
-$route['404_override'] = '';
+$route['404_override'] = 'error_controller';
 $route['kandidaadid'] = 'candidates_controller';
 $route['valimistulemused'] = 'results_controller';
 $route['kandideerimine'] = 'apply_controller';
