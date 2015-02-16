@@ -14,9 +14,9 @@
                 <?php foreach ($candidates as $row): ?>
                 <tr>
                     <td><?php echo $row->getId(); ?></td>
-                    <td><?php echo $row->getUserId(); ?></td>
-                    <td><?php echo $row->getPartyId(); ?></td>
-                    <td><?php echo $row->getAreaId(); ?></td>
+                    <td><?php echo $row->getUser()->getFullName(); ?></td> 
+                    <td><?php echo $row->getParty()->getName(); ?></td>
+                    <td><?php echo $row->getArea()->getName(); ?></td>
                 </tr>
                 <?php endforeach; ?>
             </table>

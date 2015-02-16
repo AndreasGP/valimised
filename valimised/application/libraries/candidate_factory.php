@@ -10,6 +10,9 @@ class Candidate_Factory {
     function __construct() {
         $this->_ci = & get_instance();
         $this->_ci->load->model("candidate_model");
+        $this->_ci->load->library("user_factory");
+        $this->_ci->load->library("area_factory");
+        $this->_ci->load->library("party_factory");
     }
 
     public function getCandidate($id = 0) {
@@ -37,9 +40,9 @@ class Candidate_Factory {
     public function createObjectFromData($row) {
         $candidate = new Candidate_Model();
         $candidate->setId($row->id);
-        $candidate->setUserId($row->userid);
-        $candidate->setAreaId($row->areaid);
-        $candidate->setPartyId($row->partyid);
+        $candidate->setUser($this->_ci->user_factory->getUser($row->userid));
+        $candidate->setArea($this->_ci->area_factory->getArea($row->areaid));
+        $candidate->setParty($this->_ci->party_factory->getParty($row->partyid));
         return $candidate;
     }
 

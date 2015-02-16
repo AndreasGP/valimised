@@ -4,8 +4,9 @@ class Candidate_Model extends CI_Model {
 
     private $_id;
     private $_userid;
-    private $_areaid;
-    private $_partyid;
+    private $_user;
+    private $_area;
+    private $_party;
 
     function __construct() {
         parent::__construct();
@@ -19,27 +20,28 @@ class Candidate_Model extends CI_Model {
         $this->_id = (int) $value;
     }
 
-    public function getUserId() {
-        return $this->_userid;
+    public function getUser() {
+        return $this->_user;
     }
 
-    public function setUserId($value) {
-        $this->_userid = (int) $value;
+    public function setUser($value) {
+        $this->_user = $value;
     }
 
-    public function getAreaId() {
-        return $this->_areaid;
+    public function getArea() {
+        return $this->_area;
     }
 
-    public function setAreaId($value) {
-        $this->_areaid = (int) $value;
-    }
-    
-    public function getPartyId() {
-        return $this->_partyid;
+    public function setArea($value) {
+        $this->_area = $value;
     }
 
-    public function setPartyId($value) {
-        $this->_partyid = (int) $value;
+    public function getParty() {
+        return $this->_party;
     }
+
+    public function setParty($value) {
+        $this->_party = $value;
+    }
+
 }
