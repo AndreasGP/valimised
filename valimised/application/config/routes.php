@@ -42,6 +42,7 @@ $route['default_controller'] = "home_controller";
 $route['404_override'] = '';
 $route['kandidaadid'] = 'candidates_controller';
 $route['valimistulemused'] = 'results_controller';
+$route['kandideerimine'] = 'apply_controller';
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
