@@ -1,7 +1,8 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-8">
-      <h3>Kandidaadid</h3>
+       <button type="button" class="btn btn-lg btn-default">Üldtulemused</button>
+      <h3>Valimistulemused</h3>
 	<table class="table table-striped">
 	<thead>
         <tr>
