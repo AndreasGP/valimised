@@ -11,24 +11,14 @@
                         <th class="col-md-4">Piirkond</th>
                     </tr>
                 </thead>
+                <?php foreach ($candidates as $row): ?>
                 <tr>
-                    <td>315</td>
-                    <td>Lehm Vissi</td>
-                    <td>Rahvaerakond</td>
-                    <td>Tartumaa</td>
+                    <td><?php echo $row->getId(); ?></td>
+                    <td><?php echo $row->getUserId(); ?></td>
+                    <td><?php echo $row->getPartyId(); ?></td>
+                    <td><?php echo $row->getAreaId(); ?></td>
                 </tr>
-                <tr>
-                    <td>316</td>
-                    <td>Lehm Roosike</td>
-                    <td>Rahvaerakond</td>
-                    <td>Tartumaa</td>
-                </tr>
-                <tr>
-                    <td>317</td>
-                    <td>Lehm Vissi</td>
-                    <td>Rahvaerakond</td>
-                    <td>Tartumaa</td>
-                </tr>
+                <?php endforeach; ?>
             </table>
 
         </div>
