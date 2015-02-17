@@ -3,8 +3,16 @@
         <title>E-valimised 2015</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <link rel="stylesheet" href="css/bootstrap.css">
-        <script src="js/jquery.js"></script>
-        <script src="js/bootstrap.js"></script>
-        <script src="js/angular.js"></script>
+        <script src="js/libs/jquery.js"></script>
+        <script src="js/libs/bootstrap.js"></script>
+        <script src="js/libs/angular.js"></script>
+        <script src="js/libs/ng-table.js"></script>
+        <?php
+        if(isset($scripts) && is_array($scripts)) {
+            foreach ($scripts as $script) {
+                echo "<script src=\"" . $script . "\"></script>";
+            }
+        }
+        ?>
     </head>
     <body>
