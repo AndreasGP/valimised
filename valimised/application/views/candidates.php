@@ -11,6 +11,7 @@
                         <th class="col-md-4">Piirkond</th>
                     </tr>
                 </thead>
+
                 <?php foreach ($candidates as $row): ?>
                 <tr>
                     <td><?php echo $row->getId(); ?></td>

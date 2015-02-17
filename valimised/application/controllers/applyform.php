@@ -23,6 +23,7 @@ class ApplyForm extends CI_Controller {
 			$this->load->view('formsuccess');
 		}
 	}
+        
+        
 }
-?>
 

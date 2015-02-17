@@ -8,11 +8,11 @@
 angular.module('formvalidation',[]);
 
 function stageController($scope){
-    $scope.firstname ='Loll';
-    $scope.lastname ='Lammas';
-    $scope.date ='0.00.000';
-    $scope.education ='Lasteaed';
-    $scope.job ='Kraavikaevaja';
+    $scope.firstname ='';
+    $scope.lastname ='';
+    $scope.date ='';
+    $scope.education ='';
+    $scope.job ='';
     
     
     $scope.submitForm = function () {
@@ -20,3 +20,18 @@ function stageController($scope){
     };
 
 }
+
+function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#output')
+                    .attr('src', e.target.result)
+                    .width(150)
+                    .height(200);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
