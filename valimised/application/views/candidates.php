@@ -13,12 +13,12 @@
                 </thead>
 
                 <?php foreach ($candidates as $row): ?>
-                <tr>
-                    <td><?php echo $row->getId(); ?></td>
-                    <td><?php echo $row->getUser()->getFullName(); ?></td> 
-                    <td><?php echo $row->getParty()->getName(); ?></td>
-                    <td><?php echo $row->getArea()->getName(); ?></td>
-                </tr>
+                    <tr>
+                        <td><?php echo $row->getId(); ?></td>
+                        <td><?php echo $row->getUser()->getFullName(); ?></td> 
+                        <td><?php echo $row->getParty()->getName(); ?></td>
+                        <td><?php echo $row->getArea()->getName(); ?></td>
+                    </tr>
                 <?php endforeach; ?>
             </table>
 
