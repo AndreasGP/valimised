@@ -43,6 +43,7 @@ $route['404_override'] = 'error_controller';
 $route['kandidaadid'] = 'candidates_controller';
 $route['valimistulemused'] = 'results_controller';
 $route['kandideerimine'] = 'apply_controller';
+$route['google'] = 'logingoogle';
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

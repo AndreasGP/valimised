@@ -31,7 +31,7 @@
 				  <li class="divider"></li>
 				  <li class="dropdown-header">Sisene sotsiaalmeedia kaudu</li>
                   <li><a href="#">Facebook</a></li>
-                  <li><a href="#">Google</a></li>
+                  <li><a href="google">Google</a></li>
 				  <li><a href="#">Twitter</a></li>
                 </ul>
               </li>
