@@ -1,6 +1,6 @@
 var main = angular.module('main', ['ngTable']);
 main.controller('ResultsCtrl', function($scope, $http, ngTableParams) {
-    $http.get('valimistulemused/get/10/10').
+    $http.get('tulemused/get/10/10').
             success(function(data, status, headers, config) {
                 $scope.data = data;
                 $scope.tableParams = new ngTableParams({
