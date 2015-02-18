@@ -1,36 +1,23 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-8">
-            <button type="button" class="btn btn-lg btn-default">Üldtulemused</button>
-            <h3>Valimistulemused</h3>
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th class="col-md-1">Kandidaadi number</th>
-                        <th class="col-md-3">Nimi</th>
-                        <th class="col-md-4">Kandideerib erakonnas</th>
-                        <th class="col-md-4">Piirkond</th>
+            <h3>Tulemused</h3>
+            <div ng-app="main" ng-controller="ResultsCtrl">
+                <table ng-table="tableParams" class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th class="col-md-1">Kandidaat</th>
+                            <th class="col-md-3">Valija</th>
+                            <th class="col-md-4">Aeg</th>
+                        </tr>
+                    </thead>
+                    <tr ng-repeat="vote in $data">
+                        <td data-title="'candidate'">{{vote}}</td>
+                        <td data-title="'voter'">{{vote.candidateid}}</td>
+                        <td data-title="'date'">{{vote.date}}</td>                    
                     </tr>
-                </thead>
-                <tr>
-                    <td>315</td>
-                    <td>Lehm Vissi</td>
-                    <td>Rahvaerakond</td>
-                    <td>Tartumaa</td>
-                </tr>
-                <tr>
-                    <td>316</td>
-                    <td>Lehm Roosike</td>
-                    <td>Rahvaerakond</td>
-                    <td>Tartumaa</td>
-                </tr>
-                <tr>
-                    <td>317</td>
-                    <td>Lehm Vissi</td>
-                    <td>Rahvaerakond</td>
-                    <td>Tartumaa</td>
-                </tr>
-            </table>
+                </table>
+            </div>
         </div>
         <div class="col-sm-4">
             <h3>Otsi kandidaati</h3>

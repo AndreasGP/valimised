@@ -12,7 +12,7 @@
           <div class="navbar-collapse collapse navbar-right">
             <ul class="nav navbar-nav">
               <li><a href="#abi">Abi</a></li>
-              <li><a href="valimistulemused">Valimistulemused</a></li>
+              <li><a href="tulemused">Valimistulemused</a></li>
               <li><a href="kandidaadid">Kandidaadid</a></li>
 			  <li><a href="kandideerimine">Kandideerimine</a></li>
 			  <li><a href="#haaletamine">Hääletamine</a></li>

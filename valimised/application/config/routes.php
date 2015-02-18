@@ -45,7 +45,8 @@ $route['kandidaadid'] = 'candidates_controller';
 $route['kandidaadid/get'] = 'candidates_controller/get';
 $route['kandidaadid/get/(:num)/(:num)'] = 'candidates_controller/get/$1/$2';
 
-$route['valimistulemused'] = 'results_controller';
+$route['tulemused'] = 'results_controller';
+$route['tulemused/get/(:num)/(:num)'] = 'results_controller/get/$1/$2';
 
 $route['kandideerimine'] = 'apply_controller';
 
