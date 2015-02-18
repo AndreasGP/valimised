@@ -2,6 +2,7 @@
         <div class="jumbotron">
             <h2>Tere tulemast Eesti elektroonilise hääletuse keskkonda.</h2>
             <h3>Oma hääle andmiseks palun logige omale sobival viisil sisse.</h3> 
+            <h4>Hetkel funktsiooneerib Kandidaatide lehekülg, valimistulemused & kandideerimine on WIP.</h4>
         </div>
         <div class="row">
             <div class="col-sm-4">
