@@ -88,7 +88,7 @@ class Vote_Factory {
     public function createJSONObjectFromData($row) {
         $row->candidate = $this->_ci->user_factory->getUser($row->candidateid)->getFullName();
         $row->count = $this->getVoteCount($row->candidateid);
-        $row->party = $this->_ci->candidate_factory->getCandidate($row->candidateid)->getParty();     
+        $row->party = $this->_ci->candidate_factory->getCandidate($row->candidateid)->getParty()->getName();     
         
         //$row->party = $this->_ci->party_factory->getParty($partyid)->getName();
         //$row->voter = $this->_ci->user_factory->getUser($row->voterid)->getFullName();
