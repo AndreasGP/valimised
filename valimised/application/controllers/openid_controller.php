@@ -1,6 +1,6 @@
     <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class LoginGoogle extends CI_Controller 
+class OpenidController extends CI_Controller 
 {
     public function __construct()
     {
@@ -11,7 +11,7 @@ class LoginGoogle extends CI_Controller
     public function index()
     {
         require_once 'openid.php';
-        $openid = new LightOpenID("localhost");
+        $openid = new LightOpenID($_SERVER['HTTP_HOST']);
         $openid->identity = 'https://www.google.com/accounts/o8/id';
         $openid->required = array(
             'namePerson/first',
@@ -24,7 +24,7 @@ class LoginGoogle extends CI_Controller
             'pref/language',
             'pref/timezone',  
         );
-//  $openid->returnUrl = 'http://localhost/login_thirdparty/login_google.php';
+  //$openid->returnUrl = 'http://localhost/login_thirdparty/login_google.php';
 
     $openid->returnUrl = 'http://localhost/login_thirdparty/codeigniterlogin/index.php/logingoogle/loginAuth';
 
