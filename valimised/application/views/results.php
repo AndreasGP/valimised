@@ -7,14 +7,14 @@
                     <thead>
                         <tr>
                             <th class="col-md-1">Kandidaat</th>
-                            <th class="col-md-3">Valija</th>
-                            <th class="col-md-4">Aeg</th>
+                            <th class="col-md-3">Hääli</th>
+                            <th class="col-md-3">Erakond</th>
                         </tr>
                     </thead>
                     <tr ng-repeat="vote in $data">
                         <td data-title="'candidate'">{{vote.candidate}}</td>
-                        <td data-title="'voter'">{{vote.voter}}</td>
-                        <td data-title="'date'">{{vote.date}}</td>                    
+                        <td data-title="'votes'">{{vote.count}}</td>
+                        <td data-title="'party'">{{vote.party}}</td> 
                     </tr>
                 </table>
             </div>

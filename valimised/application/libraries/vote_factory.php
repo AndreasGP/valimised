@@ -11,6 +11,8 @@ class Vote_Factory {
         $this->_ci = & get_instance();
         $this->_ci->load->model("vote_model");
         $this->_ci->load->library("user_factory");
+        $this->_ci->load->library("party_factory");
+        $this->_ci->load->library("candidate_factory");
     }
 
     /**
@@ -26,11 +28,24 @@ class Vote_Factory {
         return false;
     }
     
+    /**
+     * Returns vote count for given candidate ID.
+     * @return boolean False, if nothing was found, vote count if exists.
+     */
+     public function getVoteCount($candidateid = 0) {
+        $query = $this->_ci->db->get_where("vote", array("candidateid" => $candidateid));
+        if ($query->num_rows() > 0) {
+            return $query->num_rows();
+        }
+        return false;
+    }
+    
      /**
      * Returns all the votes as an array of vote_model instances
      * @return boolean False, if nothing was found, array if votes exist.
      */
     public function getVotes() {
+        //SELECT candidateid, Count(voterid) AS 'Votes' FROM vote GROUP BY candidateid
         $query = $this->_ci->db->select("*")->from("vote")->get();
         if ($query->num_rows() > 0) {
             $votes = array();
@@ -72,8 +87,12 @@ class Vote_Factory {
      */
     public function createJSONObjectFromData($row) {
         $row->candidate = $this->_ci->user_factory->getUser($row->candidateid)->getFullName();
-        $row->voter = $this->_ci->user_factory->getUser($row->voterid)->getFullName();
-        $row->date = $this->getVote($row->voterid)->getDate($row->date);
+        $row->count = $this->getVoteCount($row->candidateid);
+        $row->party = $this->_ci->candidate_factory->getCandidate($row->candidateid)->getParty();     
+        
+        //$row->party = $this->_ci->party_factory->getParty($partyid)->getName();
+        //$row->voter = $this->_ci->user_factory->getUser($row->voterid)->getFullName();
+        //$row->date = $this->getVote($row->voterid)->getDate($row->date);
         return $row;
     }
 
