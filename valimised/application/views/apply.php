@@ -1,4 +1,4 @@
-<div class="content">
+<div class="container">
     <div class="form-group">
 
         <form name="form" novalidate ng-app="formvalidation" ng-controller="stageController">
@@ -36,7 +36,7 @@
                 <?php endforeach; ?>
             </select><br>
             <label for="pwd">Erakond:</label>
-            <select class="form-control" id="party">
+            <select class="form-control" id="party" ng-model="party">
                 <option value="" style="display:none;"></option>
                 <?php foreach ($parties as $row): ?>
                     <option><?php echo $row->getName(); ?></option>

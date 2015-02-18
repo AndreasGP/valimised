@@ -13,7 +13,7 @@ class Apply_Controller extends CI_Controller {
                     //Fetch all parties
                     "parties" => $this->party_factory->getParty(),
                         
-                    "scripts" => array("js/applyform.js")
+                    "scripts" => array("js/StageCtrl.js")
         );
                 
 		$this->load->view('templates/header.php', $data);
