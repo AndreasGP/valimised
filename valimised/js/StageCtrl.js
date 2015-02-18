@@ -13,7 +13,7 @@ angular.module('formvalidation',[])
     $scope.date ='';
     $scope.education ='';
     $scope.job ='';
-    
+    $scope.party = '';
     
     $scope.submitForm = function () {
         console.info("Here I should implement the logic to send a request to the server.");

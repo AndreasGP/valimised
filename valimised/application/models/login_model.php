@@ -5,7 +5,7 @@ class Login_model extends CI_Model
 {
     public function index()
     {
-        $openid = new LightOpenID("localhost");
+        $openid = new LightOpenID(filter_input(INPUT_SERVER, 'HTTP_HOST'));
 
         if($openid->mode)
         {
