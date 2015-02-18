@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-'use strict';
 
-angular.module('formvalidation',[]);
 
-function stageController($scope){
+angular.module('formvalidation',[])
+
+.controller('stageController', ['$scope', function($scope){
     $scope.firstname ='';
     $scope.lastname ='';
     $scope.date ='';
@@ -19,7 +19,7 @@ function stageController($scope){
         console.info("Here I should implement the logic to send a request to the server.");
     };
 
-}
+}]);
 
 function readURL(input) {
         if (input.files && input.files[0]) {

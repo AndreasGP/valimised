@@ -49,7 +49,7 @@ $route['valimistulemused'] = 'results_controller';
 
 $route['kandideerimine'] = 'apply_controller';
 
-$route['google'] = 'logingoogle';
+$route['google'] = 'openid_controller';
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

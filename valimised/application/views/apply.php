@@ -1,7 +1,7 @@
 <div class="content">
     <div class="form-group">
 
-        <form name="form" novalidate ng-app="" ng-controller="stageController">
+        <form name="form" novalidate ng-app="formvalidation" ng-controller="stageController">
 
             <label >Eesnimi</label>
             <input type="text" placeholder="Eesnimi" name="firstname" ng-model="firstname" required/>
@@ -53,7 +53,6 @@
             <input type="submit" value="Eelvaade">
             <input type="submit" value="Kandideeri">
             <input type="submit" value="Tühista">
-        </form>
-        <script src="../js/applyform.js"></script>
+        </form> 
     </div>
 </div>

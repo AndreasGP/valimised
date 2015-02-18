@@ -11,10 +11,12 @@ class Apply_Controller extends CI_Controller {
                     //Fetch all areas
                     "areas" => $this->area_factory->getArea(),
                     //Fetch all parties
-                    "parties" => $this->party_factory->getParty()
+                    "parties" => $this->party_factory->getParty(),
+                        
+                    "scripts" => array("js/applyform.js")
         );
                 
-		$this->load->view('templates/header.php');
+		$this->load->view('templates/header.php', $data);
 		$this->load->view('templates/navbar.php');
 		$this->load->view('apply.php', $data);
 		$this->load->view('templates/footer.php');
