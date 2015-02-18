@@ -82,8 +82,6 @@
                          <label class="control-label col-xs-3" for="pic">Pilt:</label>
                         <div class="col-xs-7">
                             <input class="file" type="file" onchange="readURL(this)">
-                            <input id="input-1" type="file" class="file">
-                            <img id="output" src="#" alt="picture"/>
                         </div>
                     </div>
 
@@ -95,7 +93,7 @@
             <textarea class="form-control" rows="6" cols="100">
             </textarea>
             <br>
-                <div class="pull-right">
+            <div class="pull-right">
                 <input class="btn btn-info" type="submit" value="Eelvaade">
                 <input class="btn btn-success" type="submit" value="Kandideeri">
                 <input class="btn btn-danger" type="submit" value="Tühista">

@@ -12,8 +12,8 @@ class Apply_Controller extends CI_Controller {
                     "areas" => $this->area_factory->getArea(),
                     //Fetch all parties
                     "parties" => $this->party_factory->getParty(),
-                        
-                    "scripts" => array("js/StageCtrl.js")
+                    "scripts" => array("js/StageCtrl.js", "js/libs/fileinput.js"),
+                    "styles" => array("css/fileinput.css")
         );
                 
 		$this->load->view('templates/header.php', $data);
