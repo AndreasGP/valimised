@@ -52,5 +52,7 @@ $route['kandideerimine'] = 'apply_controller';
 
 $route['google'] = 'openid_controller';
 
+//$route[''] = 'candidate_controller/get/$1';
+
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

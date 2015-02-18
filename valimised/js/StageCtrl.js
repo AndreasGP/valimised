@@ -8,15 +8,25 @@
 angular.module('formvalidation',[])
 
 .controller('stageController', ['$scope', function($scope){
-    $scope.firstname ='';
-    $scope.lastname ='';
-    $scope.date ='';
-    $scope.education ='';
-    $scope.job ='';
-    $scope.party = '';
+    $scope.user = {};
+    $scope.user.firstname ='';
+    $scope.user.lastname ='';
+    $scope.user.date ='';
+    $scope.user.education ='';
+    $scope.user.job ='';
+    $scope.user.party = '';
+    $scope.user.area = '';
+    $scope.user.description = '';
+    $scope.user.pic = '';
     
+    var resetUser = angular.copy($scope.user);
     $scope.submitForm = function () {
         console.info("Here I should implement the logic to send a request to the server.");
+    };
+    
+    $scope.resetForm = function (){
+      $scope.user = angular.copy(resetUser);
+      $scope.form.$setPristine();
     };
 
 }]);
