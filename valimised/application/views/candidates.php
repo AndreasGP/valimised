@@ -2,26 +2,24 @@
     <div class="row">
         <div class="col-sm-8">
             <h3>Kandidaadid</h3>
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th class="col-md-1">Kandidaadi number</th>
-                        <th class="col-md-3">Nimi</th>
-                        <th class="col-md-4">Kandideerib erakonnas</th>
-                        <th class="col-md-4">Piirkond</th>
+            <div ng-app="main" ng-controller="CandidatesCtrl">
+                <table ng-table="tableParams" class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th class="col-md-1">Kandidaadi number</th>
+                            <th class="col-md-3">Nimi</th>
+                            <th class="col-md-4">Kandideerib erakonnas</th>
+                            <th class="col-md-4">Piirkond</th>
+                        </tr>
+                    </thead>
+                    <tr ng-repeat="candidate in $data">
+                        <td data-title="'id'">{{candidate.id}}</td>
+                        <td data-title="'name'">{{candidate.name}}</td>
+                        <td data-title="'party'">{{candidate.party}}</td>
+                        <td data-title="'area'">{{candidate.area}}</td>
                     </tr>
-                </thead>
-
-                <?php foreach ($candidates as $row): ?>
-                <tr>
-                    <td><?php echo $row->getId(); ?></td>
-                    <td><?php echo $row->getUser()->getFullName(); ?></td> 
-                    <td><?php echo $row->getParty()->getName(); ?></td>
-                    <td><?php echo $row->getArea()->getName(); ?></td>
-                </tr>
-                <?php endforeach; ?>
-            </table>
-
+                </table>
+            </div>
         </div>
         <div class="col-sm-4">
             <h3>Otsi kandidaati</h3>
