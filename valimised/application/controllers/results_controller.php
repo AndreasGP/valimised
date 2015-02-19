@@ -20,7 +20,7 @@ class Results_Controller extends CI_Controller {
             //Fetch all votes
             "votes" => $this->vote_factory->getVotes(),
             //Include the candidates ng controller
-            "scripts" => array("js/ResultsCtrl.js")
+            "scripts" => array("js/ResultsCtrl.js", "js/libs/ng-table.min.js")
         );
         $this->load->view('templates/header.php', $data);
         $this->load->view('templates/navbar.php');
