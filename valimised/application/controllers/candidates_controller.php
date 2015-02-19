@@ -17,7 +17,7 @@ class Candidates_Controller extends CI_Controller {
             //Fetch all parties
             "parties" => $this->party_factory->getParty(),
             //Include the candidates ng controller
-            "scripts" => array("js/CandidatesCtrl.js")
+            "scripts" => array("js/CandidatesCtrl.js", "js/libs/ng-table.min.js")
         );
         $this->load->view('templates/header.php', $data);
         $this->load->view('templates/navbar.php');

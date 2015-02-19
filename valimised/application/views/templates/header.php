@@ -12,11 +12,10 @@
         }
         ?>
         
-        <script src="js/libs/jquery.js"></script>
-        <script src="js/libs/bootstrap.js"></script>
-        <script src="js/libs/angular.js"></script>
-        <script src="js/libs/ng-table.js"></script>
-        
+        <script src="js/libs/jquery-1.11.2.min.js"></script>
+        <script src="js/libs/bootstrap.min.js"></script>
+        <script src="js/libs/angular.min.js"></script>
+
         <?php
         if (isset($scripts) && is_array($scripts)) {
             foreach ($scripts as $script) {
