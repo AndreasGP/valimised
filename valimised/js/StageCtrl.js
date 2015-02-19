@@ -26,6 +26,13 @@ angular.module('formvalidation',[])
     
     $scope.resetForm = function (){
       $scope.user = angular.copy(resetUser);
+      $('#reset').click(function(){
+          $('#party option[value="0"]').attr('selected','selected');
+      });
+      $('#reset').click(function(){
+          $('#area option[value="0"]').attr('selected','selected');
+      });
+      $('#pic').fileinput('clear');
       $scope.form.$setPristine();
     };
 

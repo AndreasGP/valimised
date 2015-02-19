@@ -83,7 +83,7 @@
                     <div class=""form-group">
                          <label class="control-label col-xs-3" for="pic">Pilt:</label>
                         <div class="col-xs-7">
-                            <input class="file" type="file" onchange="readURL(this)" ng-model="user.pic" required>
+                            <input class="file" type="file" onchange="readURL(this)" id="pic" ng-model="user.pic" required>
                         </div>
                     </div>
 
