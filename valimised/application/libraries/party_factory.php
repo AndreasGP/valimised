@@ -35,6 +35,14 @@ class Party_Factory {
             return false;
         }
     }
+    
+    public function getIdbyField($fieldname, $fieldvalue){
+        $query = $this->_ci->db->select("TOP 1 id")->from("party")->where([$fieldname => $fieldvalue]);
+            if ($query->num_rows() > 0) {
+                return (int)$query->id;
+            }
+            return false;
+    }
 
     public function createObjectFromData($row) {
         $area = new Party_Model();
