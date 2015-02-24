@@ -78,7 +78,7 @@ angular.module('formvalidation', [])
                     queryString += "&lastname=" + $scope.user.lastname + "&date=" + $scope.user.date
                     + "&education=" + $scope.user.education + "&job=" + $scope.user.job + "&party=" +
                     $scope.user.party + "&area=" + $scope.user.area + "&description=" + $scope.user.description;
-                    ajaxRequest.open("GET", "ajax-example.php" + queryString, true);
+                    ajaxRequest.open("GET", "databaseposter.php" + queryString, true);
                     ajaxRequest.send(null);
                 };
 

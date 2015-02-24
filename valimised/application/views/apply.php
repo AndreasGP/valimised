@@ -97,7 +97,7 @@
             <br>
             <div class="pull-right">
                 <input class="btn btn-info" type="submit" ng-click="" value="Eelvaade">
-                <input class="btn btn-success" type="submit" value="Kandideeri">
+                <input class="btn btn-success" type="submit" ng-click="postDB()" value="Kandideeri">
                 <input class="btn btn-danger" type="submit" ng-click="resetForm()" value="Tühista">
             </div>
         </form> 

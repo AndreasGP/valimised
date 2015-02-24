@@ -4,10 +4,10 @@ $this->load->library("area_factory");
 $this->load->library("party_factory");
 $this->load->library("user_factory");
 
-$dbhost = "localhost";
-$dbuser = "dbusername";
-$dbpass = "dbpassword";
-$dbname = "dbname";
+$dbhost = "";
+$dbuser = "";
+$dbpass = "";
+$dbname = "morsakabi";
 
 //Connect to MySQL Server
 mysql_connect($dbhost, $dbuser, $dbpass);
@@ -35,11 +35,12 @@ $party = mysql_real_escape_string($party);
 $area = mysql_real_escape_string($area);
 $description = mysql_real_escape_string($description);
 $party = $this->user_factory->getIdbyField("name", $party);
-$user = $this->user_factory->getIdbyField("firstname", $firstname);
+//TEMPORARY
+$user = random(500, 700);
 $area = $this->user_factory->getIdbyField("name", $area);
 //build query
 $query = "INSERT INTO `candidate`(`id`, `userid`, `areaid`, `partyid`, `education`, `birthdate`, `job`, `description`) 
-        VALUES (id,user <= $user,area<= $area,party<=$party,education <= $education,"
+        VALUES (405,user <= $user,area<= $area,party<=$party,education <= $education,"
         . "date <= $date,job <= $job,description <= $description)";
 
 //Execute query
