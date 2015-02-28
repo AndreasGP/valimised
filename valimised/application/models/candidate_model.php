@@ -7,6 +7,10 @@ class Candidate_Model extends CI_Model {
     private $_user;
     private $_area;
     private $_party;
+    private $_job;
+    private $_education;
+    private $_birthday;
+    private $_description;
 
     function __construct() {
         parent::__construct();
@@ -43,5 +47,8 @@ class Candidate_Model extends CI_Model {
     public function setParty($value) {
         $this->_party = $value;
     }
-
+    
+    function form_insert($data){
+        $this->db->insert('candidate', $data);
+    }
 }

@@ -37,49 +37,30 @@ angular.module('formvalidation', [])
                 };
 
                 $scope.postDB = function () {
-                    var ajaxRequest;  // The variable that makes Ajax possible!
-                    try {
-
-                        // Opera 8.0+, Firefox, Safari
-                        ajaxRequest = new XMLHttpRequest();
-                    } catch (e) {
-
-                        // Internet Explorer Browsers
-                        try {
-                            ajaxRequest = new ActiveXObject("Msxml2.XMLHTTP");
-                        } catch (e) {
-
-                            try {
-                                ajaxRequest = new ActiveXObject("Microsoft.XMLHTTP");
-                            } catch (e) {
-
-                                // Something went wrong
-                                alert("Your browser broke!");
-                                return false;
-                            }
-                        }
+                    var xmlhttp;
+                    if (window.XMLHttpRequest)
+                    {// code for IE7+, Firefox, Chrome, Opera, Safari
+                        xmlhttp = new XMLHttpRequest();
                     }
-
-                    // Create a function that will receive data
-                    // sent from the server and will update
-                    // div section in the same page.
-                    ajaxRequest.onreadystatechange = function () {
-
-                        if (ajaxRequest.readyState === 4) {
-                            var ajaxDisplay = document.getElementById('ajaxDiv');
-                            ajaxDisplay.innerHTML = ajaxRequest.responseText;
+                    else
+                    {// code for IE6, IE5
+                        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                    }
+                    xmlhttp.onreadystatechange = function ()
+                    {
+                        if (xmlhttp.readyState === 4 && xmlhttp.status === 200)
+                        {
+                            //SOMETHING SOMETHING to get it working. No idea how
+                            document.getElementById("myDiv").innerHTML = xmlhttp.responseText;
                         }
                     };
-
-                    // Now get the value from user and pass it to
-                    // server script.
-                    var queryString = "&firstname=" + $scope.user.firstname;
+                    var queryString = "firstname=" + $scope.user.firstname;
 
                     queryString += "&lastname=" + $scope.user.lastname + "&date=" + $scope.user.date
-                    + "&education=" + $scope.user.education + "&job=" + $scope.user.job + "&party=" +
-                    $scope.user.party + "&area=" + $scope.user.area + "&description=" + $scope.user.description;
-                    ajaxRequest.open("GET", "databaseposter.php" + queryString, true);
-                    ajaxRequest.send(null);
+                            + "&education=" + $scope.user.education + "&job=" + $scope.user.job + "&party=" +
+                            $scope.user.party + "&area=" + $scope.user.area + "&description=" + $scope.user.description;
+                    xmlhttp.open("GET", "helpers/databaseposter.php?" + queryString, true);
+                    xmlhttp.send(null);
                 };
 
             }]);
