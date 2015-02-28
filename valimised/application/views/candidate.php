@@ -1,4 +1,4 @@
 <div class="container">
-    <p>{{$data.name}}</p>
+    <td data-title="'candidate'">{{$data}}</td>
 </div>
 

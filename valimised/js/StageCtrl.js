@@ -36,6 +36,10 @@ angular.module('formvalidation', [])
                     $scope.form.$setPristine();
                 };
 
+                $scope.preview = function() {
+                    window.location.href =  "candidate_controller/set/"+$scope.user.firstname +"/"+$scope.user.lastname;
+                };
+
                 $scope.postDB = function () {
                     var xmlhttp;
                     if (window.XMLHttpRequest)
