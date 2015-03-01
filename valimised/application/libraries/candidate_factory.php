@@ -20,7 +20,7 @@ class Candidate_Factory {
      * @param type $id Candidate ID, default 1
      * @return boolean False, if nothing was found, candidate_model if it exists.
      */
-    public function getCandidate($id = 1) {
+    public function getCandidate($id = 4) {
         $query = $this->_ci->db->get_where("candidate", array("id" => $id));
         if ($query->num_rows() > 0) {
             return $this->createObjectFromData($query->row());
@@ -77,6 +77,7 @@ class Candidate_Factory {
      * Creates a JSON compatible object from the given data.
      */
     public function createJSONObjectFromData($row) {
+        $row->id = (int)$row->id;
         $row->name = $this->_ci->user_factory->getUser($row->userid)->getFullName();
         $row->area = $this->_ci->area_factory->getArea($row->areaid)->getName();
         $row->party = $this->_ci->party_factory->getParty($row->partyid)->getName();
