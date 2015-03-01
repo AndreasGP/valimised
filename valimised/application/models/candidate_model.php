@@ -48,6 +48,38 @@ class Candidate_Model extends CI_Model {
         $this->_party = $value;
     }
     
+    public function getJob() {
+        return $this->_job;
+    }
+
+    public function setJob($value) {
+        $this->_job = $value;
+    }
+  
+    public function getEducation() {
+        return $this->_education;
+    }
+
+    public function setEducation($value) {
+        $this->_education = $value;
+    }
+    
+    public function getBirthday() {
+        return $this->_birthday;
+    }
+
+    public function setBirthday($value) {
+        $this->_birthday = $value;
+    }
+    
+    public function getDescription() {
+        return $this->_description;
+    }
+
+    public function setDescription($value) {
+        $this->_description = $value;
+    }
+    
     function form_insert($data){
         $this->db->insert('candidate', $data);
     }

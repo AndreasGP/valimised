@@ -20,18 +20,13 @@ class Candidate_Controller extends CI_Controller {
 
     public function get($id = 1) {
         $this->load->library("candidate_factory");
-        $candidate = $this->candidate_factory->getCandidate($id);
-    }
-
-    public function set($fname, $lname) {
         $data = array(
             //Fetch candidate information
-            "name" => $fname + " " + $lname
+            "candidate" => $this->candidate_factory->getCandidate($id)
         );
         $this->load->view('templates/header.php');
         $this->load->view('templates/navbar.php');
         $this->load->view('candidate.php', $data);
         $this->load->view('templates/footer.php');
     }
-
 }

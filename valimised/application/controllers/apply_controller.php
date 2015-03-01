@@ -21,4 +21,9 @@ class Apply_Controller extends CI_Controller {
 		$this->load->view('apply.php', $data);
 		$this->load->view('templates/footer.php');
 	}
+        
+        public function apply(){
+            $nimi = $this->input->post('firstname');
+            echo $nimi;
+        }
 }

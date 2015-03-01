@@ -49,9 +49,11 @@ $route['tulemused'] = 'results_controller';
 $route['tulemused/get/(:num)/(:num)'] = 'results_controller/get/$1/$2';
 
 $route['kandideerimine'] = 'apply_controller';
+$route['kandideerimine/esita'] = 'apply_controller/apply';
 
 $route['google'] = 'openid_controller';
 
+$route['kandidaat'] = 'candidate_controller';
 $route['kandidaat/get/(:num)'] = 'candidate_controller/get/$1';
 
 /* End of file routes.php */
