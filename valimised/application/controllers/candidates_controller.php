@@ -9,6 +9,7 @@ class Candidates_Controller extends CI_Controller {
         $this->load->library("candidate_factory");
         $this->load->library("area_factory");
         $this->load->library("party_factory");
+        $this->load->library("education_factory");
         $data = array(
             //Fetch all candidates
             "candidates" => $this->candidate_factory->getCandidates(),
@@ -16,6 +17,8 @@ class Candidates_Controller extends CI_Controller {
             "areas" => $this->area_factory->getArea(),
             //Fetch all parties
             "parties" => $this->party_factory->getParty(),
+            //Fetch all educations
+            "educations" => $this->education_factory->getEducation(),
             //Include the candidates ng controller
             "scripts" => array("/valimised/js/CandidatesCtrl.js", "/valimised/js/libs/ng-table.min.js")
         );

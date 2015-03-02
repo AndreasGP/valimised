@@ -13,6 +13,7 @@ class Candidate_Factory {
         $this->_ci->load->library("user_factory");
         $this->_ci->load->library("area_factory");
         $this->_ci->load->library("party_factory");
+        $this->_ci->load->library("education_factory");
     }
 
     /**
@@ -70,6 +71,7 @@ class Candidate_Factory {
         $candidate->setUser($this->_ci->user_factory->getUser($row->userid));
         $candidate->setArea($this->_ci->area_factory->getArea($row->areaid));
         $candidate->setParty($this->_ci->party_factory->getParty($row->partyid));
+        $candidate->setEducation($this->_ci->education_factory->getEducation($row->educationid));
         return $candidate;
     }
 
@@ -81,6 +83,7 @@ class Candidate_Factory {
         $row->name = $this->_ci->user_factory->getUser($row->userid)->getFullName();
         $row->area = $this->_ci->area_factory->getArea($row->areaid)->getName();
         $row->party = $this->_ci->party_factory->getParty($row->partyid)->getName();
+        $row->education = $this->_ci->education_factory->getEducation($row->educationid)->getName();
         return $row;
     }
 

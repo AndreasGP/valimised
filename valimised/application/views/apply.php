@@ -32,14 +32,17 @@
                         <span class="col-xs-2" style="color:red" ng-show="form.date.$dirty && form.date.$invalid">
                             <span ng-show="form.date.$error.required"> Sisestada sünnikuupäev.</span></span>
                     </div>
-
+                    
                     <div class="form-group">
                         <label class="control-label col-xs-3" for="education">Haridus:</label>
                         <div class="col-xs-7">
-                            <input class="form-control" type="text" placeholder="Haridus" name="education" ng-model="user.education" required>
+                            <select class="form-control" id="education" ng-model="user.education" required>
+                                <option value="" style="display:none;"></option>
+                                <?php foreach ($educations as $row): ?>
+                                    <option><?php echo $row->getName(); ?></option>
+                                <?php endforeach; ?>
+                            </select>
                         </div>
-                        <span class="col-xs-2" style="color:red" ng-show="form.education.$dirty && form.education.$invalid">
-                            <span ng-show="form.education.$error.required"> Sisestada haridustase.</span></span>
                     </div>
 
                 </div>
