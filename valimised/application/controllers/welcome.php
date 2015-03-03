@@ -1,26 +1,29 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
+
+if (!defined('BASEPATH'))
+    exit('No direct script access allowed');
 
 class Welcome extends CI_Controller {
 
-	public function __construct(){
-		parent::__construct();
+    public function __construct() {
+        parent::__construct();
 
         // To use site_url and redirect on this controller.
         $this->load->helper('url');
-	}
+    }
 
-	public function login(){
+    public function login() {
 
-		$this->load->library('facebook'); // Automatically picks appId and secret from config
-		$user = $this->facebook->getUser();
-        
+        $this->load->library('facebook'); // Automatically picks appId and secret from config
+        $user = $this->facebook->getUser();
+
         if ($user) {
             try {
                 $data['user_profile'] = $this->facebook->api('/me');
             } catch (FacebookApiException $e) {
                 $user = null;
             }
-        }else {
+        } else {
             $this->facebook->destroySession();
         }
 
@@ -30,18 +33,19 @@ class Welcome extends CI_Controller {
             // OR 
             // Logs off FB!
             // $data['logout_url'] = $this->facebook->getLogoutUrl();
-
         } else {
             $data['login_url'] = $this->facebook->getLoginUrl(array(
-                'redirect_uri' => site_url(''), 
+                'redirect_uri' => site_url(''),
                 'scope' => array("email") // permissions here
             ));
         }
+        $this->load->view('templates/header.php');
+        $this->load->view('templates/navbar.php');
         $this->load->view('login',$data);
+        $this->load->view('templates/footer.php');
+    }
 
-	}
-
-    public function logout(){
+    public function logout() {
 
         $this->load->library('facebook');
 
@@ -53,4 +57,3 @@ class Welcome extends CI_Controller {
     }
 
 }
-

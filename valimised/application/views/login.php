@@ -1,15 +1,4 @@
-<html>
-<head>
-    <title>Login with Facebook</title>
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
-    <style type="text/css">
-    body {
-        padding-top: 40px;
-        padding-bottom: 40px;
-        background-color: #eee;
-    }
-
+<style type="text/css">
     .form-signin {
         max-width: 330px;
         padding: 15px;
@@ -31,9 +20,6 @@
         color: #cc0000;
     }
     </style>
-</head>
-<body>
-
     <div class="container">
 
         <form class="form-signin" role="form">
@@ -47,14 +33,10 @@
                     </div>
                 </div>
             <?php else: ?>
-                <h2 class="form-signin-heading">Login with Facebook</h2>
-                <a href="<?= $login_url ?>" class="btn btn-lg btn-primary btn-block" role="button">Login</a>
+                <h2 class="form-signin-heading">Sisene kasutades Facebooki</h2>
+                <a href="<?= $login_url ?>" class="btn btn-lg btn-primary btn-block" role="button">Sisene</a>
             <?php endif; ?>       
             </div>
         </form>
-      
-
-    </div> <!-- /container -->
-    <script type="text/javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-</body>
-</html>
+    
+    </div>

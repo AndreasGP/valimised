@@ -16,9 +16,9 @@
                         </tr>
                     </thead>
                     <tr ng-repeat="vote in $data">
-                        <td data-title="'candidate'">{{vote.candidate}}</td>
-                        <td data-title="'votes'">{{vote.count}}</td>
-                        <td data-title="'party'">{{vote.party}}</td> 
+                        <td data-title="'candidate'" sortable="'candidate'">{{vote.candidate}}</td>
+                        <td data-title="'votes'" sortable="'count'">{{vote.count}}</td>
+                        <td data-title="'party'" sortable="'party'">{{vote.party}}</td> 
                     </tr>
                 </table>
             </div>
