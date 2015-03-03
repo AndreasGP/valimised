@@ -15,7 +15,8 @@ class Apply_Controller extends CI_Controller {
                     "parties" => $this->party_factory->getParty(),
                     //Fetch all educations
                     "educations" => $this->education_factory->getEducation(),
-                    "scripts" => array("/valimised/js/StageCtrl.js", "/valimised/js/libs/fileinput.min.js"),
+                    "scripts" => array("/valimised/js/StageCtrl.js", "/valimised/js/libs/fileinput.min.js",
+                        "/valimised/js/BirthdayCtrl.js"),
                     "styles" => array("/valimised/css/fileinput.css")
         );
                 

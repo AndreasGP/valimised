@@ -24,15 +24,20 @@
                             <span ng-show="form.lastname.$error.required"> Sisestada perekonnanimi.</span></span>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group" onload="populatedropdown(daydropdown, monthdropdown, yeardropdown)">
                         <label class="control-label col-xs-3" for="date">Sünniaeg:</label>
                         <div class="col-xs-7">
-                            <input class="form-control" type="date" placeholder="Sünniaeg" name="date" ng-model="user.date" required>
+                            <select id="daydropdown" required>
+                            </select> 
+                            <select id="monthdropdown" required>
+                            </select> 
+                            <select id="yeardropdown" required>
+                            </select> 
                         </div>
                         <span class="col-xs-2" style="color:red" ng-show="form.date.$dirty && form.date.$invalid">
                             <span ng-show="form.date.$error.required"> Sisestada sünnikuupäev.</span></span>
                     </div>
-                    
+
                     <div class="form-group">
                         <label class="control-label col-xs-3" for="education">Haridus:</label>
                         <div class="col-xs-7">
