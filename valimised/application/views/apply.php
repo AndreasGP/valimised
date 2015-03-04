@@ -121,7 +121,7 @@
 
             <div class="pull-right">
                 <input class="btn btn-info" type="submit" ng-click="preview()" value="Eelvaade">
-                <input class="btn btn-success" type="submit" ng-click="postDB()" value="Kandideeri">
+                <input class="btn btn-success" type="submit" ng-click="postDB()" ng-disabled="form.$invalid" value="Kandideeri">
                 <input class="btn btn-danger" type="submit" ng-click="resetForm()" value="Tühista">
             </div>
         </form> 
