@@ -9,7 +9,9 @@ main.controller('stageController', ['$scope', '$http', function ($scope) {
                 $scope.user = {};
                 $scope.user.firstname = '';
                 $scope.user.lastname = '';
-                $scope.user.date = '';
+                $scope.user.year = '';
+                $scope.user.moth = '';
+                $scope.user.day = '';
                 $scope.user.education = '';
                 $scope.user.job = '';
                 $scope.user.party = '';
