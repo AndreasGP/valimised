@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-sm-8">
             <h3>Tulemused</h3>
-            <div ng-app="main" ng-controller="ResultsCtrl">
+            <div ng-controller="ResultsCtrl">
                 <input class="btn btn-info" type="submit" value="Üldtulemused">
                 <input class="btn btn-info" type="submit" value="Erakondade tulemused">
                 <input class="btn btn-info" type="submit" value="Piirkondade tulemused">

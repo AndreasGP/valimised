@@ -6,9 +6,10 @@ if (!defined('BASEPATH'))
 class Error_Controller extends CI_Controller {
 
     public function index() {
-
+        $this->load->helper('url');
         $this->load->view('templates/header.php');
-        $this->load->view('templates/navbar.php');
+        $this->load->library('facebook');
+        $this->load->view('templates/navbar.php', $this->facebook->getLoginData());
         $this->load->view('404.php');
         $this->load->view('templates/footer.php');
     }

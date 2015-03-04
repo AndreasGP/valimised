@@ -1,4 +1,3 @@
-var main = angular.module('main', ['ngTable']);
 main.controller('CandidatesCtrl', function($scope, $filter, $http, ngTableParams) {
     $http.get('kandidaadid/get/10/10').
             success(function(data, status, headers, config) {

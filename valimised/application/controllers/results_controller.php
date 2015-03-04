@@ -6,6 +6,7 @@ if (!defined('BASEPATH'))
 class Results_Controller extends CI_Controller {
 
     public function index() {
+       // $this->load->helper('url');
         $this->load->library("candidate_factory");
         $this->load->library("area_factory");
         $this->load->library("party_factory");
@@ -20,9 +21,10 @@ class Results_Controller extends CI_Controller {
             //Fetch all votes
             "votes" => $this->vote_factory->getVotes(),
             //Include the candidates ng controller
-            "scripts" => array("/valimised/js/ResultsCtrl.js", "/valimised/js/libs/ng-table.min.js")
+            "scripts" => array("/valimised/js/ResultsCtrl.js")
         );
         $this->load->view('templates/header.php', $data);
+        //$this->load->library('facebook');
         $this->load->view('templates/navbar.php');
         $this->load->view('results.php', $data);
         $this->load->view('templates/footer.php');
@@ -33,4 +35,5 @@ class Results_Controller extends CI_Controller {
         $votes = $this->vote_factory->getVotesJSON();
         $this->output->set_content_type('application/json')->set_output(json_encode($votes));
     }
+
 }

@@ -1,7 +1,7 @@
 <div class="container">
     <div class="form-group">
 
-        <form name="form" class="form-horizontal" novalidate ng-app="formvalidation" ng-controller="stageController">
+        <form name="form" class="form-horizontal" novalidate ng-controller="stageController">
 
             <div class="row">
                 <div class="col-sm-6">

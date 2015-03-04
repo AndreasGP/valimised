@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-sm-8">
             <h3>Kandidaadid</h3>
-            <div ng-app="main" ng-controller="CandidatesCtrl">
+            <div ng-controller="CandidatesCtrl">
                 <table ng-table="tableParams" class="table table-striped">
                     <tr ng-repeat="candidate in $data">
                         <td class="col-md-1" data-title="'Kandidaadi number'" sortable="id">{{candidate.id}}</td>

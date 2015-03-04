@@ -5,7 +5,7 @@
  */
 $(document).ready(function () {
     var today = new Date();
-    var dayItems = '<option selected="selected" value="0">- Päev -</option>';
+    var dayItems = '<option selected="selected" value="0">- PÃ¤ev -</option>';
     var monthItems = '<option selected="selected" value="0">- Kuu -</option>';
     var yearItems = '<option selected="selected" value="0">- Aasta -</option>';
 
@@ -26,7 +26,7 @@ $(document).ready(function () {
 
 $("#monthdropdown").change(function () {
     var value = $("#monthdropdown").val();
-    var dayItems = '<option selected="selected" value="0">- Päev -</option>';
+    var dayItems = '<option selected="selected" value="0">- PÃ¤ev -</option>';
     if (value % 2 === 0 && value !== 2) {
         for (var i = 1; i < 31; i++) {
             dayItems += "<option value='" + i + "'>" + i + "</option>";
