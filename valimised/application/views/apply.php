@@ -27,13 +27,17 @@
                     <div class="form-group" onload="populatedropdown(daydropdown, monthdropdown, yeardropdown)">
                         <label class="control-label col-xs-3" for="date">Sünniaeg:</label>
                         <div class="col-xs-7">
-                            <select id="yeardropdown" onchange="yearchange()" ng-model="user.year" name="year" required>
+                            <select class="selectpicker" id="yeardropdown" onchange="yearchange()" ng-model="user.year" name="year" required>
                             </select> 
-                            <select id="monthdropdown" onchange="monthchange()" ng-model="user.month" name="month" required>
+
+                            <select class="selectpicker"  id="monthdropdown" onchange="monthchange()" ng-model="user.month" name="month" required>
                             </select> 
-                            <select id="daydropdown" ng-model="user.day" name="day"required>
+
+
+                            <select class="selectpicker" id="daydropdown" ng-model="user.day" name="day"required>
                             </select> 
                         </div>
+                        
                         <span class="col-xs-2" style="color:red" 
                               ng-show="form.year.$dirty && form.year.$invalid && form.month.$dirty && form.month.$invalid &&
                                                       form.day.$dirty && form.day.$invalid">

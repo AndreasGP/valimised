@@ -12,26 +12,30 @@ $(document).ready(function () {
     }
     $("#yeardropdown").html(yearItems);
 });
-
-function yearchange(){
-    var monthItems = '<option selected="selected" value="0">- Kuu -</option>';
-    for (var i = 1; i < 13; i++) {
-        monthItems += "<option value='" + i + "'>" + i + "</option>";
+var changed = false;
+function yearchange() {
+    if (!changed) {
+        var monthItems = '<option selected="selected" value="0">- Kuu -</option>';
+        for (var i = 1; i < 13; i++) {
+            monthItems += "<option value='" + i + "'>" + i + "</option>";
+        }
+        changed = true;
+        $("#monthdropdown").html(monthItems);
     }
-    $("#monthdropdown").html(monthItems);
-};
+}
+;
 
 function monthchange() {
     var value = $("#monthdropdown").val();
     var year = $("#yeardropdown").val();
     var dayItems = '<option selected="selected" value="0">- Päev -</option>';
-    if(value == 2 && ((year%4==0 && year%100 != 0) || (year%400 == 0)))
+    if (value == 2 && ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)))
     {
         for (var i = 1; i < 30; i++) {
             dayItems += "<option value='" + i + "'>" + i + "</option>";
         }
     }
-    else if(value == 2)
+    else if (value == 2)
     {
         for (var i = 1; i < 29; i++) {
             dayItems += "<option value='" + i + "'>" + i + "</option>";
@@ -42,11 +46,12 @@ function monthchange() {
             dayItems += "<option value='" + i + "'>" + i + "</option>";
         }
     }
-    else{
-               for (var i = 1; i < 32; i++) {
+    else {
+        for (var i = 1; i < 32; i++) {
             dayItems += "<option value='" + i + "'>" + i + "</option>";
-        } 
+        }
     }
-    
+
     $("#daydropdown").html(dayItems);
-};
+}
+;
