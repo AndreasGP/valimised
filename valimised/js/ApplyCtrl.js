@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-main.controller('stageController', ['$scope', '$http', function ($scope) {
+main.controller('stageController', ['$scope', '$http', function ($scope, $http) {
         console.info("Here I should implement the logic to send a request to the server.");
         $scope.user = {};
         $scope.user.firstname = '';
@@ -20,9 +20,12 @@ main.controller('stageController', ['$scope', '$http', function ($scope) {
         $scope.user.pic = '';
         var resetUser = angular.copy($scope.user);
         $scope.submitForm = function () {
-            console.info("Here I should implement the logic to send a request to the server.");
+            
+            console.info("This should submit data.");
+            
         };
         $scope.resetForm = function () {
+            
             $scope.user = angular.copy(resetUser);
             $('#reset').click(function () {
                 $('#party option[value="0"]').attr('selected', 'selected');
@@ -34,6 +37,7 @@ main.controller('stageController', ['$scope', '$http', function ($scope) {
             $scope.form.$setPristine();
         };
         $scope.preview = function () {
+            
             Restangular.one('kandidaat').post($scope.user);
             //Generate object with candidate model. Send object.
             $http({
@@ -47,20 +51,23 @@ main.controller('stageController', ['$scope', '$http', function ($scope) {
                 console.log("Fail!");
             });
         };
-        $scope.postDB = function () {
-            var queryString = "firstname=" + $scope.user.firstname;
-            queryString += "&lastname=" + $scope.user.lastname + "&date=" + $scope.user.date
-                    + "&education=" + $scope.user.education + "&job=" + $scope.user.job + "&party=" +
-                    $scope.user.party + "&area=" + $scope.user.area + "&description=" + $scope.user.description;
+        $scope.postDB = function () {        
+            console.log($scope.user);
             $http({
                 method: 'POST',
-                url: 'request-url',
-                data: "firstname=" + $scope.user.firstname,
+                url: '/valimised/kandideerimine/esita',
+                data: $.param({'areaid':$scope.user.area, 'educationid':$scope.user.education,
+                    'partyid':$scope.user.party, 'birthdate':$scope.user.date, 'job':$scope.user.job, 'description':$scope.user.description}),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            }).success(function (response) {
+                console.log("Success!");
+            }).error(function (response) {
+                console.log("Fail!");
             });
         };
     }]);
 function readURL(input) {
+    
     if (input.files && input.files[0]) {
         var reader = new FileReader();
         reader.onload = function (e) {

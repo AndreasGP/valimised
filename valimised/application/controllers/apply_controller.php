@@ -4,10 +4,14 @@ class Apply_Controller extends CI_Controller {
 
 	public function index()
 	{   
+                
+                
                 $this->load->helper('url');
                 $this->load->library("area_factory");
                 $this->load->library("party_factory");
                 $this->load->library("education_factory");
+                
+                
                 $data = array(
                     //Fetch all areas
                     "areas" => $this->area_factory->getArea(),
@@ -25,10 +29,25 @@ class Apply_Controller extends CI_Controller {
 		$this->load->view('templates/navbar.php', $this->facebook->getLoginData());
 		$this->load->view('apply.php', $data);
 		$this->load->view('templates/footer.php');
+                                            
+                
 	}
         
-        public function apply(){
-            $nimi = $this->input->post('firstname');
-            echo $nimi;
+       public function apply(){
+           $this->load->model("candidate_model");
+          
+            $data = array(
+                'id' => ('NULL'),
+                'userid' => '95',
+                'areaid' => $this->input->post('areaid'),
+                'partyid' => $this->input->post('partyid'),
+                'educationid' => $this->input->post('educationid'),
+                'birthdate' => $this->input->post('birthdate'),
+                'job' => $this->input->post('job'),
+                'description' => $this->input->post('description')
+            );                       
+            
+            $this->candidate_model->form_insert($data);
+            
         }
 }
