@@ -32,6 +32,9 @@ $route['kandideerimine/esita'] = 'apply_controller/apply';
 $route['kandidaat'] = 'candidate_controller';
 $route['kandidaat/nr/(:num)'] = 'candidate_controller/get/$1';
 
+$route['login'] = 'login_controller/login';
+$route['login/modal'] = 'login_controller/modal';
+$route['logout'] = 'home_controller/index/logout';
 
 
 /* End of file routes.php */

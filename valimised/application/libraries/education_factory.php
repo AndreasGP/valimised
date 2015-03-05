@@ -12,9 +12,9 @@ class Education_Factory {
         $this->_ci->load->model("education_model");
     }
 
-    public function getEducation($id = 0) {
+    public function getEducation($id = -1) {
         //Are we getting an individual party or are we getting them all
-        if ($id > 0) {
+        if ($id >= 0) {
             //Getting an individual party
             $query = $this->_ci->db->get_where("education", array("id" => $id));
             if ($query->num_rows() > 0) {
