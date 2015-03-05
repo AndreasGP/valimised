@@ -22,7 +22,7 @@ function yearchange() {
         changed = true;
         $("#monthdropdown").html(monthItems);
     }
-    if(changed){
+    else{
         monthchange();
     }
 }

@@ -33,5 +33,16 @@ class Candidate_Controller extends CI_Controller {
         $this->load->view('candidate.php', $data);
         $this->load->view('templates/footer.php');
     }
+    
+    public function getPreview(){
+        $this->load->helper('url');
+        $data = json_decode(file_get_contents("php://input"));
+        
+        $this->load->view('templates/header.php');
+        $this->load->library('facebook');
+        $this->load->view('templates/navbar.php', $this->facebook->getLoginData());
+        $this->load->view('candidate.php', $data);
+        $this->load->view('templates/footer.php');
+    }
 
 }
