@@ -1,6 +1,6 @@
-main.controller('CandidatesCtrl', function($scope, $filter, $http, ngTableParams) {
+main.controller('CandidatesCtrl', function ($scope, $filter, $http, ngTableParams) {
     $http.get('kandidaadid/get/10/10').
-            success(function(data, status, headers, config) {
+            success(function (data, status, headers, config) {
                 $scope.data = data;
                 $scope.tableParams = new ngTableParams({
                     page: 1, // show first page
@@ -10,19 +10,23 @@ main.controller('CandidatesCtrl', function($scope, $filter, $http, ngTableParams
                     }
                 }, {
                     total: $scope.data.length, // length of data
-                    getData: function($defer, params) {
+                    getData: function ($defer, params) {
                         var orderedData = params.sorting() ?
                                 $filter('orderBy')($scope.data, params.orderBy()) :
                                 $scope.data;
 
                         $defer.resolve(orderedData.slice((params.page() - 1) * params.count(),
-                        params.page() * params.count()));
+                                params.page() * params.count()));
 
                     }
                 });
             }).
-            error(function(data, status, headers, config) {
+            error(function (data, status, headers, config) {
                 console.log("Fail!");
             });
+
+    function candidatePage($id){
+        window.location.href = "morsakabi.planet.ee/valimised/kandidaat/nr/$id";
+    }
 
 });

@@ -4,7 +4,7 @@
             <h3>Kandidaadid</h3>
             <div ng-controller="CandidatesCtrl">
                 <table ng-table="tableParams" class="table table-striped">
-                    <tr ng-repeat="candidate in $data">
+                    <tr ng-repeat="candidate in $data" onclick="candidatePage({{candidate.id}})">
                         <td class="col-md-1" data-title="'Kandidaadi number'" sortable="id">{{candidate.id}}</td>
                         <td class="col-md-3" data-title="'Nimi'" sortable="'name'">{{candidate.name}}</td>
                         <td class="col-md-4" data-title="'Kandideerib erakonnas'" sortable="'party'">{{candidate.party}}</td>
