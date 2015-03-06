@@ -29,18 +29,6 @@ class Vote_Factory {
     }
     
     /**
-     * Returns vote count for given candidate ID.
-     * @return boolean False, if nothing was found, vote count if exists.
-     */
-     public function getVoteCount($candidateid = 0) {
-        $query = $this->_ci->db->get_where("vote", array("candidateid" => $candidateid));
-        if ($query->num_rows() > 0) {
-            return $query->num_rows();
-        }
-        return false;
-    }
-    
-     /**
      * Returns all the votes as an array of vote_model instances
      * @return boolean False, if nothing was found, array if votes exist.
      */
@@ -56,7 +44,32 @@ class Vote_Factory {
         }
         return false;
     }
-
+    
+    /**
+     * Returns vote count for given candidate ID.
+     * @return boolean False, if nothing was found, vote count if exists.
+     */
+     public function getVoteCount($candidateid = 0) {
+        $query = $this->_ci->db->get_where("vote", array("candidateid" => $candidateid));
+        if ($query->num_rows() > 0) {
+            return $query->num_rows();
+        }
+        return 0;
+    }
+  
+    
+    public function getCandidateVotesJSON() {
+  
+        $query = $this->_ci->db->select("id, userid")->from("candidate")->get();
+        if ($query->num_rows() > 0) {
+            $candidates = array();
+            foreach ($query->result() as $row) {
+                $candidates[] = $this->createJSONObjectFromData($row);
+            }
+            return $candidates;
+        }
+        return false;
+    }
     
     /**
      * Returns all the candidates as a JSON-compatible array.
@@ -65,7 +78,7 @@ class Vote_Factory {
         $query = $this->_ci->db->select("*")->from("vote")->get();
         if ($query->num_rows() > 0) {
             $votes = array();
-            foreach ($query->result() as $row) {
+            foreach ($query->result() as $row) {              
                 $votes[] = $this->createJSONObjectFromData($row);
             }
             return $votes;
@@ -82,18 +95,12 @@ class Vote_Factory {
         return $vote;
     }
     
-    /**
-     * Creates a JSON compatible object from the given data.
-     */
     public function createJSONObjectFromData($row) {
-        $row->candidate = $this->_ci->user_factory->getUser($row->candidateid)->getFullName();
-        $row->count = $this->getVoteCount($row->candidateid);
-        $row->party = $this->_ci->candidate_factory->getCandidate($row->candidateid)->getParty()->getName();     
-        
-        //$row->party = $this->_ci->party_factory->getParty($partyid)->getName();
-        //$row->voter = $this->_ci->user_factory->getUser($row->voterid)->getFullName();
-        //$row->date = $this->getVote($row->voterid)->getDate($row->date);
+        $row->candidate = $this->_ci->user_factory->getUser($row->userid)->getFullName();
+        $row->count = $this->getVoteCount($row->id);
+        $row->party = $this->_ci->candidate_factory->getCandidate($row->id)->getParty()->getName(); 
         return $row;
     }
+
 
 }

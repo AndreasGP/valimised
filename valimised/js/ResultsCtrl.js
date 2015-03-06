@@ -23,4 +23,10 @@ main.controller('ResultsCtrl', function($scope, $http, $filter, ngTableParams) {
                 console.log("Fail!");
             });
 
+            
+      angular.module("kek", ["chart.js"]).controller("ResultsCtrl", function ($scope) {
+  $scope.labels = ["Download Sales", "In-Store Sales", "Mail-Order Sales"];
+  $scope.data = [300, 500, 100];
+});
+         
 });

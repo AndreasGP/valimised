@@ -21,18 +21,19 @@ class Results_Controller extends CI_Controller {
             //Fetch all votes
             "votes" => $this->vote_factory->getVotes(),
             //Include the candidates ng controller
-            "scripts" => array("/valimised/js/ResultsCtrl.js")
+            "scripts" => array("/valimised/js/ResultsCtrl.js", "/valimised/js/libs/angular-chart.js", "/valimised/js/libs/chart.js"),
+            "styles" => array("/valimised/css/angular-chart.css")
         );
         $this->load->view('templates/header.php', $data);
         //$this->load->library('facebook');
         $this->load->view('templates/navbar.php');
         $this->load->view('results.php', $data);
-        $this->load->view('templates/footer.php');
+        $this->load->view('templates/footer.php');      
     }
 
     public function get($start = 0, $count = 20) {
         $this->load->library("vote_factory");
-        $votes = $this->vote_factory->getVotesJSON();
+        $votes = $this->vote_factory->getCandidateVotesJSON();
         $this->output->set_content_type('application/json')->set_output(json_encode($votes));
     }
 

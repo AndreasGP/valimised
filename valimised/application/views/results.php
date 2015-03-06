@@ -2,7 +2,11 @@
     <div class="row">
         <div class="col-sm-8">
             <h3>Tulemused</h3>
+            
+            
             <div ng-controller="ResultsCtrl">
+                <canvas id="pie" class="chart chart-pie" data="data"
+                        ng-app="kek"   labels="labels"></canvas> 
                 <input class="btn btn-info" type="submit" value="Üldtulemused">
                 <input class="btn btn-info" type="submit" value="Erakondade tulemused">
                 <input class="btn btn-info" type="submit" value="Piirkondade tulemused">
