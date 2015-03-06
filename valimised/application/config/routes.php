@@ -20,8 +20,9 @@ $route['default_controller'] = "home_controller";
 $route['404_override'] = 'error_controller';
 
 $route['kandidaadid'] = 'candidates_controller';
+$route['kandidaadid/(:num)'] = 'candidates_controller/candidates/$1';
 $route['kandidaadid/get'] = 'candidates_controller/get';
-$route['kandidaadid/get/(:num)/(:num)'] = 'candidates_controller/get/$1/$2';
+$route['kandidaadid/get/(:num)/(:num)/(:num)'] = 'candidates_controller/get/$1/$2/$3';
 
 $route['tulemused'] = 'results_controller';
 $route['tulemused/get/(:num)/(:num)'] = 'results_controller/get/$1/$2';

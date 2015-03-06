@@ -48,12 +48,28 @@ class Candidate_Factory {
     /**
      * Returns all the candidates as a JSON-compatible array.
      */
-    public function getCandidatesJSON() {
-        $query = $this->_ci->db->select("*")->from("candidate")->get();
+    public function getCandidatesJSON($areaid = -1) {
+        if ($areaid === -1) {
+            $query = $this->_ci->db->select("candidate.id, user.firstname, user.lastname, party.name as party")
+                    ->from("candidate")
+                    ->join('user', 'candidate.userid = user.id')
+                    ->join('party', 'candidate.partyid = party.id')
+                    ->get();
+        } else {
+            $query = $this->_ci->db->select("candidate.id, user.firstname, user.lastname, area.name as area, party.name as party")
+                    ->from("candidate")
+                    ->join('user', 'candidate.userid = user.id')
+                    ->join('party', 'candidate.partyid = party.id')
+                    ->join('area', 'candidate.areaid = area.id')
+                    ->where('area.id', $areaid)
+                    ->get();
+        }
         if ($query->num_rows() > 0) {
             $candidates = array();
             foreach ($query->result() as $row) {
-                $candidates[] = $this->createJSONObjectFromData($row);
+                //Transform string ID to numerical ID
+                $row->id = (int) $row->id;
+                $candidates[] = $row;
             }
             return $candidates;
         }
@@ -73,18 +89,6 @@ class Candidate_Factory {
         $candidate->setParty($this->_ci->party_factory->getParty($row->partyid));
         $candidate->setEducation($this->_ci->education_factory->getEducation($row->educationid));
         return $candidate;
-    }
-
-    /**
-     * Creates a JSON compatible object from the given data.
-     */
-    public function createJSONObjectFromData($row) {
-        $row->id = (int)$row->id;
-        $row->name = $this->_ci->user_factory->getUser($row->userid)->getFullName();
-        $row->area = $this->_ci->area_factory->getArea($row->areaid)->getName();
-        $row->party = $this->_ci->party_factory->getParty($row->partyid)->getName();
-        $row->education = $this->_ci->education_factory->getEducation($row->educationid)->getName();
-        return $row;
     }
 
 }

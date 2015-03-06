@@ -1,6 +1,8 @@
 main.controller('CandidatesCtrl', function ($scope, $filter, $http, ngTableParams) {
-    $http.get('kandidaadid/get/10/10').
-            success(function (data, status, headers, config) {
+    
+    $scope.$watch("areaid", function(){
+        $http.get('../kandidaadid/get/' + $scope.areaid + '/10/10').
+            success(function (data) {
                 $scope.data = data;
                 $scope.tableParams = new ngTableParams({
                     page: 1, // show first page
@@ -24,6 +26,9 @@ main.controller('CandidatesCtrl', function ($scope, $filter, $http, ngTableParam
             error(function (data, status, headers, config) {
                 console.log("Fail!");
             });
+    });
+    
+    
 
     function candidatePage($id){
         window.location.href = "morsakabi.planet.ee/valimised/kandidaat/nr/$id";

@@ -1,20 +1,15 @@
 <div class="container">
-    <div class="row">
-        <div class="col-sm-8">
-            <h3>Kandidaadid</h3>
-            <div ng-controller="CandidatesCtrl">
-                <table ng-table="tableParams" class="table table-striped">
-                    <tr ng-repeat="candidate in $data" onclick="candidatePage({{candidate.id}})">
-                        <td class="col-md-1" data-title="'Kandidaadi number'" sortable="id">{{candidate.id}}</td>
-                        <td class="col-md-3" data-title="'Nimi'" sortable="'name'">{{candidate.name}}</td>
-                        <td class="col-md-4" data-title="'Kandideerib erakonnas'" sortable="'party'">{{candidate.party}}</td>
-                        <td class="col-md-4" data-title="'Kandideerimispiirkond'" sortable="'area'">{{candidate.area}}</td>
-                    </tr>
-                </table>
-            </div>
+
+    <div class=""row">
+         <div class="col-sm-10 col-sm-offset-2">  
+            <h2>Kandidaadid</h2>
+            <h3><strong><?php echo $area ?></strong></h3>
         </div>
-        <div class="col-sm-4">
-            <h3>Otsi kandidaati</h3>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-2">
+            <h3>Otsing</h3>
             <form role="form">
                 <div class="form-group">
                     <label for="name">Nime järgi:</label>
@@ -26,17 +21,21 @@
                             <option><?php echo $row->getName(); ?></option>
                         <?php endforeach; ?>
                     </select>
-                    <label for="area">Piirkonna järgi:</label>
-                    <select class="form-control" id="area">
-                        <option value="" style="display:none;"></option>
-                        <?php foreach ($areas as $row): ?>
-                            <option><?php echo $row->getName(); ?></option>
-                        <?php endforeach; ?>
-                    </select>
                     <br>
-                    <button type="button" class="btn btn-lg btn-info pull-right">Otsi</button>
+                    <button type="button" class="btn btn-lg btn-info pull-left">Otsi</button>
                 </div>
             </form>
+        </div>
+        <div class="col-sm-8">
+            <div ng-init="areaid = '<?php echo $areaid ?>'" ng-controller="CandidatesCtrl">
+                <table ng-table="tableParams" class="table table-striped">
+                    <tr ng-repeat="candidate in $data">
+                        <td class="col-md-1" data-title="'Kandidaadi number'" sortable="id">{{candidate.id}}</td>
+                        <td class="col-md-3" data-title="'Nimi'" sortable="'name'">{{candidate.firstname}} {{candidate.lastname}}</td>
+                        <td class="col-md-4" data-title="'Kandideerib erakonnas'" sortable="'party'">{{candidate.party}}</td>
+                    </tr>
+                </table>
+            </div>
         </div>
     </div>
 </div>
