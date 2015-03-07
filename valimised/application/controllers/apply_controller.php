@@ -25,8 +25,8 @@ class Apply_Controller extends CI_Controller {
                 //Fetch all educations
                 "educations" => $this->education_factory->getEducation(),
                 "scripts" => array("/valimised/js/ApplyCtrl.js", "/valimised/js/libs/fileinput.min.js",
-                    "/valimised/js/BirthdayCtrl.js"),
-                "styles" => array("/valimised/css/fileinput.css")
+                   "/valimised/js/libs/bootstrap-select.min.js",  "/valimised/js/DateController.js"),
+                "styles" => array("/valimised/css/fileinput.css", "/valimised/css/bootstrap-select.min.css")
             );
 
             $this->load->view('templates/header.php', $data);

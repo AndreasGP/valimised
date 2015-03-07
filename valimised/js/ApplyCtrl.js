@@ -5,7 +5,6 @@
  */
 
 main.controller('stageController', ['$scope', '$http', function ($scope, $http) {
-        console.info("Here I should implement the logic to send a request to the server.");
         $scope.user = {};
         $scope.user.firstname = '';
         $scope.user.lastname = '';
