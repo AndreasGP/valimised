@@ -38,7 +38,7 @@ main.controller('stageController', ['$scope', '$http', function ($scope, $http) 
         $scope.preview = function () {
             
             Restangular.one('kandidaat').post($scope.user);
-            //Generate object with candidate model. Send object.
+            //Generate object with candidate model. Send object..
             $http({
                 method: 'POST',
                 url: 'candidate_controller.php',
@@ -51,7 +51,7 @@ main.controller('stageController', ['$scope', '$http', function ($scope, $http) 
             });
         };
         $scope.postDB = function () {        
-            console.log($scope.user);
+            
             $http({
                 method: 'POST',
                 url: '/valimised/kandideerimine/esita',

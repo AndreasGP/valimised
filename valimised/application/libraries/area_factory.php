@@ -42,11 +42,12 @@ class Area_Factory {
     }
     
         public function getIdbyField($fieldname, $fieldvalue){
-        $query = $this->_ci->db->select("TOP 1 id")->from("area")->where([$fieldname => $fieldvalue]);
-            if ($query->num_rows() > 0) {
-                return (int)$query->result()[0]->id;
-            }
-            return false;
+            
+        $query = $this->_ci->db->select("id")
+                ->from("area")
+                ->where('name', $fieldvalue)
+                ->get();      
+            return $query->result()->id;
     }
 
     public function createObjectFromData($row) {

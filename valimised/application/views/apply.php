@@ -9,7 +9,7 @@
                     <div class="form-group">
                         <label class="control-label col-xs-3">Eesnimi:</label>
                         <div class="col-xs-7">
-                            <input class="form-control" type="text" placeholder="Eesnimi" name="firstname" ng-model="user.firstname" value="<?php echo $firstname ?>" required/>
+                            <input class="form-control" type="text" id="firstname" placeholder="Eesnimi" name="firstname" ng-model="user.firstname" value="<?php echo $firstname ?>" required/>
                         </div>
                         <span class="col-xs-2" style="color:red" ng-show="form.firstname.$dirty && form.firstname.$invalid">
                             <span ng-show="form.firstname.$error.required"> Sisestada eesnimi.</span></span>

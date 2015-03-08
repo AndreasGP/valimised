@@ -53,17 +53,35 @@ class Apply_Controller extends CI_Controller {
     public function apply() {
         $this->load->model("candidate_model");
         $this->load->model("user_model");
+        $this->load->library("area_factory");
+        
+        $sitt = $this->area_factory->getIdbyField('name', $this->input->post('areaid'));
         
          $userdata = array(
             'id' => ('NULL'),
-            'areaid' => $this->input->post('areaid'),
+            'areaid' => '2',
             'lastname' => $this->input->post('lastname'),
             'firstname' => $this->input->post('firstname'),
-            'email' => 'no email yet'
+            'email' => $sitt
         );
                  
         $this->user_model->form_insert($userdata);
         
+        $this->db->select_max('id');
+        $query = $this->db->get('user');
+
+        $candidatedata = array(
+            'id' => ('NULL'),
+            'userid' => $query->result()->id,
+            'areaid' => '2',
+            'partyid' => $this->input->post('partyid'),
+            'educationid' => '2',
+            'birthdate' => $this->input->post('birthdate'),
+            'job' => $this->input->post('job'),
+            'description' => $this->input->post('description')
+        );
+           
+        $this->candidate_model->form_insert($candidatedata);
         
     }
 
