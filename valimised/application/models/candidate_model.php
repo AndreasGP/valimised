@@ -80,8 +80,7 @@ class Candidate_Model extends CI_Model {
         $this->_description = $value;
     }
     
-    public function form_insert($data){
-        
+    public function form_insert($data){        
         $this->db->insert('candidate', $data);
     }
 }

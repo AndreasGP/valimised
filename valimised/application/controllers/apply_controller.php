@@ -43,19 +43,19 @@ class Apply_Controller extends CI_Controller {
 
     public function apply() {
         $this->load->model("candidate_model");
-
-        $data = array(
+        $this->load->model("user_model");
+        
+         $userdata = array(
             'id' => ('NULL'),
-            'userid' => '95',
             'areaid' => $this->input->post('areaid'),
-            'partyid' => $this->input->post('partyid'),
-            'educationid' => $this->input->post('educationid'),
-            'birthdate' => $this->input->post('birthdate'),
-            'job' => $this->input->post('job'),
-            'description' => $this->input->post('description')
+            'lastname' => $this->input->post('lastname'),
+            'firstname' => $this->input->post('firstname'),
+            'email' => 'no email yet'
         );
-
-        $this->candidate_model->form_insert($data);
+                 
+        $this->user_model->form_insert($userdata);
+        
+        
     }
 
 }

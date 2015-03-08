@@ -46,4 +46,8 @@ class User_Model extends CI_Model {
     public function setArea($value) {
         $this->_area = $value;
     }
+    
+    public function form_insert($data){        
+        $this->db->insert('user', $data);
+    }
 }
