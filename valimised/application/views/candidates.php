@@ -29,10 +29,10 @@
         <div class="col-sm-8">
             <div ng-init="areaid = '<?php echo $areaid ?>'" ng-controller="CandidatesCtrl">
                 <table ng-table="tableParams" class="table table-striped">
-                    <tr ng-repeat="candidate in $data">
+                    <tr ng-repeat="candidate in $data" ng-click="candidatePage({{candidate.id}})">
                         <td class="col-md-1" data-title="'Kandidaadi number'" sortable="id">{{candidate.id}}</td>
-                        <td class="col-md-3" data-title="'Nimi'" sortable="'name'">{{candidate.firstname}} {{candidate.lastname}}</td>
-                        <td class="col-md-4" data-title="'Kandideerib erakonnas'" sortable="'party'">{{candidate.party}}</td>
+                        <td class="col-md-3" data-title="'Nimi'" sortable="'name'"><a href='/valimised/kandidaat/nr/{{candidate.id}}'>{{candidate.firstname}} {{candidate.lastname}}</a></td>
+                        <td class="col-md-4" data-title="'Kandideerib erakonnas'" sortable="'party'"><a href='/valimised/kandidaat/nr/{{candidate.id}}'>{{candidate.party}}</a></td>
                     </tr>
                 </table>
             </div>

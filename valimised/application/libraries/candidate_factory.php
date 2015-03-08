@@ -88,7 +88,9 @@ class Candidate_Factory {
         $candidate->setArea($this->_ci->area_factory->getArea($row->areaid));
         $candidate->setParty($this->_ci->party_factory->getParty($row->partyid));
         $candidate->setEducation($this->_ci->education_factory->getEducation($row->educationid));
+        $candidate->setJob($row->job);
+        $candidate->setBirthday($row->birthdate);
+        $candidate->setDescription($row->description);
         return $candidate;
     }
-
 }

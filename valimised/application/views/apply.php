@@ -9,7 +9,7 @@
                     <div class="form-group">
                         <label class="control-label col-xs-3">Eesnimi:</label>
                         <div class="col-xs-7">
-                            <input class="form-control" type="text" placeholder="Eesnimi" name="firstname" ng-model="user.firstname" required/>
+                            <input class="form-control" type="text" placeholder="Eesnimi" name="firstname" ng-model="user.firstname" value="<?php echo $firstname ?>" required/>
                         </div>
                         <span class="col-xs-2" style="color:red" ng-show="form.firstname.$dirty && form.firstname.$invalid">
                             <span ng-show="form.firstname.$error.required"> Sisestada eesnimi.</span></span>
@@ -18,7 +18,7 @@
                     <div class="form-group">
                         <label class="control-label col-xs-3">Perekonnanimi:</label>
                         <div class="col-xs-7">
-                            <input class="form-control" type="text" placeholder="Perekonnanimi" name="lastname" ng-model="user.lastname" required>
+                            <input class="form-control" type="text" placeholder="Perekonnanimi" name="lastname" ng-model="user.lastname" value="<?php echo $lastname ?>" required>
                         </div>
                         <span class="col-xs-2" style="color:red" ng-show="form.lastname.$dirty && form.lastname.$invalid">
                             <span ng-show="form.lastname.$error.required"> Sisestada perekonnanimi.</span></span>
