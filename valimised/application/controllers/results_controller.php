@@ -12,6 +12,8 @@ class Results_Controller extends CI_Controller {
         $this->load->library("party_factory");
         $this->load->library("vote_factory");
         $data = array(
+            //Title of the page
+            "title" => "Tulemused",
             //Fetch all candidates
             "candidates" => $this->candidate_factory->getCandidates(),
             //Fetch all areas

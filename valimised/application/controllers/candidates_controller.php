@@ -9,8 +9,12 @@ class Candidates_Controller extends CI_Controller {
         $this->load->helper('url');
         $this->load->library('facebook');
 
+        $data = array(
+            //Title of the page
+            "title" => "Kandidaadid",
+        );
 
-        $this->load->view('templates/header.php');
+        $this->load->view('templates/header.php', $data);
         $this->load->view('templates/navbar.php', $this->facebook->getLoginData());
         $this->load->view('candidate_areas.php');
         $this->load->view('templates/footer.php');
@@ -27,6 +31,8 @@ class Candidates_Controller extends CI_Controller {
 
         if ($areaQuery->num_rows() === 1) {
             $data = array(
+                //Title of the page
+                "title" => "Kandidaadid",
                 "area" => $areaQuery->result()[0]->name,
                 "areaid" => $areaid,
                 //Fetch all areas

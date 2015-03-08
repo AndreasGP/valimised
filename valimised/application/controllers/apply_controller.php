@@ -16,8 +16,13 @@ class Apply_Controller extends CI_Controller {
             $this->load->library("area_factory");
             $this->load->library("party_factory");
             $this->load->library("education_factory");
-
+            $user_profile = $this->facebook->api('/me');
+            
             $data = array(
+                "firstname" => $user_profile['name'],
+                "lastname" => $user_profile['last_name'],
+                //Title of the page
+                "title" => "Kandideerimine",
                 //Fetch all areas
                 "areas" => $this->area_factory->getArea(),
                 //Fetch all parties
@@ -34,7 +39,11 @@ class Apply_Controller extends CI_Controller {
             $this->load->view('apply.php', $data);
             $this->load->view('templates/footer.php');
         } else {
-            $this->load->view('templates/header.php');
+            $data = array(
+                //Title of the page
+                "title" => "Kandideerimine");
+            
+            $this->load->view('templates/header.php', $data);
             $this->load->view('templates/navbar.php', $this->facebook->getLoginData());
             $this->load->view('apply_notloggedin.php');
             $this->load->view('templates/footer.php');

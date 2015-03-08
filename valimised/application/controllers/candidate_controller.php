@@ -10,10 +10,12 @@ class Candidate_Controller extends CI_Controller {
         $this->load->library("candidate_factory");
 
         $data = array(
+            //Title of the page
+            "title" => "Kandidaat",
             //Fetch candidate information
             "candidate" => $this->candidate_factory->getCandidate()
         );
-        $this->load->view('templates/header.php');
+        $this->load->view('templates/header.php', $data);
         $this->load->library('facebook');
         $this->load->view('templates/navbar.php', $this->facebook->getLoginData());
         $this->load->view('candidate.php', $data);

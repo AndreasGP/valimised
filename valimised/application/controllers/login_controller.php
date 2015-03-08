@@ -13,8 +13,13 @@ class Login_Controller extends CI_Controller {
     }
 
     public function login() {
+        
+                $data = array(
+            //Title of the page
+            "title" => "Sisselogimine",
+        );
         $this->load->helper('url');
-        $this->load->view('templates/header.php');
+        $this->load->view('templates/header.php', $data);
         $this->load->library('facebook');
         $this->load->view('templates/navbar.php', $this->facebook->getLoginData());
         $this->load->view('login', $this->facebook->getLoginData());
