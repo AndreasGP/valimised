@@ -45,26 +45,20 @@ class Vote_Factory {
         return false;
     }
     
-    /**
-     * Returns vote count for given candidate ID.
-     * @return boolean False, if nothing was found, vote count if exists.
-     */
-     public function getVoteCount($candidateid = 0) {
-        $query = $this->_ci->db->get_where("vote", array("candidateid" => $candidateid));
-        if ($query->num_rows() > 0) {
-            return $query->num_rows();
-        }
-        return 0;
-    }
   
-    
     public function getCandidateVotesJSON() {
-  
-        $query = $this->_ci->db->select("id, userid")->from("candidate")->get();
+        
+        $query = $this->_ci->db->select('CONCAT(user.firstname, " ", user.lastname) as candidate, count(vote.voterid) as votes, party.name as party', false)
+                ->from("candidate")
+                ->join('user', 'candidate.userid = user.id')
+                ->join('vote', 'candidate.id = vote.candidateid')
+                ->join('party', 'candidate.partyid = party.id')
+                ->group_by('candidate')
+                ->get();
         if ($query->num_rows() > 0) {
             $candidates = array();
-            foreach ($query->result() as $row) {
-                $candidates[] = $this->createJSONObjectFromData($row);
+           foreach ($query->result() as $row) {
+                $candidates[] = $row;
             }
             return $candidates;
         }
@@ -94,13 +88,5 @@ class Vote_Factory {
         $vote->setDate($row->date);
         return $vote;
     }
-    
-    public function createJSONObjectFromData($row) {
-        $row->candidate = $this->_ci->user_factory->getUser($row->userid)->getFullName();
-        $row->count = $this->getVoteCount($row->id);
-        $row->party = $this->_ci->candidate_factory->getCandidate($row->id)->getParty()->getName(); 
-        return $row;
-    }
-
 
 }

@@ -5,8 +5,7 @@
             
             
             <div ng-controller="ResultsCtrl">
-                <canvas id="pie" class="chart chart-pie" data="data"
-                        ng-app="kek"   labels="labels"></canvas> 
+                
                 <input class="btn btn-info" type="submit" value="Üldtulemused">
                 <input class="btn btn-info" type="submit" value="Erakondade tulemused">
                 <input class="btn btn-info" type="submit" value="Piirkondade tulemused">
@@ -21,7 +20,7 @@
                     </thead>
                     <tr ng-repeat="vote in $data">
                         <td data-title="'candidate'" sortable="'candidate'">{{vote.candidate}}</td>
-                        <td data-title="'votes'" sortable="'count'">{{vote.count}}</td>
+                        <td data-title="'votes'" sortable="'count'">{{vote.votes}}</td>
                         <td data-title="'party'" sortable="'party'">{{vote.party}}</td> 
                     </tr>
                 </table>
