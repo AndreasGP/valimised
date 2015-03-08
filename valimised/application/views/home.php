@@ -8,12 +8,13 @@
     <div class="jumbotron">
         <h2>Tere tulemast Eesti elektroonilise hääletuse keskkonda.</h2>
         <h3>Oma hääle andmiseks palun logige omale sobival viisil sisse.</h3> 
-        <h4>Hetkel funktsiooneerib Kandidaatide lehekülg, valimistulemused & kandideerimine on WIP.</h4>
+        <h4>Hetkel funktsiooneerib Kandidaatide piirkonna valimislehekülg + piirkondade alamlehed ning kandideerimise lehekülg. Valimistulemused ja hääletamine on WIP ning nende kehtivust pole mõtet veel kontrollida.</h4>
     </div>
     <div class="row">
         <div class="col-sm-4">
             <div class="list-group">
                 <a href="#" class="list-group-item active">Uudised</a>
+                <a href="#" class="list-group-item">02.03.2015 - Arendajad peatasid ajutiselt töö, et palgaläbirääkimisi pidada."</a>
                 <a href="#" class="list-group-item">15.02.2015 - E-hääletamisteni on jäänud veel ainult 1 nädal, arendajad: "Vast jõuab kah."</a>
                 <a href="#" class="list-group-item">14.02.2015 - Lõpuks alustati E-hääletamissüsteemi arendusega!</a>
                 <a href="#" class="list-group-item">13.02.2015 - E-hääletamissüsteemi arendust lükati määramata tähtajani edasi.</a>
