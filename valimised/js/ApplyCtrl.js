@@ -52,11 +52,12 @@ main.controller('stageController', ['$scope', '$http', function ($scope, $http) 
         };
         $scope.postDB = function () {        
             
+          
             $http({
                 method: 'POST',
                 url: '/valimised/kandideerimine/esita',
                 data: $.param({'firstname':$scope.user.firstname, 'lastname':$scope.user.lastname, 'areaid':$scope.user.area, 'educationid':$scope.user.education,
-                    'partyid':$scope.user.party, 'birthdate':$scope.user.date, 'job':$scope.user.job, 'description':$scope.user.description}),
+                    'partyid':$scope.user.party, 'day':$scope.user.day, 'month':$scope.user.month, 'year':$scope.user.year, 'job':$scope.user.job, 'description':$scope.user.description}),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function (response) {
                 console.log("Success!");

@@ -43,6 +43,18 @@ class Party_Factory {
             }
             return false;
     }
+    
+    public function getIdbyName($fieldvalue){
+
+            $query = $this->_ci->db->select("*")
+                    ->from("party")
+                    ->where('name', $fieldvalue)->get();
+                  
+                //Loop through each row returned from the query
+                foreach ($query->result() as $row) {
+                    return $row->id;
+                }
+    }
 
     public function createObjectFromData($row) {
         $area = new Party_Model();

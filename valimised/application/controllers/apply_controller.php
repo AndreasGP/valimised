@@ -55,8 +55,14 @@ class Apply_Controller extends CI_Controller {
         $this->load->model("user_model");
         $this->load->model("area_model");
         $this->load->library("area_factory");
+        $this->load->library("party_factory");
+        $this->load->library("education_factory");
         
+        //Post method sends area, party and education names.
+        //We need to extract the id-s.
         $areaid = $this->area_factory->getIdbyField($this->input->post('areaid'));
+        $partyid = $this->party_factory->getIdbyName($this->input->post('partyid'));
+        $educationid = $this->education_factory->getIdbyName($this->input->post('educationid'));
         
          $userdata = array(
             'id' => ('NULL'),
@@ -68,31 +74,42 @@ class Apply_Controller extends CI_Controller {
                  
         $this->user_model->form_insert($userdata);
         
-        
+        //Get the new user id
         $query = $this->db->select_max("id")
                     ->from("user")
                     ->get();
         foreach ($query->result() as $row) {
                     $userid = $row->id;
-                }
-                
-        //TODO: party name -> party id; education name -> education id; birthday date
+                }     
+        
+        //Format the date
+        if($this->input->post('day') >= 10) {
+            $day = $this->input->post('day');
+        } else {
+            $day = 0 . $this->input->post('day');
+        }
+        
+        if($this->input->post('month') >= 10) {
+            $month = $this->input->post('month');
+        } else {
+            $month = 0 . $this->input->post('month');
+        }
+        
+        $date = $this->input->post('year') . '-' . $month . '-' . $day;
+        
         $candidatedata = array(
             'id' => ('NULL'),
             'userid' => $userid,
             'areaid' => $areaid,
-            'partyid' => '3',
-            'educationid' => '2',
-            'birthdate' => '2015-03-17',
-            'job' => $this->input->post('educationid'),
-            'description' => $this->input->post('partyid')
+            'partyid' => $partyid,
+            'educationid' => $educationid,
+            'birthdate' => $date,
+            'job' => $this->input->post('job'),
+            'description' => $this->input->post('description')
         );
            
         $this->candidate_model->form_insert($candidatedata);
-        
-                        
-
-                
+                                            
     }
 
 }
