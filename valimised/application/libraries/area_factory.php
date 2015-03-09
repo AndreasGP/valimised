@@ -41,13 +41,16 @@ class Area_Factory {
         }
     }
     
-        public function getIdbyField($fieldname, $fieldvalue){
-            
-        $query = $this->_ci->db->select("id")
-                ->from("area")
-                ->where('name', $fieldvalue)
-                ->get();      
-            return $query->result()->id;
+        public function getIdbyField($fieldvalue){
+
+            $query = $this->_ci->db->select("*")
+                    ->from("area")
+                    ->where('name', $fieldvalue)->get();
+                  
+                //Loop through each row returned from the query
+                foreach ($query->result() as $row) {
+                    return $row->id;
+                }
     }
 
     public function createObjectFromData($row) {

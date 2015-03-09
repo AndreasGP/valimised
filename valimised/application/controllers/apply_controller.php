@@ -53,36 +53,46 @@ class Apply_Controller extends CI_Controller {
     public function apply() {
         $this->load->model("candidate_model");
         $this->load->model("user_model");
+        $this->load->model("area_model");
         $this->load->library("area_factory");
         
-        $sitt = $this->area_factory->getIdbyField('name', $this->input->post('areaid'));
+        $areaid = $this->area_factory->getIdbyField($this->input->post('areaid'));
         
          $userdata = array(
             'id' => ('NULL'),
-            'areaid' => '2',
+            'areaid' => $areaid,
             'lastname' => $this->input->post('lastname'),
             'firstname' => $this->input->post('firstname'),
-            'email' => $sitt
+            'email' => 'email@gmail.com'
         );
                  
         $this->user_model->form_insert($userdata);
         
-        $this->db->select_max('id');
-        $query = $this->db->get('user');
-
+        
+        $query = $this->db->select_max("id")
+                    ->from("user")
+                    ->get();
+        foreach ($query->result() as $row) {
+                    $userid = $row->id;
+                }
+                
+        //TODO: party name -> party id; education name -> education id; birthday date
         $candidatedata = array(
             'id' => ('NULL'),
-            'userid' => $query->result()->id,
-            'areaid' => '2',
-            'partyid' => $this->input->post('partyid'),
+            'userid' => $userid,
+            'areaid' => $areaid,
+            'partyid' => '3',
             'educationid' => '2',
-            'birthdate' => $this->input->post('birthdate'),
-            'job' => $this->input->post('job'),
-            'description' => $this->input->post('description')
+            'birthdate' => '2015-03-17',
+            'job' => $this->input->post('educationid'),
+            'description' => $this->input->post('partyid')
         );
            
         $this->candidate_model->form_insert($candidatedata);
         
+                        
+
+                
     }
 
 }
