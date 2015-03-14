@@ -96,21 +96,26 @@ class Facebook extends BaseFacebook {
     /** Custom method written for our application specifically.
      */
     public function getLoginData() {
+       
         $user = $this->getUser();
+         
         if ($user) {
             try {
                 $data['user_profile'] = $this->api('/me');
             } catch (FacebookApiException $e) {
+                
                 $user = null;
             }
         } else {
-            $this->destroySession();
+            //$this->destroySession();
         }
+        
+       
         if ($user) {
-            $data['logout_url'] = site_url('welcome/logout'); // Logs off application
+            $data['logout_url'] = site_url('logout'); // Logs off application         
             // OR 
             // Logs off FB!
-            // $data['logout_url'] = $this->facebook->getLogoutUrl();
+             //$data['logout_url'] = $this->facebook->getLogoutUrl();
         } else {
             $data['login_url'] = $this->getLoginUrl(array(
                 'redirect_uri' => site_url(''),

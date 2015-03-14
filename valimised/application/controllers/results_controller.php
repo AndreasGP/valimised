@@ -27,8 +27,9 @@ class Results_Controller extends CI_Controller {
             "styles" => array("/valimised/css/angular-chart.css")
         );
         $this->load->view('templates/header.php', $data);
-        //$this->load->library('facebook');
-        $this->load->view('templates/navbar.php');
+        $this->load->helper('url');
+        $this->load->library('facebook');
+        $this->load->view('templates/navbar.php', $this->facebook->getLoginData());
         $this->load->view('results.php', $data);
         $this->load->view('templates/footer.php');      
     }

@@ -10,6 +10,7 @@ class Login_Controller extends CI_Controller {
 
         // To use site_url and redirect on this controller.
         $this->load->helper('url');
+        $this->load->library('facebook');
     }
 
     public function login() {
@@ -19,8 +20,8 @@ class Login_Controller extends CI_Controller {
             "title" => "Sisselogimine",
         );
         $this->load->helper('url');
-        $this->load->view('templates/header.php', $data);
         $this->load->library('facebook');
+        $this->load->view('templates/header.php', $data);      
         $this->load->view('templates/navbar.php', $this->facebook->getLoginData());
         $this->load->view('login', $this->facebook->getLoginData());
         $this->load->view('templates/footer.php');
@@ -28,18 +29,22 @@ class Login_Controller extends CI_Controller {
 
     public function logout() {
 
+        
         $this->load->library('facebook');
 
         // Logs off session from website
-        $this->facebook->destroySession();
+        //$this->facebook->destroySession();
         // Make sure you destory website session as well.
 
-        redirect('welcome/login');
+        
+        //Does this even do anything?
+        //redirect('home_controller/login');
     }
 
     public function modal() {
         $this->load->helper('url');
         $this->load->library('facebook');
+        
         $this->load->view('loginmodal.php', $this->facebook->getLoginData());
     }
 

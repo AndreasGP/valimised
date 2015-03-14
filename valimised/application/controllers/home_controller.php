@@ -12,7 +12,8 @@ class Home_Controller extends CI_Controller {
             "title" => "E-valimised 2015",
         );
         $this->load->helper('url');
-                $this->load->library('facebook');
+        $this->load->library('facebook');
+                
         if($event === "logout") {
             $this->facebook->destroySession();
         }

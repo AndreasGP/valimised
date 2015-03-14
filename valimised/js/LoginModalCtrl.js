@@ -35,7 +35,7 @@ main.controller('ModalInstanceCtrl', function ($scope, $modalInstance, items) {
     item: $scope.items[0]
   };
   
-  $scope.logout = function(redirectURL) {
+  $scope.logout = function(redirectURL) {  
       $modalInstance.close($scope.selected.item);
   }
 

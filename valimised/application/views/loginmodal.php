@@ -8,7 +8,7 @@
                 <div class="col-lg-8 text-center">
                     <h3>Olete sisenenud kasutajana</h3>
                     <h2><?= $user_profile['name'] ?></h2>
-                    <a href="/valimised/logout" class="btn btn-primary btn-block" role="button">Logi välja</a>
+                    <a href="/valimised/logout" class="btn btn-primary btn-block" " role="button">Logi välja</a>
                 </div>
             </div>
         <?php else: ?>
