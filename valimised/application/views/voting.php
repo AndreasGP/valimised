@@ -6,26 +6,29 @@
             
             
             <div ng-controller="ResultsCtrl">
-                
-                <input class="btn btn-info" type="submit" value="Üldtulemused">
-                <input class="btn btn-info" type="submit" value="Erakondade tulemused">
-                <input class="btn btn-info" type="submit" value="Piirkondade tulemused">
-                <input class="btn btn-info" type="submit" value="Kandidaatide tulemused">
+                <label for="pwd">Piirkonna valik:</label>
+                <select class="form-control" id="area">
+                        <option value="" style="display:none;"></option>
+                        <?php foreach ($areas as $row): ?>
+                            <option><?php echo $row->getName(); ?></option>
+                        <?php endforeach; ?>
+                </select>
+                <label for="pwd">Erakonna valik:</label>
+                <select class="form-control" id="party">
+                        <option value="" style="display:none;"></option>
+                        <?php foreach ($parties as $row): ?>
+                            <option><?php echo $row->getName(); ?></option>
+                        <?php endforeach; ?>
+                </select>
+                <div ng-controller="VotingCtrl">
                 <table ng-table="tableParams" class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th class="col-md-1">Kandidaat</th>
-                            <th class="col-md-1">Hääli</th>
-                            <th class="col-md-2">Erakond</th>
-                        </tr>
-                    </thead>
-                    <tr ng-repeat="vote in $data">
-                        <td data-title="'candidate'" sortable="'candidate'">{{vote.candidate}}</td>
-                        <td data-title="'votes'" sortable="'count'">{{vote.votes}}</td>
-                        <td data-title="'party'" sortable="'party'">{{vote.party}}</td> 
-                        <td class="col-md-1"><input type="submit" value="Hääleta"></td>
+                    <tr ng-repeat="candidate in $data" >
+                        <td class="col-md-1" data-title="'Kandidaadi number'" sortable="id">{{candidate.id}}</td>
+                        <td class="col-md-3" data-title="'Nimi'" sortable="'name'">{{candidate.firstname}} {{candidate.lastname}}</td>
+                        <td class="col-md-4" data-title="'Kandideerib erakonnas'" sortable="'party'">{{candidate.party}}</td>
                     </tr>
                 </table>
+                </div>
             </div>
         </div>
     </div>

@@ -23,7 +23,7 @@ class Voting_Controller extends CI_Controller {
             //Fetch all votes
             "votes" => $this->vote_factory->getVotes(),
             //Include the candidates ng controller
-            "scripts" => array("/valimised/js/ResultsCtrl.js"),
+            "scripts" => array("/valimised/js/VotingCtrl.js"),
             "styles" => array("/valimised/css/angular-chart.css")
         );
         $this->load->view('templates/header.php', $data);
