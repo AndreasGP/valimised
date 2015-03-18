@@ -8,7 +8,7 @@ class Candidate_Controller extends CI_Controller {
     public function index() {
         $this->load->helper('url');
         $this->load->library("candidate_factory");
-
+        $this->output->cache(10);
         $data = array(
             //Title of the page
             "title" => "Kandidaat",

@@ -6,7 +6,7 @@ if (!defined('BASEPATH'))
 class Home_Controller extends CI_Controller {
 
     public function index($event = NIL) {
-        
+        $this->output->cache(10);
         $data = array(
             //Title of the page
             "title" => "E-valimised 2015",

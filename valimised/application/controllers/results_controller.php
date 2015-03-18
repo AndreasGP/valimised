@@ -11,6 +11,7 @@ class Results_Controller extends CI_Controller {
         $this->load->library("area_factory");
         $this->load->library("party_factory");
         $this->load->library("vote_factory");
+        $this->output->cache(10);
         $data = array(
             //Title of the page
             "title" => "Tulemused",

@@ -9,7 +9,7 @@ class Apply_Controller extends CI_Controller {
 
         $this->load->library('facebook');
         $this->load->helper('url');
-
+        $this->output->cache(10);
         $user = $this->facebook->getUser();
 
         if ($user !== 0) {
