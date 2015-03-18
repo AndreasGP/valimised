@@ -9,15 +9,18 @@ class Apply_Controller extends CI_Controller {
 
         $this->load->library('facebook');
         $this->load->helper('url');
-        $this->output->cache(10);
+        //$this->output->cache(10);
         $user = $this->facebook->getUser();
+        $this->load->library('session');
+        $this->session->set_flashdata('fb', uri_string());
+        
 
         if ($user !== 0) {
             $this->load->library("area_factory");
             $this->load->library("party_factory");
             $this->load->library("education_factory");
             $user_profile = $this->facebook->api('/me');
-            
+           
             $data = array(
                 "firstname" => $user_profile['name'],
                 "lastname" => $user_profile['last_name'],

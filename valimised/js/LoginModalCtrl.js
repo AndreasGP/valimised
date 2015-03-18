@@ -4,7 +4,7 @@ main.controller('LoginModalCtrl', function ($scope, $modal, $log) {
 
   $scope.items = ['item1', 'item2', 'item3'];
 
-  $scope.open = function (size) {
+  $scope.open = function (size, redirect) {
 
     var modalInstance = $modal.open({
       templateUrl: 'login/modal',
