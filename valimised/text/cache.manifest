@@ -1,3 +1,6 @@
 CACHE MANIFEST
-Logo.png
-bootstrap.css
+/Logo.png
+/bootstrap.css
+
+FALLBACK:
+/404.php
