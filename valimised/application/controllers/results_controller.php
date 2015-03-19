@@ -11,7 +11,9 @@ class Results_Controller extends CI_Controller {
         $this->load->library("area_factory");
         $this->load->library("party_factory");
         $this->load->library("vote_factory");
-        $this->output->cache(10);
+        $this->load->library('session');
+        
+        //$this->output->cache(10);
         $data = array(
             //Title of the page
             "title" => "Tulemused",
@@ -30,12 +32,16 @@ class Results_Controller extends CI_Controller {
         $this->load->view('templates/header.php', $data);
         $this->load->helper('url');
         $this->load->library('facebook');
+        $this->session->set_flashdata('fb', uri_string());
         $this->load->view('templates/navbar.php', $this->facebook->getLoginData());
         $this->load->view('results.php', $data);
         $this->load->view('templates/footer.php');      
     }
 
     public function get($start = 0, $count = 20) {
+         $this->load->helper('url');
+        $this->load->library('session');
+        $this->session->set_flashdata('fb', uri_string());
         $this->load->library("vote_factory");
         $votes = $this->vote_factory->getCandidateVotesJSON();
         $this->output->set_content_type('application/json')->set_output(json_encode($votes));

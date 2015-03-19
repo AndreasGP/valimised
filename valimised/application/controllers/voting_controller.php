@@ -6,12 +6,15 @@ if (!defined('BASEPATH'))
 class Voting_Controller extends CI_Controller {
 
     public function index() {
-       // $this->load->helper('url');
+        $this->load->helper('url');
+         $this->load->library('facebook');
         $this->load->library("candidate_factory");
         $this->load->library("area_factory");
         $this->load->library("party_factory");
         $this->load->library("vote_factory");
-        $this->output->cache(10);
+        $this->load->library('session');
+        $this->session->set_flashdata('fb', uri_string());
+        //$this->output->cache(10);
         $data = array(
             //Title of the page
             "title" => "Tulemused",
@@ -27,9 +30,8 @@ class Voting_Controller extends CI_Controller {
             "scripts" => array("/valimised/js/VotingCtrl.js"),
             "styles" => array("/valimised/css/angular-chart.css")
         );
-        $this->load->view('templates/header.php', $data);
-        //$this->load->library('facebook');
-        $this->load->view('templates/navbar.php');
+        $this->load->view('templates/header.php', $data);     
+        $this->load->view('templates/navbar.php', $this->facebook->getLoginData());
         $this->load->view('voting.php', $data);
         $this->load->view('templates/footer.php');      
     }

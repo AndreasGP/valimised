@@ -44,8 +44,9 @@ class Login_Controller extends CI_Controller {
     public function modal() {
         $this->load->helper('url');
         $this->load->library('facebook');
+        $this->load->library('session');
         
-        $this->load->view('loginmodal.php', $this->facebook->getLoginData());
+        $this->load->view('loginmodal.php', $this->facebook->getLoginData2($this->session->flashdata('fb')));
     }
 
 }

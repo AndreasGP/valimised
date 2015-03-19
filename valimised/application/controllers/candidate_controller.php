@@ -8,7 +8,9 @@ class Candidate_Controller extends CI_Controller {
     public function index() {
         $this->load->helper('url');
         $this->load->library("candidate_factory");
-        $this->output->cache(10);
+        $this->load->library('session');
+        $this->session->set_flashdata('fb', uri_string());
+        //$this->output->cache(10);
         $data = array(
             //Title of the page
             "title" => "Kandidaat",
@@ -25,6 +27,8 @@ class Candidate_Controller extends CI_Controller {
     public function get($id = 1) {
         $this->load->helper('url');
         $this->load->library("candidate_factory");
+        $this->load->library('session');
+        $this->session->set_flashdata('fb', uri_string());
         $data = array(
             //Fetch candidate information
             "candidate" => $this->candidate_factory->getCandidate($id)
@@ -38,6 +42,8 @@ class Candidate_Controller extends CI_Controller {
     
     public function getPreview(){
         $this->load->helper('url');
+        $this->load->library('session');
+        $this->session->set_flashdata('fb', uri_string());
         $data = json_decode(file_get_contents("php://input"));
         
         $this->load->view('templates/header.php');

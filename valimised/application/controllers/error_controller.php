@@ -6,7 +6,7 @@ if (!defined('BASEPATH'))
 class Error_Controller extends CI_Controller {
 
     public function index() {
-        $this->output->cache(10);
+        //$this->output->cache(10);
         $data = array(
             //Title of the page
             "title" => "Viga",

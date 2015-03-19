@@ -6,9 +6,12 @@ if (!defined('BASEPATH'))
 class Candidates_Controller extends CI_Controller {
 
     public function index() {
+        
+        //$this->output->cache(10);
         $this->load->helper('url');
         $this->load->library('facebook');
-        $this->output->cache(10);
+        $this->load->library('session');
+        $this->session->set_flashdata('fb', uri_string());
         $data = array(
             //Title of the page
             "title" => "Kandidaadid",
@@ -26,7 +29,9 @@ class Candidates_Controller extends CI_Controller {
         $this->load->library("area_factory");
         $this->load->library("party_factory");
         $this->load->library("education_factory");
-        $this->output->cache(10);
+        $this->load->library('session');
+        $this->session->set_flashdata('fb', uri_string());
+       // $this->output->cache(10);
         $areaQuery = $this->db->select("name")->from("area")->where("id", $areaid)->get();
 
         if ($areaQuery->num_rows() === 1) {

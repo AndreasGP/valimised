@@ -65,9 +65,11 @@ class Facebook extends BaseFacebook {
         if ($config == null) {
             $this->_ci = & get_instance();
             $this->_ci->load->config('facebook');
+            
             $config = array(
                 'appId' => $this->_ci->config->item('appId'),
                 'secret' => $this->_ci->config->item('secret'),
+                
             );
         }
 
@@ -76,6 +78,7 @@ class Facebook extends BaseFacebook {
             $this->_ci->load->config('facebook');
             $config['appId'] = $this->_ci->config->item('appId');
             $config['secret'] = $this->_ci->config->item('secret');
+            
         }
 
         parent::__construct($config);
@@ -98,19 +101,17 @@ class Facebook extends BaseFacebook {
     public function getLoginData() {
        
         $user = $this->getUser();
-         
-        if ($user) {
+        
+        if ($user) {          
             try {
-                $data['user_profile'] = $this->api('/me');
+                $data['user_profile'] = $this->api('/me');               
             } catch (FacebookApiException $e) {
                 
                 $user = null;
             }
         } else {
             //$this->destroySession();
-        }
-        
-       
+        }                
         if ($user) {
             $data['logout_url'] = site_url('logout'); // Logs off application         
             // OR 
@@ -118,10 +119,40 @@ class Facebook extends BaseFacebook {
              //$data['logout_url'] = $this->facebook->getLogoutUrl();
         } else {
             $data['login_url'] = $this->getLoginUrl(array(
-                'redirect_uri' => site_url(''),
+                'redirect_uri' => site_url('login?ROJOJOJOJOJO'),
                 'scope' => array("email") // permissions here
             ));
         }
+        
+        return $data;
+    }
+    
+    public function getLoginData2($redirectURL) {
+        
+        $user = $this->getUser();
+        
+        if ($user) {          
+            try {
+                $data['user_profile'] = $this->api('/me');               
+            } catch (FacebookApiException $e) {
+                
+                $user = null;
+            }
+        } else {
+            //$this->destroySession();
+        }                
+        if ($user) {
+            $data['logout_url'] = site_url('logout'); // Logs off application         
+            // OR 
+            // Logs off FB!
+             //$data['logout_url'] = $this->facebook->getLogoutUrl();
+        } else {
+            $data['login_url'] = $this->getLoginUrl(array(
+                'redirect_uri' => site_url('/logged/redirect?'.$redirectURL),
+                'scope' => array("email") // permissions here
+            ));
+        }
+        
         return $data;
     }
 
