@@ -10,4 +10,4 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond $1 !^(index\.php|public|images|robots\.txt|css)
 RewriteRule ^(.*)$ index.php/$1 [L]
 </IfModule>
-AddType text/cache-manifest .manifest
+AddType text/cache-manifest .appcache
