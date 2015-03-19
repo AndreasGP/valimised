@@ -3,6 +3,8 @@
     <?php 
     if(isset($event) && $event === "logout") {
         echo '<div><alert class="text-center" type="success">Olete edukalt keskkonnast välja loginud.</alert></div>';
+    } else if(isset($event) && $event === "logged") {
+        echo '<div><alert class="text-center" type="success">Olete edukalt sisse loginud. Teid suunatakse ümber automaatselt.</alert></div>';
     }
 ?>
     <div class="jumbotron">

@@ -148,7 +148,7 @@ class Facebook extends BaseFacebook {
              //$data['logout_url'] = $this->facebook->getLogoutUrl();
         } else {
             $data['login_url'] = $this->getLoginUrl(array(
-                'redirect_uri' => site_url('/logged/redirect?'.$redirectURL),
+                'redirect_uri' => site_url('/logged/redirect/'.$redirectURL),
                 'scope' => array("email") // permissions here
             ));
         }

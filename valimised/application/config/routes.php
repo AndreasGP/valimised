@@ -38,6 +38,7 @@ $route['haaletamine'] = 'voting_controller';
 $route['login'] = 'login_controller/login';
 $route['login/modal'] = 'login_controller/modal';
 $route['logout'] = 'home_controller/index/logout';
+$route['logged/redirect/(:any)'] = 'logged_controller/redirect/$1';
 
 
 /* End of file routes.php */
