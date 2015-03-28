@@ -44,6 +44,7 @@ $route['login/modal'] = 'login_controller/modal';
 $route['logout'] = 'home_controller/index/logout';
 $route['logged/redirect/(:any)'] = 'logged_controller/redirect/$1';
 
+$route['testid'] = 'tests_controller';
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
