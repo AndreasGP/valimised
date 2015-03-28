@@ -1,6 +1,6 @@
-main.controller('ResultsCtrl', function($scope, $http, $filter, ngTableParams) {
+main.controller('ResultsCtrl', function ($scope, $http, $filter, ngTableParams) {
     $http.get('tulemused/get/10/10').
-            success(function(data, status, headers, config) {
+            success(function (data, status, headers, config) {
                 $scope.data = data;
                 $scope.tableParams = new ngTableParams({
                     page: 1, // show first page
@@ -10,7 +10,7 @@ main.controller('ResultsCtrl', function($scope, $http, $filter, ngTableParams) {
                     }
                 }, {
                     total: $scope.data.length, // length of data
-                    getData: function($defer, params) {
+                    getData: function ($defer, params) {
                         var orderedData = params.sorting() ?
                                 $filter('orderBy')($scope.data, params.orderBy()) :
                                 $scope.data;
@@ -19,14 +19,12 @@ main.controller('ResultsCtrl', function($scope, $http, $filter, ngTableParams) {
                     }
                 });
             }).
-            error(function(data, status, headers, config) {
+            error(function (data, status, headers, config) {
                 console.log("Fail!");
             });
-
             
-      angular.module("kek", ["chart.js"]).controller("ResultsCtrl", function ($scope) {
-  $scope.labels = ["Download Sales", "In-Store Sales", "Mail-Order Sales"];
-  $scope.data = [300, 500, 100];
-});
-         
+        angular.module("app", ["js/libs/Chart.js"]).controller("PieCtrl", function ($scope) {
+        $scope.labels = ["Download Sales", "In-Store Sales", "Mail-Order Sales"];
+        $scope.data = [300, 500, 100];
+});    
 });
