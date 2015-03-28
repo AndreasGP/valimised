@@ -39,6 +39,12 @@ class Candidate_Controller extends CI_Controller {
         $this->load->view('candidate.php', $data);
         $this->load->view('templates/footer.php');
     }
+
+    public function getJSON($id = 1) {
+        $this->load->library("candidate_factory");
+        $candidate =  $this->candidate_factory->getCandidateJSON($id);
+        return $this->output->set_content_type('application/json')->set_output(json_encode($candidate));
+    }
     
     public function getPreview(){
         $this->load->helper('url');

@@ -75,6 +75,22 @@ class Candidate_Factory {
         }
         return false;
     }
+    
+        /**
+     * Returns the candidate as a JSON-compatible object.
+     */
+    public function getCandidateJSON($id = 1) {
+            $query = $this->_ci->db->select("candidate.id, user.firstname, user.lastname, party.name as party")
+                    ->from("candidate")
+                    ->join('user', 'candidate.userid = user.id')
+                    ->join('party', 'candidate.partyid = party.id')
+                    ->where('candidate.id', $id)
+                    ->get();
+        if ($query->num_rows() > 0) {
+            return $query->result()[0];
+        }
+        return false;
+    }
 
     /**
      * Creates a candidate_model object from the given data.

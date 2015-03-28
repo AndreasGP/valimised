@@ -23,6 +23,7 @@ $route['kandidaadid'] = 'candidates_controller';
 $route['kandidaadid/(:num)'] = 'candidates_controller/candidates/$1';
 $route['kandidaadid/get'] = 'candidates_controller/get';
 $route['kandidaadid/get/(:num)/(:num)/(:num)'] = 'candidates_controller/get/$1/$2/$3';
+$route['kandidaadid/getJSON/(:num)'] = 'candidate_controller/getJSON/$1';
 
 $route['tulemused'] = 'results_controller';
 $route['tulemused/get/(:num)/(:num)'] = 'results_controller/get/$1/$2';
@@ -34,6 +35,9 @@ $route['kandidaat'] = 'candidate_controller';
 $route['kandidaat/nr/(:num)'] = 'candidate_controller/get/$1';
 
 $route['haaletamine'] = 'voting_controller';
+$route['haaleta/(:num)'] = 'voting_controller/vote/$1';
+$route['haaleta'] = 'voting_controller/vote/-1';
+
 
 $route['login'] = 'login_controller/login';
 $route['login/modal'] = 'login_controller/modal';
