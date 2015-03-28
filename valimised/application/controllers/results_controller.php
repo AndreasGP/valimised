@@ -34,7 +34,7 @@ class Results_Controller extends CI_Controller {
         $this->load->library('facebook');
         $this->session->set_flashdata('fb', uri_string());
         $this->load->view('templates/navbar.php', $this->facebook->getLoginData());
-        $this->load->view('results.php', $data);
+        $this->load->view('results.php');
         $this->load->view('templates/footer.php');      
     }
 

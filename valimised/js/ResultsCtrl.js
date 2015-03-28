@@ -1,30 +1,9 @@
-main.controller('ResultsCtrl', function ($scope, $http, $filter, ngTableParams) {
-    $http.get('tulemused/get/10/10').
-            success(function (data, status, headers, config) {
-                $scope.data = data;
-                $scope.tableParams = new ngTableParams({
-                    page: 1, // show first page
-                    count: 10, // count per page
-                    sorting: {
-                        count: 'desc'     // initial sorting
-                    }
-                }, {
-                    total: $scope.data.length, // length of data
-                    getData: function ($defer, params) {
-                        var orderedData = params.sorting() ?
-                                $filter('orderBy')($scope.data, params.orderBy()) :
-                                $scope.data;
-
-                        $defer.resolve(orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count()));
-                    }
-                });
-            }).
-            error(function (data, status, headers, config) {
-                console.log("Fail!");
-            });
-            
-        angular.module("app", ["js/libs/Chart.js"]).controller("PieCtrl", function ($scope) {
-        $scope.labels = ["Download Sales", "In-Store Sales", "Mail-Order Sales"];
-        $scope.data = [300, 500, 100];
-});    
+main.controller('ResultsCtrl', function ($scope) {
+    $scope.labels = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
+    $scope.series = ['Series A', 'Series B'];
+    $scope.data = [
+        [65, 59, 80, 81, 56, 55, 40],
+        [28, 48, 40, 19, 86, 27, 90]
+    ];
 });
+

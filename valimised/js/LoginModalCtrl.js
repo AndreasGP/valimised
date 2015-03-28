@@ -1,4 +1,4 @@
-var main = angular.module('main', ['ui.bootstrap', 'ngTable']);
+var main = angular.module('main', ['ui.bootstrap', 'ngTable', 'chart.js']);
 
 main.controller('LoginModalCtrl', function ($scope, $modal, $log) {
 

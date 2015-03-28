@@ -25,6 +25,8 @@
         <script type="text/javascript" src="/valimised/js/libs/bootstrap.min.js"></script>
         <script type="text/javascript" src="/valimised/js/libs/angular.min.js"></script>
         <script type="text/javascript" src="/valimised/js/libs/ng-table.min.js"></script>
+        <script type="text/javascript" src="/valimised/js/libs/Chart.min.js"></script>
+        <script type="text/javascript" src="/valimised/js/libs/angular-chart.min.js"></script>        
         <script type="text/javascript" src="/valimised/js/LoginModalCtrl.js" ></script>
         <script type="text/javascript" src="/valimised/js/libs/ui-bootstrap-tpls-0.12.1.min.js"></script>
 
