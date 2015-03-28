@@ -29,3 +29,7 @@ main.controller('VotingCtrl', function ($scope, $filter, $http, ngTableParams) {
                 });
     });
 });
+
+function vote(id){
+    //Add to db the vote.
+}

@@ -31,7 +31,7 @@ class Candidates_Controller extends CI_Controller {
         $this->load->library("education_factory");
         $this->load->library('session');
         $this->session->set_flashdata('fb', uri_string());
-        $this->output->cache(10);
+        //$this->output->cache(10);
         $areaQuery = $this->db->select("name")->from("area")->where("id", $areaid)->get();
 
         if ($areaQuery->num_rows() === 1) {
