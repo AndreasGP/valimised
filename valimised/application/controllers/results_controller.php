@@ -49,7 +49,7 @@ class Results_Controller extends CI_Controller {
     
     public function getStat() {
         $this->load->library("party_factory");
-        $stats = $this->candidate_factory->getPartyStatistics();
+        $stats = $this->party_factory->getPartyStatistics();
         $this->output->set_content_type('application/json')->set_output(json_encode($stats));
     }
 

@@ -64,7 +64,6 @@ class Party_Factory {
                 ->get();
         $partyvotes = array();
         foreach($query->result() as $row){
-            $row->id = (int)$row->id;
             $row->number = (int)$row->number;
             $partyvotes[] = $row;
         }

@@ -5,12 +5,13 @@ $(function () {
         scaleGridLineColor: "rgba(0,0,0,.05)",
         responsive: true
     };
-
-    $http.get('../tulemused/getStat').success(function (data) {
-        
-    }).error(function (data, status, headers, config) {
-        console.log("Fail!");
-    });
+    
+    /* $http.get('../tulemused/getStat').success(function (data) {
+     
+     }).error(function (data, status, headers, config) {
+     console.log("Fail!");
+     });
+     */
 
     var Data = {
         labels: generateLabelsFromDB(),
@@ -99,7 +100,7 @@ $(function () {
     });
 });
 
-function generateLabelsFromDB()
+function generateLabelsFromDB(arr)
 {
     var labels = [];
 
@@ -114,7 +115,7 @@ function generateLabelsFromDB()
     return labels;
 }
 
-function generateDataSetsFromDB()
+function generateDataSetsFromDB(arr)
 {
     var data;
     var datasets = [];
