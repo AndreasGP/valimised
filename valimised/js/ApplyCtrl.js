@@ -6,15 +6,12 @@
 
 main.controller('stageController', ['$scope', '$http', function ($scope, $http) {
         $scope.user = {};
-        $scope.user.firstname = '';
-        $scope.user.lastname = '';
         $scope.user.year = '';
         $scope.user.month = '';
         $scope.user.day = '';
         $scope.user.education = '';
         $scope.user.job = '';
         $scope.user.party = '';
-        $scope.user.area = '';
         $scope.user.description = '';
         $scope.user.pic = '';
         var resetUser = angular.copy($scope.user);
@@ -56,7 +53,7 @@ main.controller('stageController', ['$scope', '$http', function ($scope, $http) 
             $http({
                 method: 'POST',
                 url: '/valimised/kandideerimine/esita',
-                data: $.param({'firstname':$scope.user.firstname, 'lastname':$scope.user.lastname, 'areaid':$scope.user.area, 'educationid':$scope.user.education,
+                data: $.param({'areaid':$scope.user.area, 'educationid':$scope.user.education,
                     'partyid':$scope.user.party, 'day':$scope.user.day, 'month':$scope.user.month, 'year':$scope.user.year, 'job':$scope.user.job, 'description':$scope.user.description}),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function (response) {

@@ -9,7 +9,7 @@
                     <div class="form-group">
                         <label class="control-label col-xs-3">Eesnimi:</label>
                         <div class="col-xs-7">
-                            <input class="form-control" type="text" id="firstname" placeholder="Eesnimi" name="firstname" ng-model="user.firstname" value="<?php echo $firstname ?>" required/>
+                            <input class="form-control" type="text" id="firstname" name="firstname" ng-model="user.firstname" placeholder="<?php echo $firstname ?>" required disabled />
                         </div>
                         <span class="col-xs-2" style="color:red" ng-show="form.firstname.$dirty && form.firstname.$invalid">
                             <span ng-show="form.firstname.$error.required"> Sisestada eesnimi.</span></span>
@@ -18,7 +18,7 @@
                     <div class="form-group">
                         <label class="control-label col-xs-3">Perekonnanimi:</label>
                         <div class="col-xs-7">
-                            <input class="form-control" type="text" placeholder="Perekonnanimi" name="lastname" ng-model="user.lastname" value="<?php echo $lastname ?>" required>
+                            <input class="form-control" type="text" name="lastname" ng-model="user.lastname" placeholder="<?php echo $lastname ?>" required disabled />
                         </div>
                         <span class="col-xs-2" style="color:red" ng-show="form.lastname.$dirty && form.lastname.$invalid">
                             <span ng-show="form.lastname.$error.required"> Sisestada perekonnanimi.</span></span>
@@ -76,17 +76,13 @@
                     <div class="form-group">
                         <label class="control-label col-xs-3" for="area">Piirkond:</label>
                         <div class="col-xs-7">
-                            <select class="form-control" id="area" ng-model="user.area" name="area" required>
-                                <option value="" style="display:none;"></option>
-                                <?php foreach ($areas as $row): ?>
-                                    <option><?php echo $row->getName(); ?></option>
-                                <?php endforeach; ?>
-                            </select>
+                            <input class="form-control" id="area" type="text" name="area" ng-model="user.area" placeholder="<?php echo $area->getName(); ?>" required disabled/>
                         </div>
                         <span class="col-xs-2" style="color:red" 
                               ng-show="form.area.$dirty && form.area.$invalid">
                             <span ng-show="form.area.$error.required">Valige piirkond.</span></span>
                     </div>
+
 
                     <div class="form-group">
                         <label class="control-label col-xs-3" for="pwd">Erakond:</label>
@@ -124,8 +120,7 @@
                 <span ng-show="form.description.$error.required">Sisestage kirjeldus.</span></span>
             <br>
 
-            <div class="pull-right">
-                <input class="btn btn-info" type="submit" ng-click="preview()" onclick="window.location='http://i.imgur.com/XmcsGFp.gif';" value="Eelvaade">               
+            <div class="pull-right">             
                 <input class="btn btn-success" type="submit" ng-click="postDB()" value="Kandideeri">
                 <input class="btn btn-danger" type="submit" ng-click="resetForm()" value="Tühista">
             </div>
