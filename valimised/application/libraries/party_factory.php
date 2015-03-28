@@ -55,6 +55,21 @@ class Party_Factory {
                     return $row->id;
                 }
     }
+    
+    public function getPartyStatistics(){
+        $query = $this->_ci->db->select("count(*) as number, party.name")
+                ->from("party")
+                ->join("candidate", "candidate.partyid = party.id")
+                ->join("vote", "candidate.id = vote.candidateid")
+                ->get();
+        $partyvotes = array();
+        foreach($query->result() as $row){
+            $row->id = (int)$row->id;
+            $row->number = (int)$row->number;
+            $partyvotes[] = $row;
+        }
+        return $partyvotes;
+    }
 
     public function createObjectFromData($row) {
         $area = new Party_Model();

@@ -5,27 +5,29 @@
             <div id="content" ng-controller="ResultsCtrl">
 
                 <!-- Siin töötab -->
-                <canvas id="bar" class="chart chart-bar" data="data" labels="labels"></canvas> 
+              
                 
                 <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
-                    <li class="active"><a href="#uldtulemused" data-toggle="tab">Üldtulemused</a></li>
-                    <li><a href="#erakonnad" data-toggle="tab">Erakondade tulemused</a></li>
-                    <li><a href="#piirkonnad" data-toggle="tab">Piirkondade tulemused</a></li>
-                    <li><a href="#kandidaadid" data-toggle="tab">Kandidaatide tulemused</a></li>
+                    <li class="active"><a href="#uldtulemused" id="tab1" role="tab" data-toggle="tab">Üldtulemused</a></li>
+                    <li><a href="#erakonnad" id="tab2" role="tab" data-toggle="tab">Erakondade tulemused</a></li>
+                    <li><a href="#piirkonnad" id="tab3" role="tab" data-toggle="tab">Piirkondade tulemused</a></li>
+                    <li><a href="#kandidaadid" id="tab4" role="tab" data-toggle="tab">Kandidaatide tulemused</a></li>
                 </ul>
                 <div id="my-tab-content" class="tab-content">
-                    <div class="tab-pane" id ="uldtulemused">
-                        <!-- Siin ei tahtnud töötada -->
+                    <div class="tab-pane active" id ="uldtulemused">
+                        <canvas id="myChart1" width="400" height="400"></canvas>
                     </div>
 
                     <div class="tab-pane" id ="erakonnad">
+                         <canvas id="myChart2" width="400" height="400"></canvas> 
                     </div>
 
                     <div class="tab-pane" id ="piirkonnad" >
-                        <p>HAHAHA</p>
+                        <canvas id="myChart3" width="400" height="400"></canvas> 
                     </div>
 
                     <div class="tab-pane" id ="kandidaadid">
+                        <canvas id="myChart4" width="400" height="400"></canvas>
                     </div>
                 </div>
             </div>

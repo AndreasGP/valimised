@@ -27,6 +27,7 @@ $route['kandidaadid/getJSON/(:num)'] = 'candidate_controller/getJSON/$1';
 
 $route['tulemused'] = 'results_controller';
 $route['tulemused/get/(:num)/(:num)'] = 'results_controller/get/$1/$2';
+$route['tulemused/getStat'] = 'results_controller/getStat';
 
 $route['kandideerimine'] = 'apply_controller';
 $route['kandideerimine/esita'] = 'apply_controller/apply/';
