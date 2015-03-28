@@ -1,3 +1,17 @@
+main.controller('ResultsCtrl', function ($scope, $http) {
+    $http.get('/valimised/tulemused/getStat/').
+            success(function (data) {
+                $scope.data = data;
+                console.log(JSON.stringify($scope.data));
+                //Saad läbi data loopida, kas otse javascriptis või ng-repeat="tulemus in data" HTMLis, vt mujalt
+            }).
+            error(function () {
+                console.log("Fail!");
+            });
+});
+
+
+
 $(function () {
     'use strict';
 
@@ -5,14 +19,6 @@ $(function () {
         scaleGridLineColor: "rgba(0,0,0,.05)",
         responsive: true
     };
-    
-    /* $http.get('../tulemused/getStat').success(function (data) {
-     
-     }).error(function (data, status, headers, config) {
-     console.log("Fail!");
-     });
-     */
-
     var Data = {
         labels: generateLabelsFromDB(),
         datasets: generateDataSetsFromDB()

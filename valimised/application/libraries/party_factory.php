@@ -58,9 +58,10 @@ class Party_Factory {
     
     public function getPartyStatistics(){
         $query = $this->_ci->db->select("count(*) as number, party.name")
-                ->from("party")
-                ->join("candidate", "candidate.partyid = party.id")
-                ->join("vote", "candidate.id = vote.candidateid")
+                ->from("vote")
+                ->join("candidate", "candidate.id = vote.candidateid")
+                ->join("party", "party.id = candidate.partyid")
+                ->group_by("candidate.id")
                 ->get();
         $partyvotes = array();
         foreach($query->result() as $row){
