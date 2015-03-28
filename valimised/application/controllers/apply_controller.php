@@ -18,16 +18,21 @@ class Apply_Controller extends CI_Controller {
         if ($user !== 0) {
             $this->load->library("area_factory");
             $this->load->library("party_factory");
+            $this->load->model("user_model");
+            $this->load->library("user_factory");
             $this->load->library("education_factory");
             $user_profile = $this->facebook->api('/me');
            
+            $userid = $this->user_factory->getIdbyField('email', $user_profile['email']);
+            $area = $this->user_factory->getUser($userid)->getArea();
+
             $data = array(
-                "firstname" => $user_profile['name'],
+                "firstname" => $user_profile['first_name'],
                 "lastname" => $user_profile['last_name'],
                 //Title of the page
                 "title" => "Kandideerimine",
                 //Fetch all areas
-                "areas" => $this->area_factory->getArea(),
+                "area" => $area,
                 //Fetch all parties
                 "parties" => $this->party_factory->getParty(),
                 //Fetch all educations
@@ -60,31 +65,17 @@ class Apply_Controller extends CI_Controller {
         $this->load->library("area_factory");
         $this->load->library("party_factory");
         $this->load->library("education_factory");
+        $this->load->library("user_factory");
+        $this->load->library("facebook");
         
         //Post method sends area, party and education names.
         //We need to extract the id-s.
-        $areaid = $this->area_factory->getIdbyField($this->input->post('areaid'));
+        $user_profile = $this->facebook->api('/me');
+        $userid = $this->user_factory->getIdbyField('email', $user_profile['email']);
+        $areaid = $this->user_factory->getUser($userid)->getArea()->getId();
         $partyid = $this->party_factory->getIdbyName($this->input->post('partyid'));
         $educationid = $this->education_factory->getIdbyName($this->input->post('educationid'));
-        
-         $userdata = array(
-            'id' => ('NULL'),
-            'areaid' => $areaid,
-            'lastname' => $this->input->post('lastname'),
-            'firstname' => $this->input->post('firstname'),
-            'email' => 'email@gmail.com'
-        );
-                 
-        $this->user_model->form_insert($userdata);
-        
-        //Get the new user id
-        $query = $this->db->select_max("id")
-                    ->from("user")
-                    ->get();
-        foreach ($query->result() as $row) {
-                    $userid = $row->id;
-                }     
-        
+                
         //Format the date
         if($this->input->post('day') >= 10) {
             $day = $this->input->post('day');

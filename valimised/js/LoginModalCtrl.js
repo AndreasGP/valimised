@@ -7,7 +7,7 @@ main.controller('LoginModalCtrl', function ($scope, $modal, $log) {
   $scope.open = function (size, redirect) {
 
     var modalInstance = $modal.open({
-      templateUrl: 'login/modal',
+      templateUrl: '/valimised/login/modal',
       controller: 'ModalInstanceCtrl',
       size: size,
       resolve: {
