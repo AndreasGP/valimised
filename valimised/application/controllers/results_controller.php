@@ -6,13 +6,13 @@ if (!defined('BASEPATH'))
 class Results_Controller extends CI_Controller {
 
     public function index() {
-       // $this->load->helper('url');
+        // $this->load->helper('url');
         $this->load->library("candidate_factory");
         $this->load->library("area_factory");
         $this->load->library("party_factory");
         $this->load->library("vote_factory");
         $this->load->library('session');
-        
+
         //$this->output->cache(10);
         $data = array(
             //Title of the page
@@ -26,7 +26,7 @@ class Results_Controller extends CI_Controller {
             //Fetch all votes
             "votes" => $this->vote_factory->getVotes(),
             //Include the candidates ng controller
-            "scripts" => array("/valimised/js/ResultsCtrl.js"),
+            "scripts" => array("/valimised/js/ResultsCtrl.js", "/valimised/js/angular-chart.min.js"),
             "styles" => array("/valimised/css/angular-chart.css")
         );
         $this->load->view('templates/header.php', $data);
@@ -35,21 +35,45 @@ class Results_Controller extends CI_Controller {
         $this->session->set_flashdata('fb', uri_string());
         $this->load->view('templates/navbar.php', $this->facebook->getLoginData());
         $this->load->view('results.php');
-        $this->load->view('templates/footer.php');      
+        $this->load->view('templates/footer.php');
     }
 
     public function get($start = 0, $count = 20) {
-         $this->load->helper('url');
+        $this->load->helper('url');
         $this->load->library('session');
         $this->session->set_flashdata('fb', uri_string());
         $this->load->library("vote_factory");
         $votes = $this->vote_factory->getCandidateVotesJSON();
         $this->output->set_content_type('application/json')->set_output(json_encode($votes));
     }
-    
+
     public function getStat() {
         $this->load->library("party_factory");
         $stats = $this->party_factory->getPartyStatistics();
+        $this->output->set_content_type('application/json')->set_output(json_encode($stats));
+    }
+
+    public function getStatArea() {
+        $this->load->library("area_factory");
+        $areas = $this->area_factory->getAreaStatistics();
+        $this->output->set_content_type('application/json')->set_output(json_encode($areas));
+    }
+
+    public function getCandidates() {
+        $this->load->library("candidate_factory");
+        $candidates = $this->candidate_factory->getCandidates2();
+        $this->output->set_content_type('application/json')->set_output(json_encode($candidates));
+    }
+
+    public function getGeneral() {
+        $this->load->library("candidate_factory");
+        $this->load->library("party_factory");
+        $this->load->library("area_factory");
+        $areas = $this->area_factory->getAreaStatistics();
+        $stats = $this->party_factory->getPartyStatistics();
+        $candidates = $this->candidate_factory->getCandidates2();
+        $this->output->set_content_type('application/json')->set_output(json_encode($candidates));
+        $this->output->set_content_type('application/json')->set_output(json_encode($areas));
         $this->output->set_content_type('application/json')->set_output(json_encode($stats));
     }
 

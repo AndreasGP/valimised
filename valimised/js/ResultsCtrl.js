@@ -1,5 +1,6 @@
 main.controller('ResultsCtrl', function ($scope, $http) {
-    $http.get('/valimised/tulemused/getStat/').
+    $scope.partystat = function(){ 
+        $http.get('/valimised/tulemused/getStat/').
             success(function (data) {
                 $scope.data = data;
                 console.log(JSON.stringify($scope.data));
@@ -8,6 +9,32 @@ main.controller('ResultsCtrl', function ($scope, $http) {
             error(function () {
                 console.log("Fail!");
             });
+        };
+
+    $scope.areastat = function(){
+        $http.get('/valimised/tulemused/getStatArea/').
+            success(function (areas) {
+                $scope.areas = areas;
+                console.log(JSON.stringify($scope.areas));
+                //Saad läbi data loopida, kas otse javascriptis või ng-repeat="tulemus in data" HTMLis, vt mujalt
+            }).
+            error(function () {
+                console.log("Fail!");
+            });
+        };
+
+    $scope.candidatestat = function(){
+        $http.get('/valimised/tulemused/getCandidates/').
+            success(function (candidates) {
+                $scope.candidates = candidates;
+                console.log(JSON.stringify($scope.candidates));
+                //Saad läbi data loopida, kas otse javascriptis või ng-repeat="tulemus in data" HTMLis, vt mujalt
+            }).
+            error(function () {
+                console.log("Fail!");
+            });
+        };
+    
 });
 
 
@@ -76,7 +103,7 @@ $(function () {
         if (myLineChart4) {
             myLineChart4.destroy();
         }
-        myLineChart2 = new Chart(ctx2).Line(Data, line_chart_options);
+        myLineChart2 = new Chart(ctx2).Line(data, line_chart_options);
     });
 
     $('#tab3').on('shown.bs.tab', function (e) {

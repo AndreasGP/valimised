@@ -40,17 +40,17 @@ class Area_Factory {
             return false;
         }
     }
-    
-        public function getIdbyField($fieldvalue){
 
-            $query = $this->_ci->db->select("*")
-                    ->from("area")
-                    ->where('name', $fieldvalue)->get();
-                  
-                //Loop through each row returned from the query
-                foreach ($query->result() as $row) {
-                    return $row->id;
-                }
+    public function getIdbyField($fieldvalue) {
+
+        $query = $this->_ci->db->select("*")
+                        ->from("area")
+                        ->where('name', $fieldvalue)->get();
+
+        //Loop through each row returned from the query
+        foreach ($query->result() as $row) {
+            return $row->id;
+        }
     }
 
     public function createObjectFromData($row) {
@@ -58,6 +58,21 @@ class Area_Factory {
         $area->setId($row->id);
         $area->setName($row->name);
         return $area;
+    }
+
+    public function getAreaStatistics() {
+        $query = $this->_ci->db->select("count(*) as number, area.name")
+                ->from("vote")
+                ->join("candidate", "candidate.id = vote.candidateid")
+                ->join("area", "area.id = candidate.areaid")
+                ->group_by("candidate.id")
+                ->get();
+        $partyvotes = array();
+        foreach ($query->result() as $row) {
+            $row->number = (int) $row->number;
+            $partyvotes[] = $row;
+        }
+        return $partyvotes;
     }
 
 }
