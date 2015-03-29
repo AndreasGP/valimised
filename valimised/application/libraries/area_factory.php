@@ -60,19 +60,4 @@ class Area_Factory {
         return $area;
     }
 
-    public function getAreaStatistics() {
-        $query = $this->_ci->db->select("count(*) as number, area.name")
-                ->from("vote")
-                ->join("candidate", "candidate.id = vote.candidateid")
-                ->join("area", "area.id = candidate.areaid")
-                ->group_by("candidate.id")
-                ->get();
-        $partyvotes = array();
-        foreach ($query->result() as $row) {
-            $row->number = (int) $row->number;
-            $partyvotes[] = $row;
-        }
-        return $partyvotes;
-    }
-
 }

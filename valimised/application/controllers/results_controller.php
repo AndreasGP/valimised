@@ -38,43 +38,40 @@ class Results_Controller extends CI_Controller {
         $this->load->view('templates/footer.php');
     }
 
-    public function get($start = 0, $count = 20) {
-        $this->load->helper('url');
-        $this->load->library('session');
-        $this->session->set_flashdata('fb', uri_string());
-        $this->load->library("vote_factory");
-        $votes = $this->vote_factory->getCandidateVotesJSON();
-        $this->output->set_content_type('application/json')->set_output(json_encode($votes));
+    public function getGeneralResults() {
+        $this->load->library("results_factory");
+        $results = $this->results_factory->getGeneralResults();
+        $this->output->set_content_type('application/json')->set_output(json_encode($results));
+    }
+    
+    public function getGeneralPartyResults() {
+        $this->load->library("results_factory");
+        $results = $this->results_factory->getGeneralPartyResults();
+        $this->output->set_content_type('application/json')->set_output(json_encode($results));
     }
 
-    public function getStat() {
-        $this->load->library("party_factory");
-        $stats = $this->party_factory->getPartyStatistics();
-        $this->output->set_content_type('application/json')->set_output(json_encode($stats));
+    public function getPartyResults($areaid) {
+        $this->load->library("results_factory");
+        $results = $this->results_factory->getPartyResults($areaid);
+        $this->output->set_content_type('application/json')->set_output(json_encode($results));
     }
-
-    public function getStatArea() {
-        $this->load->library("area_factory");
-        $areas = $this->area_factory->getAreaStatistics();
-        $this->output->set_content_type('application/json')->set_output(json_encode($areas));
+    
+    public function getGeneralCandidateResults() {
+        $this->load->library("results_factory");
+        $results = $this->results_factory->getGeneralCandidateResults();
+        $this->output->set_content_type('application/json')->set_output(json_encode($results));
     }
-
-    public function getCandidates() {
-        $this->load->library("candidate_factory");
-        $candidates = $this->candidate_factory->getCandidates2();
-        $this->output->set_content_type('application/json')->set_output(json_encode($candidates));
+    
+     public function getCandidateResults($areaid) {
+        $this->load->library("results_factory");
+        $results = $this->results_factory->getCandidateResults($areaid);
+        $this->output->set_content_type('application/json')->set_output(json_encode($results));
     }
-
-    public function getGeneral() {
-        $this->load->library("candidate_factory");
-        $this->load->library("party_factory");
-        $this->load->library("area_factory");
-        $areas = $this->area_factory->getAreaStatistics();
-        $stats = $this->party_factory->getPartyStatistics();
-        $candidates = $this->candidate_factory->getCandidates2();
-        $this->output->set_content_type('application/json')->set_output(json_encode($candidates));
-        $this->output->set_content_type('application/json')->set_output(json_encode($areas));
-        $this->output->set_content_type('application/json')->set_output(json_encode($stats));
+    
+     public function getCandidatePartyResults($partyid) {
+        $this->load->library("results_factory");
+        $results = $this->results_factory->getCandidatePartyResults($partyid);
+        $this->output->set_content_type('application/json')->set_output(json_encode($results));
     }
 
 }

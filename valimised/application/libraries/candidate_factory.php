@@ -45,21 +45,6 @@ class Candidate_Factory {
         return false;
     }
 
-    public function getCandidates2() {
-        $query = $this->_ci->db->select("count(*) as number, user.firstname, user.lastname")
-                ->from("vote")
-                ->join("candidate", "candidate.id = vote.candidateid")
-                ->join("user", "user.id = candidate.userid")
-                ->group_by("candidate.id")
-                ->get();
-        $candidates = array();
-        foreach ($query->result() as $row) {
-            $row->number = (int) $row->number;
-            $candidates[] = $row;
-        }
-        return $candidates;
-    }
-
     /**
      * Returns all the candidates as a JSON-compatible array.
      */
