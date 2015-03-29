@@ -1,42 +1,73 @@
 main.controller('ResultsCtrl', function ($scope, $http) {
-    $scope.partystat = function(){ 
-        $http.get('/valimised/tulemused/getStat/').
-            success(function (data) {
-                $scope.data = data;
-                console.log(JSON.stringify($scope.data));
-                //Saad läbi data loopida, kas otse javascriptis või ng-repeat="tulemus in data" HTMLis, vt mujalt
-            }).
-            error(function () {
-                console.log("Fail!");
-            });
-        };
 
-    $scope.areastat = function(){
-        $http.get('/valimised/tulemused/getStatArea/').
-            success(function (areas) {
-                $scope.areas = areas;
-                console.log(JSON.stringify($scope.areas));
-                //Saad läbi data loopida, kas otse javascriptis või ng-repeat="tulemus in data" HTMLis, vt mujalt
-            }).
-            error(function () {
-                console.log("Fail!");
-            });
-        };
+    $scope.partygenstat = function () {
+        $http.get('/valimised/tulemused/getGeneralPartyResults/').
+                success(function (data) {
+                    $scope.data = data;
+                    console.log(JSON.stringify($scope.data));
+                    //Saad läbi data loopida, kas otse javascriptis või ng-repeat="tulemus in data" HTMLis, vt mujalt
+                }).
+                error(function () {
+                    console.log("Fail!");
+                });
+    };
 
-    $scope.candidatestat = function(){
-        $http.get('/valimised/tulemused/getCandidates/').
-            success(function (candidates) {
-                $scope.candidates = candidates;
-                console.log(JSON.stringify($scope.candidates));
-                //Saad läbi data loopida, kas otse javascriptis või ng-repeat="tulemus in data" HTMLis, vt mujalt
-            }).
-            error(function () {
-                console.log("Fail!");
-            });
-        };
-    
+    $scope.candidategenstat = function () {
+        $http.get('/valimised/tulemused/getGeneralCandidateResults/').
+                success(function (candidate) {
+                    $scope.candidate = candidate;
+                    console.log(JSON.stringify($scope.candidate));
+                    //Saad läbi data loopida, kas otse javascriptis või ng-repeat="tulemus in data" HTMLis, vt mujalt
+                }).
+                error(function () {
+                    console.log("Fail!");
+                });
+    };
+
+    $scope.candidateareastat = function () {
+        $http.get('/valimised/tulemused/getGeneralCandidateResults/').
+                success(function (candidate) {
+                    $scope.candidate = candidate;
+                    console.log(JSON.stringify($scope.candidate));
+                    //Saad läbi data loopida, kas otse javascriptis või ng-repeat="tulemus in data" HTMLis, vt mujalt
+                }).
+                error(function () {
+                    console.log("Fail!");
+                });
+    };
+
+    $scope.partyareastat = function () {
+        $http.get('/valimised/tulemused/getGeneralPartyResults/').
+                success(function (data) {
+                    $scope.data = data;
+                    console.log(JSON.stringify($scope.data));
+                    //Saad läbi data loopida, kas otse javascriptis või ng-repeat="tulemus in data" HTMLis, vt mujalt
+                }).
+                error(function () {
+                    console.log("Fail!");
+                });
+    };
+
+    $scope.partystat = function () {
+        $http.get('/valimised/tulemused/getCandidatePartyResults/').
+                success(function (data) {
+                    $scope.data = data;
+                    console.log(JSON.stringify($scope.data));
+                    //Saad läbi data loopida, kas otse javascriptis või ng-repeat="tulemus in data" HTMLis, vt mujalt
+                }).
+                error(function () {
+                    console.log("Fail!");
+                });
+    };
+
+
+
 });
 
+$(".document").ready(function() { 
+    angular.element("#content").scope().partygenstat(); 
+    angular.element("#content").scope().partyareastat(); 
+});
 
 
 $(function () {
@@ -80,7 +111,7 @@ $(function () {
     var ctx4 = $("#myChart4").get(0).getContext("2d");
     var myLineChart4;
 
-    $('#tab1').on('shown.bs.tab', function (e) {
+    ('#tab1').on('shown.bs.tab', function (e) {
         if (myLineChart2) {
             myLineChart2.destroy();
         }
@@ -89,7 +120,7 @@ $(function () {
         }
         if (myLineChart4) {
             myLineChart4.destroy();
-        }
+        }$
         myLineChart1 = new Chart(ctx1).Line(data, line_chart_options);
     });
 
