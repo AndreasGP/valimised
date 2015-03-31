@@ -49,11 +49,6 @@
                     </select>
                      </div>
                      <div class ="col-md-6">
-                         <div id="selection">
-                        <h3>
-                        <label id="partyname"></label>
-                        </h3>
-                        </div>
                         <table ng-table="tableParams" class="table table-striped">
                             <tr ng-repeat="tulemus in party| orderBy:'-number'">
                                 <td class="col-md-3" data-title="'Kandidaadi Nimi'" sortable="'party'">{{tulemus.name}}</td>
@@ -63,11 +58,25 @@
                         <canvas id="myChart2" width="400" height="400"></canvas> 
                     </div>
                     </div>
+                    
                     <div class="tab-pane" id ="piirkonnad" >
-                        <ul id="tabs" class="nav nav-tabs" data-tabs="tabs3">
+                        <div class ="col-md-4">
+                            <h2>Piirkonnad</h2>
+                             <select size=10 onChange="areaChanged()" class="form-control" id="area">
+                            <option value="" style="display:none;"></option>
+                            <?php foreach ($areas as $area): ?>
+                              <option value="<?php echo $area->getId(); ?>"><?php echo $area->getId() . ". " . $area->getName(); ?> </option>
+                            <?php endforeach; ?>
+                            </select>
+                         </div>
+                        
+                                          
+                        <div class ="col-md-6">
+                            <ul id="tabs" class="nav nav-tabs" data-tabs="tabs3">
                             <li class="active"><a href="#erakonnadpiirkond" id="tab31" role="tab" ng-click="partyareastat()" data-toggle="tab">Erakonnad</a></li>
                             <li><a href="#kandidaadidpiirkond" id="tab32" role="tab" ng-click="candidateareastat()" data-toggle="tab">Kandidaadid</a></li>
                         </ul>
+                            
                         <div id="my-tab-content" class="tab-content">
                             <div class="tab-pane active" id ="erakonnadpiirkond">
                                 <table ng-table="tableParams" class="table table-striped">
@@ -89,6 +98,7 @@
                                 <canvas id="myChart2" width="400" height="400"></canvas> 
                             </div>
                         </div>
+                            </div>
                     </div>
                 </div>
             </div>

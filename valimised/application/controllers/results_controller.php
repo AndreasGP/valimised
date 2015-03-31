@@ -56,17 +56,14 @@ class Results_Controller extends CI_Controller {
         $this->output->set_content_type('application/json')->set_output(json_encode($results));
     }
     
-    public function getOnePartyResults($partyid) {
-        $this->load->library("results_factory");
-        $results = $this->results_factory->getPartyResults($areaid);
-        $this->output->set_content_type('application/json')->set_output(json_encode($results));
-    }
     
     public function getGeneralCandidateResults() {
         $this->load->library("results_factory");
         $results = $this->results_factory->getGeneralCandidateResults();
         $this->output->set_content_type('application/json')->set_output(json_encode($results));
     }
+    
+   
     
      public function getCandidateResults($areaid) {
         $this->load->library("results_factory");
@@ -79,5 +76,7 @@ class Results_Controller extends CI_Controller {
         $results = $this->results_factory->getCandidatePartyResults($partyid);
         $this->output->set_content_type('application/json')->set_output(json_encode($results));
     }
+    
+    
 
 }

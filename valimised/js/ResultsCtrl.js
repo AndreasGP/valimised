@@ -24,8 +24,8 @@ main.controller('ResultsCtrl', function ($scope, $http) {
                 });
     };
 
-    $scope.candidateareastat = function () {
-        $http.get('/valimised/tulemused/getGeneralCandidateResults/').
+    $scope.candidateareastat = function ($id) {
+        $http.get('/valimised/tulemused/getCandidateResults/' + $id).
                 success(function (candidate) {
                     $scope.candidate = candidate;
                     console.log(JSON.stringify($scope.candidate));
@@ -36,8 +36,8 @@ main.controller('ResultsCtrl', function ($scope, $http) {
                 });
     };
 
-    $scope.partyareastat = function () {
-        $http.get('/valimised/tulemused/getGeneralPartyResults/').
+    $scope.partyareastat = function ($id) {
+        $http.get('/valimised/tulemused/getPartyResults/' + $id).
                 success(function (data) {
                     $scope.data = data;
                     console.log(JSON.stringify($scope.data));
@@ -49,15 +49,13 @@ main.controller('ResultsCtrl', function ($scope, $http) {
     };
 
     $scope.partystat = function ($id) {
-        $partyid = $id;
         
-        $http.get('/valimised/tulemused/getCandidatePartyResults/'  + $partyid).
+        
+        $http.get('/valimised/tulemused/getCandidatePartyResults/'  + $id).
                 success(function (party) {
                     $scope.party = party;
-                    
-                    
+                                      
                     console.log(JSON.stringify($scope.party));
-                    $("#partyname").text("kek: " + party['partyname']);
                     //Saad läbi data loopida, kas otse javascriptis või ng-repeat="tulemus in data" HTMLis, vt mujalt
                 }).
                 error(function () {
@@ -76,8 +74,13 @@ $(".document").ready(function() {
 
 partyChanged = function() {
     $id = document.getElementById("party").value; 
-    $("#selection").show(); 
     angular.element(document.getElementById('party')).scope().partystat($id);
+}
+
+areaChanged = function() {
+    $id = document.getElementById("area").value; 
+    angular.element(document.getElementById('area')).scope().partyareastat($id);
+    angular.element(document.getElementById('area')).scope().candidateareastat($id);
 }
 
 

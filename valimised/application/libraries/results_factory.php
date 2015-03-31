@@ -75,6 +75,7 @@ class Results_Factory {
         return $votes;
     }
     
+    
     public function getCandidateResults($areaid = 0){
         $query = $this->_ci->db->select("candidate.id as candidateid, count(*) as number, CONCAT(user.firstname, ' ', user.lastname) as name", FALSE)
                 ->from("user")
