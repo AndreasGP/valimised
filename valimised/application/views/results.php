@@ -18,7 +18,7 @@
                         <div id="my-tab-content" class="tab-content">
                             <div class="tab-pane active" id ="erakonnadriik">
                                 <table ng-table="tableParams" class="table table-striped">
-                                    <tr ng-repeat="tulemus in data| orderBy:'-number'">
+                                    <tr ng-repeat="tulemus in data| orderBy:'-number' track by $index">
                                         <td class="col-md-3" data-title="'Erakonna Nimi'" sortable="'party'">{{tulemus.name}}</td>
                                         <td class="col-md-4" data-title="'Häälte arv'" sortable="'votes'">{{tulemus.number}}</td>
                                     </tr>
@@ -28,7 +28,7 @@
 
                             <div class="tab-pane" id ="kandidaadidriik">
                                 <table ng-table="tableParams" class="table table-striped">
-                                    <tr ng-repeat="kandidaat in candidate| orderBy:'-number'">
+                                    <tr ng-repeat="kandidaat in candidate| orderBy:'-number' track by $index">
                                         <td class="col-md-3" data-title="'Kandidaadi Nimi'" sortable="'party'">{{kandidaat.name}}</td>
                                         <td class="col-md-4" data-title="'Häälte arv'" sortable="'votes'">{{kandidaat.number}}</td>
                                     </tr>
@@ -50,7 +50,7 @@
                      </div>
                      <div class ="col-md-6">
                         <table ng-table="tableParams" class="table table-striped">
-                            <tr ng-repeat="tulemus in party| orderBy:'-number'">
+                            <tr ng-repeat="tulemus in party| orderBy:'-number' track by $index">
                                 <td class="col-md-3" data-title="'Kandidaadi Nimi'" sortable="'party'">{{tulemus.name}}</td>
                                 <td class="col-md-4" data-title="'Häälte arv'" sortable="'votes'">{{tulemus.number}}</td>
                             </tr>
@@ -80,7 +80,7 @@
                         <div id="my-tab-content" class="tab-content">
                             <div class="tab-pane active" id ="erakonnadpiirkond">
                                 <table ng-table="tableParams" class="table table-striped">
-                                    <tr ng-repeat="tulemus in data| orderBy:'-number'">
+                                    <tr ng-repeat="tulemus in data| orderBy:'-number' track by $index">
                                         <td class="col-md-3" data-title="'Erakonna Nimi'" sortable="'party'">{{tulemus.name}}</td>
                                         <td class="col-md-4" data-title="'Häälte arv'" sortable="'votes'">{{tulemus.number}}</td>
                                     </tr>
@@ -90,7 +90,7 @@
 
                             <div class="tab-pane" id ="kandidaadidpiirkond">
                                 <table ng-table="tableParams" class="table table-striped">
-                                    <tr ng-repeat="kandidaat in candidate| orderBy:'-number'">
+                                    <tr ng-repeat="kandidaat in candidate| orderBy:'-number' track by $index">
                                         <td class="col-md-3" data-title="'Kandidaadi Nimi'" sortable="'party'">{{kandidaat.name}}</td>
                                         <td class="col-md-4" data-title="'Häälte arv'" sortable="'votes'">{{kandidaat.number}}</td>
                                     </tr>
