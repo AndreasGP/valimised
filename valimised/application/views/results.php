@@ -39,15 +39,30 @@
                     </div>
 
                     <div class="tab-pane" id ="erakonnad">
+                        <div class ="col-md-6">
+                    <h2>Erakonnad</h2>
+                    <select size=10 onChange="partyChanged()" class="form-control" id="party">
+                        <option value="" style="display:none;"></option>
+                        <?php foreach ($parties as $party): ?>
+                            <option value="<?php echo $party->getId(); ?>"><?php echo $party->getId() . ". " . $party->getName(); ?> </option>
+                        <?php endforeach; ?>
+                    </select>
+                     </div>
+                     <div class ="col-md-6">
+                         <div id="selection">
+                        <h3>
+                        <label id="partyname"></label>
+                        </h3>
+                        </div>
                         <table ng-table="tableParams" class="table table-striped">
-                            <tr ng-repeat="tulemus in data| orderBy:'-number'">
-                                <td class="col-md-3" data-title="'Erakonna Nimi'" sortable="'party'">{{tulemus.name}}</td>
+                            <tr ng-repeat="tulemus in party| orderBy:'-number'">
+                                <td class="col-md-3" data-title="'Kandidaadi Nimi'" sortable="'party'">{{tulemus.name}}</td>
                                 <td class="col-md-4" data-title="'Häälte arv'" sortable="'votes'">{{tulemus.number}}</td>
                             </tr>
                         </table>
                         <canvas id="myChart2" width="400" height="400"></canvas> 
                     </div>
-
+                    </div>
                     <div class="tab-pane" id ="piirkonnad" >
                         <ul id="tabs" class="nav nav-tabs" data-tabs="tabs3">
                             <li class="active"><a href="#erakonnadpiirkond" id="tab31" role="tab" ng-click="partyareastat()" data-toggle="tab">Erakonnad</a></li>

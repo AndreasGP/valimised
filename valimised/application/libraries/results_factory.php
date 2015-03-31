@@ -93,7 +93,7 @@ class Results_Factory {
     }
 
         public function getCandidatePartyResults($partyid = 0){
-        $query = $this->_ci->db->select("candidate.id as candidateid, count(*) as number, CONCAT(user.firstname, ' ', user.lastname) as name", FALSE)
+        $query = $this->_ci->db->select("candidate.id as candidateid, count(*) as number, CONCAT(user.firstname, ' ', user.lastname) as name, party.name as partyname", FALSE)
                 ->from("user")
                 ->join("candidate", "candidate.userid = user.id")
                 ->join("vote", "vote.candidateid = candidate.id")

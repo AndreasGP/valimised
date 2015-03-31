@@ -48,11 +48,16 @@ main.controller('ResultsCtrl', function ($scope, $http) {
                 });
     };
 
-    $scope.partystat = function () {
-        $http.get('/valimised/tulemused/getCandidatePartyResults/').
-                success(function (data) {
-                    $scope.data = data;
-                    console.log(JSON.stringify($scope.data));
+    $scope.partystat = function ($id) {
+        $partyid = $id;
+        
+        $http.get('/valimised/tulemused/getCandidatePartyResults/'  + $partyid).
+                success(function (party) {
+                    $scope.party = party;
+                    
+                    
+                    console.log(JSON.stringify($scope.party));
+                    $("#partyname").text("kek: " + party['partyname']);
                     //Saad läbi data loopida, kas otse javascriptis või ng-repeat="tulemus in data" HTMLis, vt mujalt
                 }).
                 error(function () {
@@ -68,6 +73,12 @@ $(".document").ready(function() {
     angular.element("#content").scope().partygenstat(); 
     angular.element("#content").scope().partyareastat(); 
 });
+
+partyChanged = function() {
+    $id = document.getElementById("party").value; 
+    $("#selection").show(); 
+    angular.element(document.getElementById('party')).scope().partystat($id);
+}
 
 
 $(function () {

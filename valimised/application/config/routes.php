@@ -50,6 +50,9 @@ $route['login'] = 'login_controller/login';
 $route['login/modal'] = 'login_controller/modal';
 $route['logout'] = 'home_controller/index/logout';
 $route['logged/redirect/(:any)'] = 'logged_controller/redirect/$1';
+$route['index.php/logged/redirect/(:any)'] = 'logged_controller/redirect/$1';
+$route['index.php/logged/(:any)'] = 'logged_controller/redirect/index.php';
+$route['logged/(:any)'] = 'logged_controller/redirect/';
 
 $route['testid'] = 'tests_controller';
 
