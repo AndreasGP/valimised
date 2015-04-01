@@ -1,11 +1,15 @@
 main.controller('ResultsCtrl', function ($scope, $http) {
 
+    $scope.switchedToGeneralResults = function() {
+        $scope.partygenstat();
+        $scope.candidategenstat();
+    }
+
     $scope.partygenstat = function () {
         $http.get('/valimised/tulemused/getGeneralPartyResults/').
                 success(function (data) {
+                    console.log("Loaded general party results.");
                     $scope.data = data;
-                    console.log(JSON.stringify($scope.data));
-                    //Saad läbi data loopida, kas otse javascriptis või ng-repeat="tulemus in data" HTMLis, vt mujalt
                 }).
                 error(function () {
                     console.log("Fail!");
@@ -15,9 +19,8 @@ main.controller('ResultsCtrl', function ($scope, $http) {
     $scope.candidategenstat = function () {
         $http.get('/valimised/tulemused/getGeneralCandidateResults/').
                 success(function (candidate) {
+                    console.log("Loaded general candidate results.");
                     $scope.candidate = candidate;
-                    console.log(JSON.stringify($scope.candidate));
-                    //Saad läbi data loopida, kas otse javascriptis või ng-repeat="tulemus in data" HTMLis, vt mujalt
                 }).
                 error(function () {
                     console.log("Fail!");
@@ -68,9 +71,12 @@ main.controller('ResultsCtrl', function ($scope, $http) {
 });
 
 $(".document").ready(function() { 
-    angular.element("#content").scope().partygenstat(); 
-    angular.element("#content").scope().partyareastat(); 
+    window.setTimeout(function() {
+                console.log("Called!");
+                angular.element("#content").scope().switchedToGeneralResults();
+        }, 200);//Give 200ms for the page to load to prevent issues
 });
+
 
 partyChanged = function() {
     $id = document.getElementById("party").value; 

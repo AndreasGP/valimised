@@ -5,18 +5,19 @@
             <div id="content" ng-controller="ResultsCtrl">
 
                 <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
-                    <li class="active"><a href="#uldtulemused" id="tab1" role="tab" ng-click="partygenstat()" data-toggle="tab">Üldtulemused</a></li>
+                    <li class="active"><a href="#uldtulemused" id="tab1" role="tab" ng-click="switchedToGeneralResults()" data-toggle="tab">Üldtulemused</a></li>
                     <li><a href="#erakonnad" id="tab2" role="tab" ng-click="partystat()" data-toggle="tab">Erakondade tulemused</a></li>
                     <li><a href="#piirkonnad" id="tab3" role="tab" ng-click="partyareastat()" data-toggle="tab">Piirkondade tulemused</a></li>
                 </ul>
                 <div id="my-tab-content" class="tab-content">
                     <div class="tab-pane active" id ="uldtulemused">
                         <ul id="tabs" class="nav nav-tabs" data-tabs="tabs2">
-                            <li class="active"><a href="#erakonnadriik" id="tab11" role="tab" ng-click="partygenstat()" data-toggle="tab">Erakonnad</a></li>
-                            <li><a href="#kandidaadidriik" id="tab12" role="tab" ng-click="candidategenstat()" data-toggle="tab">Kandidaadid</a></li>
+                            <li class="active"><a href="#erakonnadriik" id="tab11" role="tab" ng-init="partygenstat()" ng-click="partygenstat()" data-toggle="tab">Erakonnad</a></li>
+                            <li><a href="#kandidaadidriik" id="tab12" role="tab" ng-init="candidategenstat()" ng-click="candidategenstat()" data-toggle="tab">Kandidaadid</a></li>
                         </ul>
                         <div id="my-tab-content" class="tab-content">
                             <div class="tab-pane active" id ="erakonnadriik">
+                                Test
                                 <table ng-table="tableParams" class="table table-striped">
                                     <tr ng-repeat="tulemus in data| orderBy:'-number' track by $index">
                                         <td class="col-md-3" data-title="'Erakonna Nimi'" sortable="'party'">{{tulemus.name}}</td>
