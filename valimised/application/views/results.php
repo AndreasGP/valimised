@@ -5,11 +5,11 @@
             <div id="content" ng-controller="ResultsCtrl">
 
                 <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
-                    <li class="active"><a href="#erakonnadriik" id="tab1" role="tab" ng-click="switchedToGeneralResults()" ng-init="partygenstat()" data-toggle="tab">Erakonnad riigis</a></li>
-                    <li><a href="#kandidaadidriik" id="tab1" role="tab" ng-init="candidategenstat()" ng-click="candidategenstat()" data-toggle="tab">Kandidaadid riigis</a></li>
-                    <li><a href="#erakonnad" id="tab2" role="tab" ng-click="partystat()" data-toggle="tab">Erakondade tulemused</a></li>
-                    <li><a href="#erakonnadpiirkond" id="tab31" role="tab" ng-click="partyareastat()" data-toggle="tab">Erakonnad Piirkonnas</a></li>
-                    <li><a href="#kandidaadidpiirkond" id="tab32" role="tab" ng-click="candidateareastat()" data-toggle="tab">Kandidaadid Piirkonnas</a></li>
+                    <li class="active"><a href="#erakonnadriik" id="tab1" role="tab" ng-click="switchedToGeneralResults()" data-toggle="tab">Erakonnad riigis</a></li>
+                    <li><a href="#kandidaadidriik" id="tab2" role="tab" ng-init="candidategenstat()" ng-click="candidategenstat()" data-toggle="tab">Kandidaadid riigis</a></li>
+                    <li><a href="#erakonnad" id="tab3" role="tab" ng-click="partystat()" data-toggle="tab">Kandidaadid erakonnas</a></li>
+                    <li><a href="#kandidaadidpiirkond" id="tab4" role="tab" ng-click="candidateareastat()" data-toggle="tab">Kandidaadid piirkonnas</a></li>
+                    <li><a href="#erakonnadpiirkond" id="tab5" role="tab" ng-click="partyareastat()" data-toggle="tab">Erakonnad piirkonnas</a></li>
 
                 </ul>
                 <div id="my-tab-content" class="tab-content">
