@@ -46,6 +46,7 @@
                             </select>
                         </div>
                         <div class ="col-md-6">
+                            <label id="partyname"></label>
                             <table ng-table="tableParams" class="table table-striped">
                                 <tr ng-repeat="tulemus in party| orderBy:'-number' track by $index">
                                     <td class="col-md-3" data-title="'Kandidaadi Nimi'" sortable="'party'">{{tulemus.name}}</td>

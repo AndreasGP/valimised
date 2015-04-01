@@ -56,8 +56,9 @@ main.controller('ResultsCtrl', function ($scope, $http) {
         
         $http.get('/valimised/tulemused/getCandidatePartyResults/'  + $id).
                 success(function (party) {
+                    
                     $scope.party = party;
-                                      
+                    $("#partyname").text('Valitud erakond: ' + party[0]['partyname']);
                     console.log(JSON.stringify($scope.party));
                     //Saad läbi data loopida, kas otse javascriptis või ng-repeat="tulemus in data" HTMLis, vt mujalt
                 }).
