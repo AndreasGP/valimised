@@ -14,7 +14,6 @@
                 </ul>
                 <div id="my-tab-content" class="tab-content">
                     <div class="tab-pane active" id ="erakonnadriik">
-                        Test
                         <table ng-table="tableParams" class="table table-striped">
                             <tr ng-repeat="tulemus in data| orderBy:'-number' track by $index">
                                 <td class="col-md-3" data-title="'Erakonna Nimi'" sortable="'party'">{{tulemus.name}}</td>
@@ -68,6 +67,7 @@
                             </select>
                         </div>
                         <div class ="col-md-6">
+                            <label id="areaname"></label>
                             <table ng-table="tableParams" class="table table-striped">
                                 <tr ng-repeat="tulemus in data| orderBy:'-number' track by $index">
                                     <td class="col-md-3" data-title="'Erakonna Nimi'" sortable="'party'">{{tulemus.name}}</td>
@@ -82,7 +82,7 @@
                     <div class="tab-pane" id ="kandidaadidpiirkond">
                         <div class ="col-md-4">
                             <h2>Piirkonnad</h2>
-                            <select size=10 onChange="areaChanged()" class="form-control" id="area">
+                            <select size=10 onChange="areaChanged()" class="form-control" id="candidatearea">
                                 <option value="" style="display:none;"></option>
                                 <?php foreach ($areas as $area): ?>
                                     <option value="<?php echo $area->getId(); ?>"><?php echo $area->getId() . ". " . $area->getName(); ?> </option>
@@ -90,6 +90,7 @@
                             </select>
                         </div>
                         <div class ="col-md-6">
+                            <label id="candidateareaname"></label>
                             <table ng-table="tableParams" class="table table-striped">
                                 <tr ng-repeat="kandidaat in candidate| orderBy:'-number' track by $index">
                                     <td class="col-md-3" data-title="'Kandidaadi Nimi'" sortable="'party'">{{kandidaat.name}}</td>

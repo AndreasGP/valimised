@@ -8,7 +8,6 @@ main.controller('ResultsCtrl', function ($scope, $http) {
     $scope.partygenstat = function () {
         $http.get('/valimised/tulemused/getGeneralPartyResults/').
                 success(function (data) {
-                    console.log("Loaded general party results.");
                     $scope.data = data;
                 }).
                 error(function () {
@@ -19,7 +18,6 @@ main.controller('ResultsCtrl', function ($scope, $http) {
     $scope.candidategenstat = function () {
         $http.get('/valimised/tulemused/getGeneralCandidateResults/').
                 success(function (candidate) {
-                    console.log("Loaded general candidate results.");
                     $scope.candidate = candidate;
                 }).
                 error(function () {
@@ -28,11 +26,20 @@ main.controller('ResultsCtrl', function ($scope, $http) {
     };
 
     $scope.candidateareastat = function ($id) {
+        
+        if($id === undefined || $id === 0) {
+            $id = 1;
+        }
         $http.get('/valimised/tulemused/getCandidateResults/' + $id).
                 success(function (candidate) {
                     $scope.candidate = candidate;
-                    console.log(JSON.stringify($scope.candidate));
-                    //Saad läbi data loopida, kas otse javascriptis või ng-repeat="tulemus in data" HTMLis, vt mujalt
+                    
+                    if(typeof candidate != "undefined" && candidate != null && candidate.length > 0){
+                         $("#candidateareaname").text('Valitud piirkond: ' + candidate[0]['areaname']);
+                    } else {
+                        $("#candidateareaname").text('Valitud piirkond: ' + $( "#candidatearea option:selected" ).text().replace(/[0-9]/g, '').substr(2));
+                    }
+                
                 }).
                 error(function () {
                     console.log("Fail!");
@@ -40,11 +47,19 @@ main.controller('ResultsCtrl', function ($scope, $http) {
     };
 
     $scope.partyareastat = function ($id) {
+        if($id === undefined || $id === 0) {
+            $id = 1;
+        }
         $http.get('/valimised/tulemused/getPartyResults/' + $id).
                 success(function (data) {
-                    $scope.data = data;
-                    console.log(JSON.stringify($scope.data));
-                    //Saad läbi data loopida, kas otse javascriptis või ng-repeat="tulemus in data" HTMLis, vt mujalt
+                    $scope.data = data;     
+                    
+                    if(typeof data != "undefined" && data != null && data.length > 0){
+                        $("#areaname").text('Valitud piirkond: ' + data[0]['areaname']);
+                    } else {
+                         $("#areaname").text('Valitud piirkond: ' + $( "#area option:selected" ).text().replace(/[0-9]/g, '').substr(2));
+                    }
+                                   
                 }).
                 error(function () {
                     console.log("Fail!");
@@ -53,14 +68,18 @@ main.controller('ResultsCtrl', function ($scope, $http) {
 
     $scope.partystat = function ($id) {
         
-        
+        if($id === undefined || $id === 0) {
+            $id = 1;
+        }
         $http.get('/valimised/tulemused/getCandidatePartyResults/'  + $id).
                 success(function (party) {
                     
                     $scope.party = party;
-                    $("#partyname").text('Valitud erakond: ' + party[0]['partyname']);
-                    console.log(JSON.stringify($scope.party));
-                    //Saad läbi data loopida, kas otse javascriptis või ng-repeat="tulemus in data" HTMLis, vt mujalt
+                    if(typeof party != "undefined" && party != null && party.length > 0){
+                        $("#partyname").text('Valitud erakond: ' + party[0]['partyname']);
+                    } else {
+                         $("#partyname").text('Valitud piirkond: ' + $( "#party option:selected" ).text().replace(/[0-9]/g, '').substr(2));
+                    }                
                 }).
                 error(function () {
                     console.log("Fail!");
@@ -87,7 +106,8 @@ partyChanged = function() {
 areaChanged = function() {
     $id = document.getElementById("area").value; 
     angular.element(document.getElementById('area')).scope().partyareastat($id);
-    angular.element(document.getElementById('area')).scope().candidateareastat($id);
+    $id = document.getElementById("candidatearea").value; 
+    angular.element(document.getElementById('candidatearea')).scope().candidateareastat($id);
 }
 
 

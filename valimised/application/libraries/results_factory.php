@@ -42,7 +42,7 @@ class Results_Factory {
     }
     
         public function getPartyResults($areaid = 0) {
-        $query = $this->_ci->db->select("party.id as partyid, count(*) as number, party.name")
+        $query = $this->_ci->db->select("party.id as partyid, count(*) as number, party.name, area.name as areaname")
                 ->from("vote")
                 ->join("candidate", "candidate.id = vote.candidateid")
                 ->join("party", "party.id = candidate.partyid")
@@ -77,7 +77,7 @@ class Results_Factory {
     
     
     public function getCandidateResults($areaid = 0){
-        $query = $this->_ci->db->select("candidate.id as candidateid, count(*) as number, CONCAT(user.firstname, ' ', user.lastname) as name", FALSE)
+        $query = $this->_ci->db->select("candidate.id as candidateid, count(*) as number, CONCAT(user.firstname, ' ', user.lastname) as name, area.name as areaname", FALSE)
                 ->from("user")
                 ->join("candidate", "candidate.userid = user.id")
                 ->join("vote", "vote.candidateid = candidate.id")
