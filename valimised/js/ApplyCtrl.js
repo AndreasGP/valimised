@@ -16,12 +16,12 @@ main.controller('stageController', ['$scope', '$http', function ($scope, $http) 
         $scope.user.pic = '';
         var resetUser = angular.copy($scope.user);
         $scope.submitForm = function () {
-            
+
             console.info("This should submit data.");
-            
+
         };
         $scope.resetForm = function () {
-            
+
             $scope.user = angular.copy(resetUser);
             $('#reset').click(function () {
                 $('#party option[value="0"]').attr('selected', 'selected');
@@ -31,30 +31,20 @@ main.controller('stageController', ['$scope', '$http', function ($scope, $http) 
             });
             $('#pic').fileinput('clear');
             $scope.form.$setPristine();
+            clearCookies();
         };
-        $scope.preview = function () {
-            
-            Restangular.one('kandidaat').post($scope.user);
-            //Generate object with candidate model. Send object..
-            $http({
-                method: 'POST',
-                url: 'candidate_controller.php',
-                data: $scope.user,
-                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            }).success(function (response) {
 
-            }).error(function (response) {
-                console.log("Fail!");
-            });
-        };
-        $scope.postDB = function () {        
-            
-          
+        $scope.postDB = function () {
+            setCookie("education", $scope.user.education);
+            setCookie("job", $scope.user.job);
+            setCookie("party", $scope.user.party);
+            setCookie("description", $scope.user.description);
+
             $http({
                 method: 'POST',
                 url: '/valimised/kandideerimine/esita',
-                data: $.param({'areaid':$scope.user.area, 'educationid':$scope.user.education,
-                    'partyid':$scope.user.party, 'day':$scope.user.day, 'month':$scope.user.month, 'year':$scope.user.year, 'job':$scope.user.job, 'description':$scope.user.description}),
+                data: $.param({'areaid': $scope.user.area, 'educationid': $scope.user.education,
+                    'partyid': $scope.user.party, 'day': $scope.user.day, 'month': $scope.user.month, 'year': $scope.user.year, 'job': $scope.user.job, 'description': $scope.user.description}),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function (response) {
                 console.log("Success!");
@@ -63,8 +53,20 @@ main.controller('stageController', ['$scope', '$http', function ($scope, $http) 
             });
         };
     }]);
+
+$(".document").ready(function () {
+    if (field1 = getCookie("education"))
+        document.form.education.value = field1;
+    if (field2 = getCookie("job"))
+        document.form.job.value = field2;
+    if (field3 = getCookie("party"))
+        document.form.party.value = field3;
+    if (field4 = getCookie("description"))
+        document.form.description.value = field4;
+});
+
 function readURL(input) {
-    
+
     if (input.files && input.files[0]) {
         var reader = new FileReader();
         reader.onload = function (e) {
@@ -75,4 +77,24 @@ function readURL(input) {
         };
         reader.readAsDataURL(input.files[0]);
     }
+}
+
+var today = new Date();
+var expiry = new Date(today.getTime() + 30 * 24 * 3600 * 1000);
+// plus 30 days 
+function setCookie(name, value) {
+    document.cookie = name + "=" + escape(value) + "; path=/; expires=" + expiry.toGMTString();
+}
+
+function clearCookies() {
+    deleteCookie("job");
+    deleteCookie("education");
+    deleteCookie("party");
+    deleteCookie("description");
+}
+
+function getCookie(name) {
+    var re = new RegExp(name + "=([^;]+)");
+    var value = re.exec(document.cookie);
+    return (value != null) ? unescape(value[1]) : null;
 }
