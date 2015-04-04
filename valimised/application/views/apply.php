@@ -2,10 +2,9 @@
     <div class="form-group">
 
         <form name="form" class="form-horizontal" novalidate ng-controller="stageController">
-
+        <div><alert ng-init="cookieCheck()" id="cookieLabel" class="text-center" type="success">Täitke kõik väljad!</alert></div>
             <div class="row">
-                <div class="col-sm-6">
-
+                <div class="col-sm-6">                 
                     <div class="form-group">
                         <label class="control-label col-xs-3">Eesnimi:</label>
                         <div class="col-xs-7">
