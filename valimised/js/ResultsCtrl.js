@@ -1,6 +1,6 @@
 main.controller('ResultsCtrl', function ($scope, $http) {
 
-    $scope.switchedToGeneralResults = function() {
+    $scope.switchedToGeneralResults = function () {
         $scope.partygenstat();
         $scope.candidategenstat();
     }
@@ -26,20 +26,20 @@ main.controller('ResultsCtrl', function ($scope, $http) {
     };
 
     $scope.candidateareastat = function ($id) {
-        
-        if($id === undefined || $id === 0) {
+
+        if ($id === undefined || $id === 0) {
             $id = 1;
         }
         $http.get('/valimised/tulemused/getCandidateResults/' + $id).
                 success(function (candidate) {
                     $scope.candidate = candidate;
-                    
-                    if(typeof candidate != "undefined" && candidate != null && candidate.length > 0){
-                         $("#candidateareaname").text('Valitud piirkond: ' + candidate[0]['areaname']);
+
+                    if (typeof candidate != "undefined" && candidate != null && candidate.length > 0) {
+                        $("#candidateareaname").text('Valitud piirkond: ' + candidate[0]['areaname']);
                     } else {
-                        $("#candidateareaname").text('Valitud piirkond: ' + $( "#candidatearea option:selected" ).text().replace(/[0-9]/g, '').substr(2));
+                        $("#candidateareaname").text('Valitud piirkond: ' + $("#candidatearea option:selected").text().replace(/[0-9]/g, '').substr(2));
                     }
-                
+
                 }).
                 error(function () {
                     console.log("Fail!");
@@ -47,19 +47,19 @@ main.controller('ResultsCtrl', function ($scope, $http) {
     };
 
     $scope.partyareastat = function ($id) {
-        if($id === undefined || $id === 0) {
+        if ($id === undefined || $id === 0) {
             $id = 1;
         }
         $http.get('/valimised/tulemused/getPartyResults/' + $id).
                 success(function (data) {
-                    $scope.data = data;     
-                    
-                    if(typeof data != "undefined" && data != null && data.length > 0){
+                    $scope.data = data;
+
+                    if (typeof data != "undefined" && data != null && data.length > 0) {
                         $("#areaname").text('Valitud piirkond: ' + data[0]['areaname']);
                     } else {
-                         $("#areaname").text('Valitud piirkond: ' + $( "#area option:selected" ).text().replace(/[0-9]/g, '').substr(2));
+                        $("#areaname").text('Valitud piirkond: ' + $("#area option:selected").text().replace(/[0-9]/g, '').substr(2));
                     }
-                                   
+
                 }).
                 error(function () {
                     console.log("Fail!");
@@ -67,19 +67,19 @@ main.controller('ResultsCtrl', function ($scope, $http) {
     };
 
     $scope.partystat = function ($id) {
-        
-        if($id === undefined || $id === 0) {
+
+        if ($id === undefined || $id === 0) {
             $id = 1;
         }
-        $http.get('/valimised/tulemused/getCandidatePartyResults/'  + $id).
+        $http.get('/valimised/tulemused/getCandidatePartyResults/' + $id).
                 success(function (party) {
-                    
+
                     $scope.party = party;
-                    if(typeof party != "undefined" && party != null && party.length > 0){
+                    if (typeof party != "undefined" && party != null && party.length > 0) {
                         $("#partyname").text('Valitud erakond: ' + party[0]['partyname']);
                     } else {
-                         $("#partyname").text('Valitud piirkond: ' + $( "#party option:selected" ).text().replace(/[0-9]/g, '').substr(2));
-                    }                
+                        $("#partyname").text('Valitud piirkond: ' + $("#party option:selected").text().replace(/[0-9]/g, '').substr(2));
+                    }
                 }).
                 error(function () {
                     console.log("Fail!");
@@ -90,23 +90,84 @@ main.controller('ResultsCtrl', function ($scope, $http) {
 
 });
 
-$(".document").ready(function() { 
-    window.setTimeout(function() {
-                console.log("Called!");
-                angular.element("#content").scope().switchedToGeneralResults();
-        }, 200);//Give 200ms for the page to load to prevent issues
+$(".document").ready(function () {
+    window.setTimeout(function () {
+        console.log("Called!");
+        angular.element("#content").scope().switchedToGeneralResults();
+    }, 200);//Give 200ms for the page to load to prevent issues
+
+
 });
 
+$("#tabs li").click(function () {
+    if ($(this).prevAll().length + 1 == 1) {
+        window.setInterval(function(){
+            window.setTimeout(switchedToGeneralResults(),60000);
+        }, 60000);
+    }
+    if ($(this).prevAll().length + 1 == 2) {
+        window.setInterval(function(){
+        window.setTimeout(candidategenstat(), 60000);
+        },60000);
+    }
+    if ($(this).prevAll().length + 1 == 3) {
+        window.setInterval(function(){
+        window.setTimeout(partystat(), 60000);
+        },60000);
+    }
+    if ($(this).prevAll().length + 1 == 4) {
+        window.setInterval(function(){
+        window.setTimeout(candidateareastat(), 60000);
+        },60000);
+    }
+    if ($(this).prevAll().length + 1 == 5) {
+        window.setInterval(function(){
+        window.setTimeout(partyareastat(), 60000);
+        },60000);
+    }
+});
 
-partyChanged = function() {
-    $id = document.getElementById("party").value; 
+$(".document").ready(function () {
+    $("#tabs li").click(function () {
+       if ($(this).prevAll().length + 1 == 1) {
+        window.setInterval(function(){
+            window.setTimeout(switchedToGeneralResults(),60000);
+        }, 60000);
+    }
+    if ($(this).prevAll().length + 1 == 2) {
+        window.setInterval(function(){
+        window.setTimeout(candidategenstat(), 60000);
+        },60000);
+    }
+    if ($(this).prevAll().length + 1 == 3) {
+        console.log("Here");
+        window.setInterval(function(){
+        console.log("Refreshed");
+        window.setTimeout(partystat(), 60000);
+        },60000);
+    }
+    if ($(this).prevAll().length + 1 == 4) {
+        window.setInterval(function(){
+        window.setTimeout(candidateareastat(), 60000);
+        },60000);
+    }
+    if ($(this).prevAll().length + 1 == 5) {
+        window.setInterval(function(){
+        window.setTimeout(partyareastat(), 60000);
+        },60000);
+    }
+    });
+});
+
+partyChanged = function () {
+    $id = document.getElementById("party").value;
     angular.element(document.getElementById('party')).scope().partystat($id);
 }
 
-areaChanged = function() {
-    $id = document.getElementById("area").value; 
+areaChanged = function () {
+    $id = document.getElementById("area").value;
     angular.element(document.getElementById('area')).scope().partyareastat($id);
-    $id = document.getElementById("candidatearea").value; 
+    $id = document.getElementById("candidatearea").value;
     angular.element(document.getElementById('candidatearea')).scope().candidateareastat($id);
 }
 
@@ -161,7 +222,8 @@ $(function () {
         }
         if (myLineChart4) {
             myLineChart4.destroy();
-        }$
+        }
+        $
         myLineChart1 = new Chart(ctx1).Line(data, line_chart_options);
     });
 
