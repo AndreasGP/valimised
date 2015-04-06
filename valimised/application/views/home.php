@@ -26,8 +26,7 @@
     ?>
     <div class="jumbotron">
         <h2>Tere tulemast Eesti elektroonilise hääletuse keskkonda.</h2>
-        <h3>Oma hääle andmiseks palun logige omale sobival viisil sisse.</h3> 
-        <h4>Hetkel funktsiooneerib Kandidaatide piirkonna valimislehekülg + piirkondade alamlehed ning kandideerimise lehekülg. Valimistulemused ja hääletamine on WIP ning nende kehtivust pole mõtet veel kontrollida.</h4>
+        <h3>Oma hääle andmiseks palun logige sisse.</h3> 
     </div>
     <div class="row">
         <div class="col-sm-4">
