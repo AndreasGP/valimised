@@ -44,6 +44,25 @@ class Candidate_Factory {
         }
         return false;
     }
+    
+    /**
+     * Returns all the candidates as an array of candidate_model instances
+     * @return boolean False, if nothing was found, array if candidates exist.
+     */
+    public function getCandidatesByArea($areaid = 0) {
+        $query = $this->_ci->db->select("*")
+                ->from("candidate")
+                ->where('areaid', $areaid)
+                ->get();
+        if ($query->num_rows() > 0) {
+            $candidates = array();
+            foreach ($query->result() as $row) {
+                $candidates[] = $this->createObjectFromData($row);
+            }
+            return $candidates;
+        }
+        return false;
+    }
 
     /**
      * Returns all the candidates as a JSON-compatible array.

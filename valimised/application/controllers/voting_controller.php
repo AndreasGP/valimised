@@ -38,7 +38,7 @@ class Voting_Controller extends CI_Controller {
                 //Title of the page
                 "title" => "Hääletamine",
                 //Fetch all candidates
-                "candidates" => $this->candidate_factory->getCandidates(),
+                "candidates" => $this->candidate_factory->getCandidatesByArea($area->getId()),
                 "area" => $area,
                 //Fetch all parties
                 "parties" => $this->party_factory->getParty(),

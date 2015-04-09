@@ -33,7 +33,7 @@ main.controller('stageController', ['$scope', '$http', function ($scope, $http) 
                 console.log("Cookies exist! Automatically submitting!");
                 console.log(getCookie("year"));
                 $scope.postDB();
-                $("#cookieLabel").text("Kandidatuur esitatud!");
+                $("#cookieLabel").text("Teie varasem kandidatuur on esitatud!");
                 clearCookies();
             }
             
@@ -65,7 +65,7 @@ main.controller('stageController', ['$scope', '$http', function ($scope, $http) 
                 $("#cookieLabel").hide();
                 
             } else {
-                $("#cookieLabel").text("Ühendusega on probleeme, kandidatuur esitatakse järgmisel korral (lel)!");
+                $("#cookieLabel").text("Serveriga ei saanud ühendust. Teie kandidatuur esitatakse kui te tulete siia lehele tagasi koos ühendusega.");
                 $("#cookieLabel").show(); 
                 setCookie("education", $scope.user.education);
                 setCookie("job", $scope.user.job);
