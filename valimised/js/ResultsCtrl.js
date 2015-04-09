@@ -102,27 +102,27 @@ $(".document").ready(function () {
 $("#tabs li").click(function () {
     if ($(this).prevAll().length + 1 == 1) {
         window.setInterval(function(){
-            window.setTimeout(switchedToGeneralResults(),60000);
+            window.setTimeout(angular.element("#content").scope().switchedToGeneralResults(),60000);
         }, 60000);
     }
     if ($(this).prevAll().length + 1 == 2) {
         window.setInterval(function(){
-        window.setTimeout(candidategenstat(), 60000);
+        window.setTimeout(angular.element("#content").scope().candidategenstat(), 60000);
         },60000);
     }
     if ($(this).prevAll().length + 1 == 3) {
         window.setInterval(function(){
-        window.setTimeout(partystat(), 60000);
+        window.setTimeout(angular.element("#content").scope().partystat(), 60000);
         },60000);
     }
     if ($(this).prevAll().length + 1 == 4) {
         window.setInterval(function(){
-        window.setTimeout(candidateareastat(), 60000);
+        window.setTimeout(angular.element("#content").scope().candidateareastat(), 60000);
         },60000);
     }
     if ($(this).prevAll().length + 1 == 5) {
         window.setInterval(function(){
-        window.setTimeout(partyareastat(), 60000);
+        window.setTimeout(angular.element("#content").scope().partyareastat(), 60000);
         },60000);
     }
 });
