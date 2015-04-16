@@ -6,8 +6,6 @@ if (!defined('BASEPATH'))
 class Candidates_Controller extends CI_Controller {
 
     public function index() {
-        
-        $this->output->cache(10);
         $this->load->helper('url');
         $this->load->library('facebook');
         $this->load->library('session');
