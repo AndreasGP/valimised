@@ -100,32 +100,35 @@ $(".document").ready(function () {
 });
 
 $(".document").ready(function () {
+    var skoop = angular.element("#content").scope();
+    var time = 2000;
     $("#tabs li").click(function () {
     if ($(this).prevAll().length + 1 == 1) {
         window.setInterval(function(){
-            window.setTimeout(angular.element("#content").scope().switchedToGeneralResults(),0);
-        }, 10000);
+            window.setTimeout(skoop.switchedToGeneralResults(),0);
+        }, time);
     }
     if ($(this).prevAll().length + 1 == 2) {
         window.setInterval(function(){
-        window.setTimeout(angular.element("#content").scope().candidategenstat(), 0);
-        },10000);
+        console.log("2");
+        window.setTimeout(skoop.candidategenstat(), 0);
+        },time);
     }
     if ($(this).prevAll().length + 1 == 3) {
         window.setInterval(function(){
         console.log("Refreshed");
-        window.setTimeout(angular.element("#content").scope().partystat(), 0);
-        },10000);
+        window.setTimeout(skoop.partystat(), 0);
+        },time);
     }
     if ($(this).prevAll().length + 1 == 4) {
         window.setInterval(function(){
-        window.setTimeout(angular.element("#content").scope().candidateareastat(), 0);
-        },10000);
+        window.setTimeout(skoop.candidateareastat(), 0);
+        },time);
     }
     if ($(this).prevAll().length + 1 == 5) {
         window.setInterval(function(){
-        window.setTimeout(angular.element("#content").scope().partyareastat(), 0);
-        },10000);
+        window.setTimeout(skoop.partyareastat(), 0);
+        },time);
     }
 });
 });
