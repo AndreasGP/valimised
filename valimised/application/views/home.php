@@ -29,7 +29,7 @@
         <h3>Oma hääle andmiseks palun logige sisse.</h3> 
     </div>
     <div class="row">
-        <div class="col-sm-4">
+        <div class="col-sm-4 hidden-xs hidden-sm hidden-md">
             <div class="list-group">
                 <a href="#" class="list-group-item active">Uudised</a>
                 <a href="#" class="list-group-item">02.03.2015 - Arendajad peatasid ajutiselt töö, et palgaläbirääkimisi pidada."</a>
@@ -39,7 +39,7 @@
                 <a href="#" class="list-group-item">12.02.2015 - E-hääletamissüsteemi arendusega alustatatakse juba homme!</a>
             </div>
         </div>
-        <div class="col-sm-8">
+        <div class="col-xs-12 col-lg-8">
             <h3>Hääletamine on lihtne</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ante erat, lobortis at nibh sit amet, sagittis elementum nisi. In suscipit ut arcu sed consequat. Aenean finibus porta tempus. Nam bibendum vehicula risus a aliquam. Nam luctus augue in odio imperdiet fermentum. Suspendisse potenti. Quisque maximus sapien in purus consequat, non dictum quam ultricies. Curabitur bibendum mattis augue, eu tincidunt velit mattis eu. Mauris vel vehicula est, ut auctor justo. Mauris in leo rutrum, tempus odio sit amet, placerat nulla. Integer consequat felis interdum tellus euismod sollicitudin. Mauris ipsum ligula, auctor id efficitur eu, pharetra nec turpis. Vestibulum cursus sagittis nibh sed pellentesque. Curabitur imperdiet pretium gravida. Quisque dictum bibendum facilisis. Nulla pretium sem at tincidunt posuere.
             </p>   

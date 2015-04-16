@@ -1,6 +1,6 @@
 <div class="container">
     <div class="col-sm-3">
-        <img src="http://i2.kym-cdn.com/photos/images/newsfeed/000/114/139/tumblr_lgedv2Vtt21qf4x93o1_40020110725-22047-38imqt.jpg" alt="Smiley face" width="200" height="200">
+        <img src="http://i2.kym-cdn.com/photos/images/newsfeed/000/114/139/tumblr_lgedv2Vtt21qf4x93o1_40020110725-22047-38imqt.jpg" class="img-responsive" alt="Smiley face" width="200" height="200">
     </div>
     <div class="col-sm-9">
         <h1>Kandidaat <?php echo $candidate->getId(); ?>: <?php echo $candidate->getUser()->getFullName() ?></h1>

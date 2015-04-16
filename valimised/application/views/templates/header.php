@@ -10,7 +10,7 @@
         }
         ?>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <meta http-equiv="Cache-control" content="public"></meta>
+        <!-- <meta http-equiv="Cache-control" content="public"></meta> -->
         <link rel="stylesheet" href="/valimised/css/bootstrap.css" />
 
         <?php
