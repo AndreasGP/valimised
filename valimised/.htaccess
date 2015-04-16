@@ -11,24 +11,24 @@ RewriteCond $1 !^(index\.php|public|images|robots\.txt|css)
 RewriteRule ^(.*)$ index.php/$1 [L]
 </IfModule>
 
-<IfModule mod_mime.c>
-AddType text/cache-manifest .appcache
-</IfModule>
+#<IfModule mod_mime.c>
+#AddType text/cache-manifest .appcache
+#</IfModule>
 
 
-<IfModule mod_expires.c>
-ExpiresActive on
-ExpiresDefault "access plus 1 month"
+#<IfModule mod_expires.c>
+#ExpiresActive on
+#ExpiresDefault "access plus 1 month"
 
 # CSS
-ExpiresByType text/css "access plus 1 year"
+#ExpiresByType text/css "access plus 1 year"
 
  # JavaScript
-ExpiresByType application/javascript "access plus 1 week"
-ExpiresByType application/x-javascript "access plus 1 week"
-ExpiresByType text/javascript "access plus 1 week"
+#ExpiresByType application/javascript "access plus 1 week"
+#ExpiresByType application/x-javascript "access plus 1 week"
+#ExpiresByType text/javascript "access plus 1 week"
 
-</IfModule>
+#</IfModule>
 
 <IfModule mod_deflate.c>
 # Force compression for mangled `Accept-Encoding` request headers
