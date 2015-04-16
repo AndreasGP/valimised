@@ -8,7 +8,7 @@
     </div>
 
     <div class="row">
-        <div class="col-sm-2">
+        <div class="col-md-2">
             <h3>Otsing</h3>
             <form role="form">
                 <div class="form-group">
@@ -26,13 +26,13 @@
                 </div>
             </form>
         </div>
-        <div class="col-sm-8">
+        <div class="col-md-8">
             <div ng-init="areaid = '<?php echo $areaid ?>'" ng-controller="CandidatesCtrl">
                 <table ng-table="tableParams" class="table table-striped">
                     <tr ng-repeat="candidate in $data | filter:name | filter:party " ng-click="candidatePage({{candidate.id}})">
-                        <td class="col-md-1" data-title="'Kandidaadi number'" sortable="id">{{candidate.id}}</td>
-                        <td class="col-md-3" data-title="'Nimi'" sortable="'name'"><a href='/valimised/kandidaat/nr/{{candidate.id}}'>{{candidate.firstname}} {{candidate.lastname}}</a></td>
-                        <td class="col-md-4" data-title="'Kandideerib erakonnas'" sortable="'party'"><a href='/valimised/kandidaat/nr/{{candidate.id}}'>{{candidate.party}}</a></td>
+                        <td class="col-xs-1" data-title="'Nr'" sortable="id">{{candidate.id}}</td>
+                        <td class="col-xs-3" data-title="'Nimi'" sortable="'name'"><a href='/valimised/kandidaat/nr/{{candidate.id}}'>{{candidate.firstname}} {{candidate.lastname}}</a></td>
+                        <td class="col-xs-4" data-title="'Kandideerib erakonnas'" sortable="'party'"><a href='/valimised/kandidaat/nr/{{candidate.id}}'>{{candidate.party}}</a></td>
                     </tr>
                 </table>
             </div>

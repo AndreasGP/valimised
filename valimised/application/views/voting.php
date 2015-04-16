@@ -12,24 +12,24 @@
             <div><alert id="success_message2" class="text-center" type="success">Teie hääl on edukalt tühistatud..</alert></div>
             <div><alert id="fail_message2" class="text-center" type="danger">Teie hääle tühistamisega oli probleeme. Proovige varsti uuesti.</alert></div>
 
-            <h1>Teie valimispiirkond on <?php echo $area->getName(); ?>.</h1>
+            <h2>Teie valimispiirkond on <?php echo $area->getName(); ?>.</h2>
 
-            <div class="row">
-                <div class ="col-md-6">
+            <div class="container">
+                <div class ="col-xs-12 col-md-6">
                     <h2>Kandidaadid</h2>
-                    <select size=10 onChange="candidateChanged()" class="form-control" id="candidate">
+                    <select size=10 onChange="candidateChanged()" id="candidate">
                         <option value="" style="display:none;"></option>
                         <?php foreach ($candidates as $candidate): ?>
-                            <option value="<?php echo $candidate->getId(); ?>"><?php echo $candidate->getId() . ". [" . $candidate->getParty()->getName() . "]: " . $candidate->getUser()->getFullName(); ?></option>
+                            <option value="<?php echo $candidate->getId(); ?>"><?php echo $candidate->getId() . ". [" . $candidate->getParty()->getShort() . "]: " . $candidate->getUser()->getFullName(); ?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>
-                <div class ="col-md-6">
-                    <h2>Teie valik</h2>
-                    <div id="noSelection">
-                        <h3>Palun valige vasakult kandidaat.</h3>
+                <div class ="col-xs-12 col-md-6">
+                    <h3>Teie valik</h3>
+                    <div id="noSelection" class="col-xs-10">
+                        <h4>Palun valida kandidaat.</h4>
                     </div>
-                    <div id="selection">
+                    <div id="selection" class="col-xs-10">
                         <h3>
                         <br>
                         Kandidaat <label id="candidatename"></label>

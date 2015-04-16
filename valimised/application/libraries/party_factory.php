@@ -72,10 +72,11 @@ class Party_Factory {
     }
 
     public function createObjectFromData($row) {
-        $area = new Party_Model();
-        $area->setId($row->id);
-        $area->setName($row->name);
-        return $area;
+        $party = new Party_Model();
+        $party->setId($row->id);
+        $party->setName($row->name);
+        $party->setShort($row->short);
+        return $party;
     }
 
 }

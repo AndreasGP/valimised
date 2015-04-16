@@ -11,7 +11,7 @@
         </div>
         <div class="navbar-collapse collapse navbar-right">
             <ul class="nav navbar-nav">
-                <li><a href="/valimised/tulemused">Valimistulemused</a></li>
+                <li><a href="/valimised/tulemused">Tulemused</a></li>
                 <li><a href="/valimised/kandidaadid">Kandidaadid</a></li>
                 <li><a href="/valimised/kandideerimine">Kandideerimine</a></li>
                 <li><a href="/valimised/haaletamine">Hääletamine</a></li>
