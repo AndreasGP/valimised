@@ -26,7 +26,8 @@ class Logged_Controller extends CI_Controller {
         $fbdata = $this->facebook->getLoginData();
         $this->load->view('templates/navbar.php', $fbdata);
 
-        if ($fbdata['user_profile']['verified'] == true) {
+        if(array_key_exists('user_profile' ,$fbdata)) {
+            if ($fbdata['user_profile']['verified'] == true) {
             $userQuery = $this->db->select("*")->from("user")->where("email", $fbdata['user_profile']['email'])->get();
 
             if ($userQuery->num_rows() === 1) {
@@ -58,6 +59,10 @@ class Logged_Controller extends CI_Controller {
             }
 
 
+        } else {
+            //User not properly logged in, alternative behaviour
+            $this->load->view('home', array("event" => "fail"));
+        }
         } else {
             //User not properly logged in, alternative behaviour
             $this->load->view('home', array("event" => "fail"));

@@ -31,4 +31,7 @@ main.controller('CandidatesCtrl', function ($scope, $filter, $http, ngTableParam
             window.location.href = "morsakabi.planet.ee/valimised/kandidaat/nr/" + id;
         };
     });
+    
+
+
 });
