@@ -14,7 +14,7 @@
                 <div class="form-group">
                     <label for="name">Nime järgi:</label>
                     <input type="text" class="form-control" ng-model="name" id="name"/>
-                    <label for="pwd">Erakonna järgi:</label>
+                    <label >Erakonna järgi:</label>
                     <select class="form-control" ng-model="party" id="party" onchange="onPartyChange()">
                         <option value="" style="display:none;"></option>
                         <?php foreach ($parties as $row): ?>
@@ -39,5 +39,4 @@
             </div>
         </div>
     </div>
-</div>
 </div>
