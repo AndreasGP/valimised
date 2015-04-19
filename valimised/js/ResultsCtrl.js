@@ -28,7 +28,10 @@ main.controller('ResultsCtrl', function ($scope, $http) {
     $scope.candidateareastat = function ($id) {
 
         if ($id === undefined || $id === 0) {
-            $id = 1;
+            $id = document.getElementById("area").value;
+            if($id === undefined | $id === 0 || $id == "") {
+                $id = 1;
+            }
         }
         $http.get('/valimised/tulemused/getCandidateResults/' + $id).
                 success(function (candidate) {
@@ -48,7 +51,10 @@ main.controller('ResultsCtrl', function ($scope, $http) {
 
     $scope.partyareastat = function ($id) {
         if ($id === undefined || $id === 0) {
-            $id = 1;
+            $id = document.getElementById("area").value;
+            if($id === undefined | $id === 0 || $id == "") {
+                $id = 1;
+            }
         }
         $http.get('/valimised/tulemused/getPartyResults/' + $id).
                 success(function (data) {
@@ -69,7 +75,10 @@ main.controller('ResultsCtrl', function ($scope, $http) {
     $scope.partystat = function ($id) {
 
         if ($id === undefined || $id === 0) {
-            $id = 1;
+            $id = document.getElementById("party").value;
+            if($id === undefined | $id === 0 || $id == "") {
+                $id = 1;
+            }
         }
         $http.get('/valimised/tulemused/getCandidatePartyResults/' + $id).
                 success(function (party) {
