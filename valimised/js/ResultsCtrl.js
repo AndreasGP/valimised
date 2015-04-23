@@ -28,7 +28,7 @@ main.controller('ResultsCtrl', function ($scope, $http) {
     $scope.candidateareastat = function ($id) {
 
         if ($id === undefined || $id === 0) {
-            $id = document.getElementById("area").value;
+            $id = document.getElementById("candidatearea").value;
             if($id === undefined | $id === 0 || $id == "") {
                 $id = 1;
             }
