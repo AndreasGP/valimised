@@ -156,7 +156,7 @@ areaChanged = function () {
     $id = document.getElementById("candidatearea").value;
     angular.element(document.getElementById('candidatearea')).scope().candidateareastat($id);
 }
-
+/*
 
 $(function () {
     'use strict';
@@ -298,7 +298,7 @@ function generateDataSetsFromDB(arr)
         }
     });
     return datasets;
-}
+}*/
 
 $(".document").ready(function () {
     $('#tabs').tab('show');

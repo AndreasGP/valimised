@@ -20,7 +20,7 @@
                                 <td class="col-md-4" data-title="'Häälte arv'" sortable="'votes'">{{tulemus.number}}</td>
                             </tr>
                         </table>
-                        <canvas id="myChart2" width="400" height="400"></canvas> 
+                        
                     </div>
 
                     <div class="tab-pane" id ="kandidaadidriik">
@@ -30,7 +30,7 @@
                                 <td class="col-md-4" data-title="'Häälte arv'" sortable="'votes'">{{kandidaat.number}}</td>
                             </tr>
                         </table>
-                        <canvas id="myChart2" width="400" height="400"></canvas> 
+                        
                     </div>
 
 
@@ -52,7 +52,7 @@
                                     <td class="col-md-4" data-title="'Häälte arv'" sortable="'votes'">{{tulemus.number}}</td>
                                 </tr>
                             </table>
-                            <canvas id="myChart2" width="400" height="400"></canvas> 
+                             
                         </div>
                     </div>
 
@@ -75,7 +75,7 @@
                                 </tr>
                             </table>
                         </div>
-                        <canvas id="myChart2" width="400" height="400"></canvas> 
+                         
                     </div>
 
 
@@ -98,7 +98,7 @@
                                 </tr>
                             </table>
                         </div>
-                        <canvas id="myChart2" width="400" height="400"></canvas> 
+                         
                     </div>
                 </div>
             </div>
