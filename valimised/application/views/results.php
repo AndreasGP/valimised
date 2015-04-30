@@ -37,7 +37,7 @@
                     <div class="tab-pane" id ="erakonnad">
                         <div class ="col-md-6">
                             <h2>Erakonnad</h2>
-                            <select size=10 onChange="partyChanged()" class="form-control" id="party">
+                            <select size="10" onChange="partyChanged()" class="form-control" id="party">
                                 <option value="" style="display:none;"></option>
                                 <?php foreach ($parties as $party): ?>
                                     <option value="<?php echo $party->getId(); ?>"><?php echo $party->getId() . ". " . $party->getName(); ?> </option>
@@ -59,7 +59,7 @@
                     <div class="tab-pane" id ="erakonnadpiirkond">
                         <div class ="col-md-4">
                             <h2>Piirkonnad</h2>
-                            <select size=10 onChange="areaChanged()" class="form-control" id="area">
+                            <select size="10" onChange="areaChanged()" class="form-control" id="area">
                                 <option value="" style="display:none;"></option>
                                 <?php foreach ($areas as $area): ?>
                                     <option value="<?php echo $area->getId(); ?>"><?php echo $area->getId() . ". " . $area->getName(); ?> </option>
@@ -82,7 +82,7 @@
                     <div class="tab-pane" id ="kandidaadidpiirkond">
                         <div class ="col-md-4">
                             <h2>Piirkonnad</h2>
-                            <select size=10 onChange="areaChanged()" class="form-control" id="candidatearea">
+                            <select size="10" onChange="areaChanged()" class="form-control" id="candidatearea">
                                 <option value="" style="display:none;"></option>
                                 <?php foreach ($areas as $area): ?>
                                     <option value="<?php echo $area->getId(); ?>"><?php echo $area->getId() . ". " . $area->getName(); ?> </option>

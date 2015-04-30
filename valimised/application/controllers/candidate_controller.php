@@ -31,9 +31,10 @@ class Candidate_Controller extends CI_Controller {
         $this->session->set_flashdata('fb', uri_string());
         $data = array(
             //Fetch candidate information
+            "title" => "Kandidaat",
             "candidate" => $this->candidate_factory->getCandidate($id)
         );
-        $this->load->view('templates/header.php');
+        $this->load->view('templates/header.php', $data);
         $this->load->library('facebook');
         $this->load->view('templates/navbar.php', $this->facebook->getLoginData());
         $this->load->view('candidate.php', $data);
