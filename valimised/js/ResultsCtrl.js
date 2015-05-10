@@ -28,7 +28,7 @@ main.controller('ResultsCtrl', function ($scope, $http) {
     $scope.candidateareastat = function ($id) {
 
         if ($id === undefined || $id === 0) {
-            $id = document.getElementById("area").value;
+            $id = document.getElementById("candidatearea").value;
             if($id === undefined | $id === 0 || $id == "") {
                 $id = 1;
             }
@@ -165,7 +165,7 @@ areaChanged = function () {
     $id = document.getElementById("candidatearea").value;
     angular.element(document.getElementById('candidatearea')).scope().candidateareastat($id);
 }
-
+/*
 
 $(function () {
     'use strict';
@@ -307,7 +307,7 @@ function generateDataSetsFromDB(arr)
         }
     });
     return datasets;
-}
+}*/
 
 $(".document").ready(function () {
     $('#tabs').tab('show');
