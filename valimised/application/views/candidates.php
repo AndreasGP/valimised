@@ -16,7 +16,7 @@
                     <input type="text" class="form-control" ng-model="name" id="name"/>
                     <label >Erakonna järgi:</label>
                     <select class="form-control" ng-model="party" id="party" onchange="onPartyChange()">
-                        <option value="" style="display:none;"></option>
+                        <option value="" class="hidden"></option>
                         <?php foreach ($parties as $row): ?>
                             <option><?php echo $row->getName(); ?></option>
                         <?php endforeach; ?>

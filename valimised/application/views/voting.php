@@ -18,7 +18,7 @@
                 <div class ="col-xs-12 col-md-6">
                     <h2>Kandidaadid</h2>
                     <select size=10 onChange="candidateChanged()" id="candidate">
-                        <option value="" style="display:none;"></option>
+                        <option value="" class="hiden"></option>
                         <?php foreach ($candidates as $candidate): ?>
                             <option value="<?php echo $candidate->getId(); ?>"><?php echo $candidate->getId() . ". [" . $candidate->getParty()->getShort() . "]: " . $candidate->getUser()->getFullName(); ?></option>
                         <?php endforeach; ?>

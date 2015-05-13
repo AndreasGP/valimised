@@ -10,7 +10,7 @@
                         <div class="col-xs-7">
                             <input class="form-control" type="text" id="firstname" name="firstname" ng-model="user.firstname" placeholder="<?php echo $firstname ?>" required disabled />
                         </div>
-                        <span class="col-xs-2" style="color:red" ng-show="form.firstname.$dirty && form.firstname.$invalid">
+                        <span class="col-xs-2" class="redcolor" ng-show="form.firstname.$dirty && form.firstname.$invalid">
                             <span ng-show="form.firstname.$error.required"> Sisestada eesnimi.</span></span>
                     </div>
 
@@ -19,7 +19,7 @@
                         <div class="col-xs-7">
                             <input class="form-control" type="text" name="lastname" ng-model="user.lastname" placeholder="<?php echo $lastname ?>" required disabled />
                         </div>
-                        <span class="col-xs-2" style="color:red" ng-show="form.lastname.$dirty && form.lastname.$invalid">
+                        <span class="col-xs-2" class="redcolor" ng-show="form.lastname.$dirty && form.lastname.$invalid">
                             <span ng-show="form.lastname.$error.required"> Sisestada perekonnanimi.</span></span>
                     </div>
 
@@ -38,7 +38,7 @@
                             </select> 
                         </div>
 
-                        <span class="col-xs-2" style="color:red" 
+                        <span class="col-xs-2" class="redcolor" 
                               ng-show="form.year.$dirty && form.year.$invalid && form.month.$dirty && form.month.$invalid &&
                                                       form.day.$dirty && form.day.$invalid">
                             <span ng-show="form.year.$error.required && form.month.$error.required && form.day.$error.required"> 
@@ -49,13 +49,13 @@
                         <label class="control-label col-xs-3" for="education">Haridus:</label>
                         <div class="col-xs-7">
                             <select class="form-control" id="education" ng-model="user.education" name="education" required>
-                                <option value="" style="display:none;"></option>
+                                <option value="" class="hidden"></option>
                                 <?php foreach ($educations as $row): ?>
                                     <option><?php echo $row->getName(); ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
-                        <span class="col-xs-2" style="color:red" 
+                        <span class="col-xs-2" class="redcolor" 
                               ng-show="form.education.$dirty && form.education.$invalid">
                             <span ng-show="form.education.$error.required">Valige haridustase.</span></span>
                     </div>
@@ -68,7 +68,7 @@
                         <div class="col-xs-7">
                             <input class="form-control" type="text" placeholder="Töökoht" name="job" ng-model="user.job" required>
                         </div>
-                        <span class="col-xs-2" style="color:red" ng-show="form.job.$dirty && form.job.$invalid">
+                        <span class="col-xs-2" class="redcolor" ng-show="form.job.$dirty && form.job.$invalid">
                             <span ng-show="form.job.$error.required"> Sisestada amet.</span></span>
                     </div>
 
@@ -77,7 +77,7 @@
                         <div class="col-xs-7">
                             <input class="form-control" id="area" type="text" name="area" ng-model="user.area" placeholder="<?php echo $area->getName(); ?>" required disabled/>
                         </div>
-                        <span class="col-xs-2" style="color:red" 
+                        <span class="col-xs-2" class="redcolor" 
                               ng-show="form.area.$dirty && form.area.$invalid">
                             <span ng-show="form.area.$error.required">Valige piirkond.</span></span>
                     </div>
@@ -87,13 +87,13 @@
                         <label class="control-label col-xs-3" for="pwd">Erakond:</label>
                         <div class="col-xs-7">
                             <select class="form-control" id="party" ng-model="user.party" required>
-                                <option value="" style="display:none;"></option>
+                                <option value="" class="hidden"></option>
                                 <?php foreach ($parties as $row): ?>
                                     <option><?php echo $row->getName(); ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
-                        <span class="col-xs-2" style="color:red" ng-show="form.party.$dirty && form.party.$invalid">
+                        <span class="col-xs-2" class="redcolor" ng-show="form.party.$dirty && form.party.$invalid">
                             <span ng-show="form.party.$error.required"> Valige erakond.</span></span>
                     </div>
 
@@ -102,7 +102,7 @@
                         <div class="col-xs-7">
                             <input class="file" name="pic" type="file" onchange="readURL(this)" id="pic" ng-model="user.pic" required>
                         </div>
-                        <span class="col-xs-2" style="color:red" 
+                        <span class="col-xs-2" class="redcolor" 
                               ng-show="form.pic.$dirty && form.pic.$invalid">
                             <span ng-show="form.pic.$error.required">Valige pilt.</span></span>
                     </div>
@@ -114,7 +114,7 @@
             <br>
             <textarea class="form-control" rows="6" cols="100" ng-model="user.description" name="description" required>
             </textarea>
-            <span class="col-xs-2" style="color:red" 
+            <span class="col-xs-2" class="redcolor" 
                   ng-show="form.description.$dirty && form.description.$invalid">
                 <span ng-show="form.description.$error.required">Sisestage kirjeldus.</span></span>
             <br>

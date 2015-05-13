@@ -5,6 +5,15 @@
  */
 
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
+
+.hidden {
+    display:none;
+}
+
+.redcolor {
+    color:red;
+}
+
 html {
   font-family: sans-serif;
   -webkit-text-size-adjust: 100%;
@@ -6578,4 +6587,3 @@ button.close {
     display: none !important;
   }
 }
-/*# sourceMappingURL=bootstrap.css.map */
