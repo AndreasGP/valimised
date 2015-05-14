@@ -58,7 +58,7 @@ class Candidates_Controller extends CI_Controller {
 
     public function get($areaid = 0, $start = 0, $count = 20) {
         $this->load->library("candidate_factory");
-        $candidates = $this->candidate_factory->getCandidatesJSON(-1);
+        $candidates = $this->candidate_factory->getCandidatesJSON($areaid);
         $this->output->set_content_type('application/json')->set_output(json_encode($candidates));
     }
 
