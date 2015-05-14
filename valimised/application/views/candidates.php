@@ -21,6 +21,13 @@
                             <option><?php echo $row->getName(); ?></option>
                         <?php endforeach; ?>
                     </select>
+                    <label >Piirkonna järgi:</label>
+                    <select class="form-control" ng-model="area" id="area" onchange="onAreaChange()">
+                        <option value="" class="hidden"></option>
+                        <?php foreach ($areas as $row): ?>
+                            <option><?php echo $row->getName(); ?></option>
+                        <?php endforeach; ?>
+                    </select>
                   
                     <br/>
                     <button type="button" class="btn btn-lg btn-info pull-left">Otsi</button>
@@ -30,10 +37,11 @@
         <div class="col-md-8">
             <div ng-init="areaid = '<?php echo $areaid ?>'" ng-controller="CandidatesCtrl">
                 <table ng-table="tableParams" class="table table-striped">
-                    <tr ng-repeat="candidate in $data | filter:name | filter:party" ng-click="candidatePage({{candidate.id}})">
+                    <tr ng-repeat="candidate in $data | filter:name | filter:party | filter:area" ng-click="candidatePage({{candidate.id}})">
                         <td class="col-xs-1" data-title="'Nr'" sortable="id">{{candidate.id}}</td>
                         <td class="col-xs-3" data-title="'Nimi'" sortable="'name'"><a href='/valimised/kandidaat/nr/{{candidate.id}}'>{{candidate.firstname}} {{candidate.lastname}}</a></td>
                         <td class="col-xs-4" data-title="'Kandideerib erakonnas'" sortable="'party'"><a href='/valimised/kandidaat/nr/{{candidate.id}}'>{{candidate.party}}</a></td>
+                        <td class="col-xs-4" data-title="'Piirkond'" sortable="'area'"><a href='/valimised/kandidaat/nr/{{candidate.id}}'>{{candidate.area}}</a></td>
                     </tr>
                 </table>
             </div>
