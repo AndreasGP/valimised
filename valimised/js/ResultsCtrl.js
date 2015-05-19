@@ -98,6 +98,20 @@ main.controller('ResultsCtrl', function ($scope, $http) {
 
 
 });
+// https://docs.angularjs.org/tutorial/step_07
+// deep linking guide
+main.directive('showtab',
+    function () {
+        return {
+            link: function (scope, element, attrs) {
+                element.click(function(e) {
+                    e.preventDefault();
+                    console.log("Works!!");
+                    $(element).tab('show');
+                });
+            }
+        };
+    });
 
 $(".document").ready(function () {
     window.setTimeout(function () {
@@ -308,7 +322,7 @@ function generateDataSetsFromDB(arr)
     });
     return datasets;
 }*/
-
+/*
 $(".document").ready(function () {
     $('#tabs').tab('show');
 });
@@ -326,3 +340,5 @@ if (hash) {
 $('.nav-tabs a').on('shown', function (e) {
     window.location.hash = e.target.hash.replace("#", "#" + prefix);
 });
+
+*/
