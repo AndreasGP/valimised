@@ -8,16 +8,21 @@ class Candidates_Controller extends CI_Controller {
     public function index() {
         $this->load->helper('url');
         $this->load->library('facebook');
+        $this->load->library("area_factory");
+        $this->load->library("party_factory");
         $this->load->library('session');
         $this->session->set_flashdata('fb', uri_string());
         $data = array(
             //Title of the page
             "title" => "Kandidaadid",
+            "parties" => $this->party_factory->getParty(),
+            "areas" => $this->area_factory->getArea(),
+            "scripts" => array("/valimised/js/CandidatesCtrl.js")
         );
 
         $this->load->view('templates/header.php', $data);
         $this->load->view('templates/navbar.php', $this->facebook->getLoginData());
-        $this->load->view('candidate_areas.php');
+        $this->load->view('candidate_areas.php', $data);
         $this->load->view('templates/footer.php');
     }
 

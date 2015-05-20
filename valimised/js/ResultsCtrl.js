@@ -29,7 +29,7 @@ main.controller('ResultsCtrl', function ($scope, $http) {
 
         if ($id === undefined || $id === 0) {
             $id = document.getElementById("candidatearea").value;
-            if($id === undefined | $id === 0 || $id == "") {
+            if ($id === undefined | $id === 0 || $id == "") {
                 $id = 1;
             }
         }
@@ -52,7 +52,7 @@ main.controller('ResultsCtrl', function ($scope, $http) {
     $scope.partyareastat = function ($id) {
         if ($id === undefined || $id === 0) {
             $id = document.getElementById("area").value;
-            if($id === undefined | $id === 0 || $id == "") {
+            if ($id === undefined | $id === 0 || $id == "") {
                 $id = 1;
             }
         }
@@ -76,7 +76,7 @@ main.controller('ResultsCtrl', function ($scope, $http) {
 
         if ($id === undefined || $id === 0) {
             $id = document.getElementById("party").value;
-            if($id === undefined | $id === 0 || $id == "") {
+            if ($id === undefined | $id === 0 || $id == "") {
                 $id = 1;
             }
         }
@@ -95,23 +95,22 @@ main.controller('ResultsCtrl', function ($scope, $http) {
                 });
     };
 
-
-
 });
 // https://docs.angularjs.org/tutorial/step_07
 // deep linking guide
 main.directive('showtab',
-    function () {
-        return {
-            link: function (scope, element, attrs) {
-                element.click(function(e) {
-                    e.preventDefault();
-                    console.log("Works!!");
-                    $(element).tab('show');
-                });
-            }
-        };
-    });
+        function () {
+            return {
+                link: function (scope, element, attrs) {
+                    element.click(function (e) {
+                        e.preventDefault();
+                        console.log("Works!!");
+                        $(element).tab('show');
+                    });
+                }
+            };
+        });
+
 
 $(".document").ready(function () {
     window.setTimeout(function () {
@@ -125,47 +124,47 @@ $(".document").ready(function () {
 $(".document").ready(function () {
     var skoop = angular.element("#content").scope();
     var time = 2000;
-    var refreshIntervalId = window.setInterval(function(){
+    var refreshIntervalId = window.setInterval(function () {
         console.log("1");
-            window.setTimeout(skoop.switchedToGeneralResults(),0);
-        }, time);
+        window.setTimeout(skoop.switchedToGeneralResults(), 0);
+    }, time);
     $("#tabs li").click(function () {
-    if ($(this).prevAll().length + 1 == 1) {
-        clearInterval(refreshIntervalId);
-        refreshIntervalId = window.setInterval(function(){
-            console.log("1");
-            window.setTimeout(skoop.switchedToGeneralResults(),0);
-        }, time);
-    }
-    if ($(this).prevAll().length + 1 == 2) {
-        clearInterval(refreshIntervalId);
-        refreshIntervalId = window.setInterval(function(){
-        console.log("2");
-        window.setTimeout(skoop.candidategenstat(), 0);
-        },time);
-    }
-    if ($(this).prevAll().length + 1 == 3) {
-        clearInterval(refreshIntervalId);
-        refreshIntervalId = window.setInterval(function(){
-        console.log("Refreshed");
-        window.setTimeout(skoop.partystat(), 0);
-        },time);
-    }
-    if ($(this).prevAll().length + 1 == 4) {
-        clearInterval(refreshIntervalId);
-        refreshIntervalId = window.setInterval(function(){
-            console.log("3");
-        window.setTimeout(skoop.candidateareastat(), 0);
-        },time);
-    }
-    if ($(this).prevAll().length + 1 == 5) {
-        clearInterval(refreshIntervalId);
-        refreshIntervalId = window.setInterval(function(){
-            console.log("4");
-        window.setTimeout(skoop.partyareastat(), 0);
-        },time);
-    }
-});
+        if ($(this).prevAll().length + 1 == 1) {
+            clearInterval(refreshIntervalId);
+            refreshIntervalId = window.setInterval(function () {
+                console.log("1");
+                window.setTimeout(skoop.switchedToGeneralResults(), 0);
+            }, time);
+        }
+        if ($(this).prevAll().length + 1 == 2) {
+            clearInterval(refreshIntervalId);
+            refreshIntervalId = window.setInterval(function () {
+                console.log("2");
+                window.setTimeout(skoop.candidategenstat(), 0);
+            }, time);
+        }
+        if ($(this).prevAll().length + 1 == 3) {
+            clearInterval(refreshIntervalId);
+            refreshIntervalId = window.setInterval(function () {
+                console.log("Refreshed");
+                window.setTimeout(skoop.partystat(), 0);
+            }, time);
+        }
+        if ($(this).prevAll().length + 1 == 4) {
+            clearInterval(refreshIntervalId);
+            refreshIntervalId = window.setInterval(function () {
+                console.log("3");
+                window.setTimeout(skoop.candidateareastat(), 0);
+            }, time);
+        }
+        if ($(this).prevAll().length + 1 == 5) {
+            clearInterval(refreshIntervalId);
+            refreshIntervalId = window.setInterval(function () {
+                console.log("4");
+                window.setTimeout(skoop.partyareastat(), 0);
+            }, time);
+        }
+    });
 });
 
 partyChanged = function () {
@@ -180,165 +179,165 @@ areaChanged = function () {
     angular.element(document.getElementById('candidatearea')).scope().candidateareastat($id);
 }
 /*
-
-$(function () {
-    'use strict';
-
-    var line_chart_options = {
-        scaleGridLineColor: "rgba(0,0,0,.05)",
-        responsive: true
-    };
-    var Data = {
-        labels: generateLabelsFromDB(),
-        datasets: generateDataSetsFromDB()
-    };
-
-    var data = {
-        labels: ["January", "February", "March", "April", "May", "June", "July"],
-        datasets: [
-            {
-                label: "My First dataset",
-                fillColor: "rgba(220,220,220,0.2)",
-                pointHighlightStroke: "rgba(220,220,220,1)",
-                data: [65, 59, 80, 81, 56, 55, 40]
-            },
-            {
-                label: "My Second dataset",
-                fillColor: "rgba(151,187,205,0.2)",
-                pointHighlightStroke: "rgba(151,187,205,1)",
-                data: [28, 48, 40, 19, 86, 27, 90]
-            }
-        ]
-    };
-    var ctx1 = $("#myChart1").get(0).getContext("2d");
-    var myLineChart1 = new Chart(ctx1).Line(data, line_chart_options);
-
-    var ctx2 = $("#myChart2").get(0).getContext("2d");
-    var myLineChart2;
-
-    var ctx3 = $("#myChart3").get(0).getContext("2d");
-    var myLineChart3;
-
-    var ctx4 = $("#myChart4").get(0).getContext("2d");
-    var myLineChart4;
-
-    ('#tab1').on('shown.bs.tab', function (e) {
-        if (myLineChart2) {
-            myLineChart2.destroy();
-        }
-        if (myLineChart3) {
-            myLineChart3.destroy();
-        }
-        if (myLineChart4) {
-            myLineChart4.destroy();
-        }
-        $
-        myLineChart1 = new Chart(ctx1).Line(data, line_chart_options);
-    });
-
-    $('#tab2').on('shown.bs.tab', function (e) {
-        if (myLineChart1) {
-            myLineChart1.destroy();
-        }
-        if (myLineChart3) {
-            myLineChart3.destroy();
-        }
-        if (myLineChart4) {
-            myLineChart4.destroy();
-        }
-        myLineChart2 = new Chart(ctx2).Line(data, line_chart_options);
-    });
-
-    $('#tab3').on('shown.bs.tab', function (e) {
-        if (myLineChart2) {
-            myLineChart2.destroy();
-        }
-        if (myLineChart1) {
-            myLineChart1.destroy();
-        }
-        if (myLineChart4) {
-            myLineChart4.destroy();
-        }
-        myLineChart3 = new Chart(ctx3).Line(data, line_chart_options);
-    });
-
-    $('#tab4').on('shown.bs.tab', function (e) {
-        if (myLineChart2) {
-            myLineChart2.destroy();
-        }
-        if (myLineChart3) {
-            myLineChart3.destroy();
-        }
-        if (myLineChart1) {
-            myLineChart1.destroy();
-        }
-        myLineChart4 = new Chart(ctx4).Line(data, line_chart_options);
-    });
-});
-
-function generateLabelsFromDB(arr)
-{
-    var labels = [];
-
-    var rows = jQuery("tr");
-    rows.each(function (index) {
-        if (index != 0)  // we dont need first row of table
-        {
-            var cols = $(this).find("td");
-            labels.push(cols.first().text());
-        }
-    });
-    return labels;
-}
-
-function generateDataSetsFromDB(arr)
-{
-    var data;
-    var datasets = [];
-    var rows = jQuery("tr");
-    rows.each(function (index) {
-        if (index != 0) // we dont need first row of table
-        {
-            var cols = $(this).find("td");
-            var data = [];
-            cols.each(function (innerIndex) {
-                if (innerIndex != 0) // we dont need first columns of the row                 
-                    data.push($(this).text());
-            });
-
-
-            var dataset =
-                    {
-                        fillColor: colors[index % 3].fillColor,
-                        strokeColor: colors[index % 3].strokeColor,
-                        highlightFill: colors[index % 3].highlightFill,
-                        highlightStroke: colors[index % 3].highlightStroke,
-                        data: data
-                    }
-
-            datasets.push(dataset);
-
-        }
-    });
-    return datasets;
-}*/
+ 
+ $(function () {
+ 'use strict';
+ 
+ var line_chart_options = {
+ scaleGridLineColor: "rgba(0,0,0,.05)",
+ responsive: true
+ };
+ var Data = {
+ labels: generateLabelsFromDB(),
+ datasets: generateDataSetsFromDB()
+ };
+ 
+ var data = {
+ labels: ["January", "February", "March", "April", "May", "June", "July"],
+ datasets: [
+ {
+ label: "My First dataset",
+ fillColor: "rgba(220,220,220,0.2)",
+ pointHighlightStroke: "rgba(220,220,220,1)",
+ data: [65, 59, 80, 81, 56, 55, 40]
+ },
+ {
+ label: "My Second dataset",
+ fillColor: "rgba(151,187,205,0.2)",
+ pointHighlightStroke: "rgba(151,187,205,1)",
+ data: [28, 48, 40, 19, 86, 27, 90]
+ }
+ ]
+ };
+ var ctx1 = $("#myChart1").get(0).getContext("2d");
+ var myLineChart1 = new Chart(ctx1).Line(data, line_chart_options);
+ 
+ var ctx2 = $("#myChart2").get(0).getContext("2d");
+ var myLineChart2;
+ 
+ var ctx3 = $("#myChart3").get(0).getContext("2d");
+ var myLineChart3;
+ 
+ var ctx4 = $("#myChart4").get(0).getContext("2d");
+ var myLineChart4;
+ 
+ ('#tab1').on('shown.bs.tab', function (e) {
+ if (myLineChart2) {
+ myLineChart2.destroy();
+ }
+ if (myLineChart3) {
+ myLineChart3.destroy();
+ }
+ if (myLineChart4) {
+ myLineChart4.destroy();
+ }
+ $
+ myLineChart1 = new Chart(ctx1).Line(data, line_chart_options);
+ });
+ 
+ $('#tab2').on('shown.bs.tab', function (e) {
+ if (myLineChart1) {
+ myLineChart1.destroy();
+ }
+ if (myLineChart3) {
+ myLineChart3.destroy();
+ }
+ if (myLineChart4) {
+ myLineChart4.destroy();
+ }
+ myLineChart2 = new Chart(ctx2).Line(data, line_chart_options);
+ });
+ 
+ $('#tab3').on('shown.bs.tab', function (e) {
+ if (myLineChart2) {
+ myLineChart2.destroy();
+ }
+ if (myLineChart1) {
+ myLineChart1.destroy();
+ }
+ if (myLineChart4) {
+ myLineChart4.destroy();
+ }
+ myLineChart3 = new Chart(ctx3).Line(data, line_chart_options);
+ });
+ 
+ $('#tab4').on('shown.bs.tab', function (e) {
+ if (myLineChart2) {
+ myLineChart2.destroy();
+ }
+ if (myLineChart3) {
+ myLineChart3.destroy();
+ }
+ if (myLineChart1) {
+ myLineChart1.destroy();
+ }
+ myLineChart4 = new Chart(ctx4).Line(data, line_chart_options);
+ });
+ });
+ 
+ function generateLabelsFromDB(arr)
+ {
+ var labels = [];
+ 
+ var rows = jQuery("tr");
+ rows.each(function (index) {
+ if (index != 0)  // we dont need first row of table
+ {
+ var cols = $(this).find("td");
+ labels.push(cols.first().text());
+ }
+ });
+ return labels;
+ }
+ 
+ function generateDataSetsFromDB(arr)
+ {
+ var data;
+ var datasets = [];
+ var rows = jQuery("tr");
+ rows.each(function (index) {
+ if (index != 0) // we dont need first row of table
+ {
+ var cols = $(this).find("td");
+ var data = [];
+ cols.each(function (innerIndex) {
+ if (innerIndex != 0) // we dont need first columns of the row                 
+ data.push($(this).text());
+ });
+ 
+ 
+ var dataset =
+ {
+ fillColor: colors[index % 3].fillColor,
+ strokeColor: colors[index % 3].strokeColor,
+ highlightFill: colors[index % 3].highlightFill,
+ highlightStroke: colors[index % 3].highlightStroke,
+ data: data
+ }
+ 
+ datasets.push(dataset);
+ 
+ }
+ });
+ return datasets;
+ }*/
 /*
-$(".document").ready(function () {
-    $('#tabs').tab('show');
-});
-// Javascript to enable link to tab
-var hash = document.location.hash;
-var prefix = "tab_";
-if (hash) {
-    hash = hash.replace(prefix, '');
-    var hashPieces = hash.split('?');
-    activeTab = $('.nav-tabs a[href=' + hashPieces[0] + ']');
-    activeTab && activeTab.tab('show');
-}
-
-// Change hash for page-reload
-$('.nav-tabs a').on('shown', function (e) {
-    window.location.hash = e.target.hash.replace("#", "#" + prefix);
-});
-
-*/
+ $(".document").ready(function () {
+ $('#tabs').tab('show');
+ });
+ // Javascript to enable link to tab
+ var hash = document.location.hash;
+ var prefix = "tab_";
+ if (hash) {
+ hash = hash.replace(prefix, '');
+ var hashPieces = hash.split('?');
+ activeTab = $('.nav-tabs a[href=' + hashPieces[0] + ']');
+ activeTab && activeTab.tab('show');
+ }
+ 
+ // Change hash for page-reload
+ $('.nav-tabs a').on('shown', function (e) {
+ window.location.hash = e.target.hash.replace("#", "#" + prefix);
+ });
+ 
+ */
