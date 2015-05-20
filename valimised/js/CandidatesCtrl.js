@@ -33,8 +33,10 @@ main.controller('CandidatesCtrl', function ($scope, $filter, $http, ngTableParam
     });
 });
 
-function addTable() {
-
+function addTable(area, party) {
+    var skoop = angular.element("#content").scope();
+    skoop.getInfo(area.selectedIndex, party.selectedIndex, document.getElementById("name").value);
+   
     var myTableDiv = document.getElementById("myDynamicTable");
     var table = document.createElement('TABLE');
     table.border = '1';
@@ -42,7 +44,7 @@ function addTable() {
     var tableBody = document.createElement('TBODY');
     table.appendChild(tableBody);
     
-    //Siin küsida otsingu augu väärtusi, teha päring andmebaasi ja siis kuvada tabelina
+    //luua getinfo meetod, anmed töödelda taelisse
     for (var i = 0; i < 3; i++) {
         var tr = document.createElement('TR');
         tableBody.appendChild(tr);

@@ -66,7 +66,7 @@
                 <br/>
                 <div id="myDynamicTable">
                     
-                    <button type="button" class="btn btn-lg btn-info pull-left" onclick="addTable()">Otsi</button>
+                    <button type="button" class="btn btn-lg btn-info pull-left" onclick="addTable(area, party)">Otsi</button>
                 </div>
             </div>
         </form>
