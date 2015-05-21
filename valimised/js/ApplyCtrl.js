@@ -83,8 +83,12 @@ main.controller('stageController', ['$scope', '$http', function ($scope, $http) 
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function (response) {
                 console.log("Success!");
+                $("#cookieLabel").text("Kandidatuur edukalt esitatud");
+                $("#cookieLabel").show(); 
             }).error(function (response) {
                 console.log("Fail!");
+                $("#cookieLabel").text("Kandidatuuri esitamine ebaõnnestus");
+                $("#cookieLabel").show(); 
             });
         };
     }]);
