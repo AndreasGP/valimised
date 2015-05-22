@@ -66,5 +66,11 @@ class Candidates_Controller extends CI_Controller {
         $candidates = $this->candidate_factory->getCandidatesJSON($areaid);
         $this->output->set_content_type('application/json')->set_output(json_encode($candidates));
     }
+    
+    public function search($areaid = 0, $partyid = 0, $name = "") {
+        $this->load->library("candidate_factory");
+        $candidates = $this->candidate_factory->getCandidateSearchJSON($areaid, $partyid, $name);
+        $this->output->set_content_type('application/json')->set_output(json_encode($candidates));
+    }
 
 }

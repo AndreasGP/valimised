@@ -110,6 +110,25 @@ class Candidate_Factory {
         }
         return false;
     }
+    
+        public function getCandidateSearchJSON($areaid = 0, $partyid = 0, $name = "") {
+            $query = $this->_ci->db->select("candidate.id, user.firstname, user.lastname, party.name as party")
+                ->from("candidate")
+            //    ->join('user', 'candidate.userid = user.id')
+                ->join('party', 'candidate.partyid = party.id')
+                ->join('area', 'candidate.areaid = area.id');
+        if($areaid != 0){
+            $query->where('candidate.areaid', $areaid);      
+        }
+        if($partyid != 0){
+            $query->where('candidate.partyid', $partyid);
+        }
+        $query->get();
+        if ($query->num_rows() > 0) {
+            return $query->result()[0];
+        }
+        return false;
+    }
 
     /**
      * Creates a candidate_model object from the given data.

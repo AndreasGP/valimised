@@ -31,12 +31,24 @@ main.controller('CandidatesCtrl', function ($scope, $filter, $http, ngTableParam
             window.location.href = "morsakabi.planet.ee/valimised/kandidaat/nr/" + id;
         };
     });
+    
+    
+    $scope.candidategenstat = function (area, party, name) {
+        $http.get('/valimised/kandidaadid/search/'+area+'/'+ party +'/'+name).
+                success(function (candidate) {
+                    $scope.candidate = candidate;
+                }).
+                error(function () {
+                    console.log("Fail!");
+                });
+    };
 });
 
 function addTable(area, party) {
-    var skoop = angular.element("#content").scope();
-    skoop.getInfo(area.selectedIndex, party.selectedIndex, document.getElementById("name").value);
-   
+    var skoop = angular.element("#container").scope();
+    //Angularist vaja kätte saada :D
+   // skoop.candidategenstat(area.selectedIndex, party.selectedIndex, document.getElementById("name").value);
+    console.log("here");
     var myTableDiv = document.getElementById("myDynamicTable");
     var table = document.createElement('TABLE');
     table.border = '1';

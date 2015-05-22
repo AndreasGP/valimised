@@ -23,6 +23,7 @@ $route['kandidaadid'] = 'candidates_controller';
 $route['kandidaadid/(:num)'] = 'candidates_controller/candidates/$1';
 $route['kandidaadid/get'] = 'candidates_controller/get';
 $route['kandidaadid/get/(:num)/(:num)/(:num)'] = 'candidates_controller/get/$1/$2/$3';
+$route['kandidaadid/search/(:num)/(:num)/(:any)'] = 'candidates_controller/get/$1/$2/$3';
 $route['kandidaadid/getJSON/(:num)'] = 'candidate_controller/getJSON/$1';
 
 $route['tulemused'] = 'results_controller';
