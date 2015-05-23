@@ -1,6 +1,6 @@
 <div class="container">
-    <div class="row" ng-controller="CandidateAreaCtrl">
-        <div class="col-md-12">
+    <div class="row">
+        <div class="col-md-12" ng-controller="CandidateAreaCtrl">
             <div class="col-md-4">
                 <h3>Otsing</h3>
                 <form role="form">
@@ -27,11 +27,12 @@
                 </form>
             </div>
             <div class="col-md-8">
-                <table ng-table="tableParams" class="table table-striped">
+                <table ng-table="tableParams"  id="searchTable" class="table table-striped">
                     <tr ng-repeat="candidate in $data">
                         <td class="col-xs-1" data-title="'Number'" sortable="id">{{candidate.id}}</td>
                         <td class="col-xs-3" data-title="'Nimi'" sortable="'name'"><a href='/valimised/kandidaat/nr/{{candidate.id}}'>{{candidate.firstname}} {{candidate.lastname}}</a></td>
                         <td class="col-xs-4" data-title="'Kandideerib erakonnas'" sortable="'party'"><a href='/valimised/kandidaat/nr/{{candidate.id}}'>{{candidate.party}}</a></td>
+                        <td class="col-xs-4" data-title="'Kandideerib piirkonnas'" sortable="'piirkond'"><a href='/valimised/kandidaat/nr/{{candidate.id}}'>{{candidate.area}}</a></td>
                     </tr>
                 </table>
             </div>

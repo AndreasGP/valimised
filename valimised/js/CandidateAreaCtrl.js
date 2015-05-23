@@ -15,7 +15,7 @@ main.controller('CandidateAreaCtrl', function ($scope, $filter, $http, ngTablePa
         if (name === undefined) {
             name = -1;
         }
-
+        
         $http.get('/valimised/kandidaadid/search/' + areaid + '/' + partyid + '/' + name).
                 success(function (data) {
                     $scope.data = data;
@@ -43,6 +43,8 @@ main.controller('CandidateAreaCtrl', function ($scope, $filter, $http, ngTablePa
                 error(function (data, status, headers, config) {
                     console.log("Fail!");
                 });
+
     }
+    
 });
 
