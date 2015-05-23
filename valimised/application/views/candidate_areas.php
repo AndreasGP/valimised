@@ -1,10 +1,10 @@
 <div class="container">
-    <div class="row">
+    <div class="row" ng-controller="CandidateAreaCtrl">
         <div class="col-md-12">
             <div class="col-md-4">
                 <h3>Otsing</h3>
                 <form role="form">
-                    <div class="form-group" ng-controller="CandidateAreaCtrl">
+                    <div class="form-group">
                         <label for="name">Nime järgi:</label>
                         <input type="text" class="form-control" ng-model="name" id="name"/>
                         <label >Erakonna järgi:</label>
