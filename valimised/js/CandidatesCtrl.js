@@ -32,42 +32,5 @@ main.controller('CandidatesCtrl', function ($scope, $filter, $http, ngTableParam
         };
     });
     
-    
-    $scope.candidategenstat = function (area, party, name) {
-        $http.get('/valimised/kandidaadid/search/'+area+'/'+ party +'/'+name).
-                success(function (candidate) {
-                    $scope.candidate = candidate;
-                }).
-                error(function () {
-                    console.log("Fail!");
-                });
-    };
 });
 
-function addTable(area, party) {
-    var skoop = angular.element("#container").scope();
-    //Angularist vaja kätte saada :D
-   // skoop.candidategenstat(area.selectedIndex, party.selectedIndex, document.getElementById("name").value);
-    console.log("here");
-    var myTableDiv = document.getElementById("myDynamicTable");
-    var table = document.createElement('TABLE');
-    table.border = '1';
-
-    var tableBody = document.createElement('TBODY');
-    table.appendChild(tableBody);
-    
-    //luua getinfo meetod, anmed töödelda taelisse
-    for (var i = 0; i < 3; i++) {
-        var tr = document.createElement('TR');
-        tableBody.appendChild(tr);
-
-        for (var j = 0; j < 4; j++) {
-            var td = document.createElement('TD');
-            td.width = '75';
-            td.appendChild(document.createTextNode("Cell " + i + "," + j));
-            tr.appendChild(td);
-        }
-    }
-    myTableDiv.appendChild(table);
-
-}
