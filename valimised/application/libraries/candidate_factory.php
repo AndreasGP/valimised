@@ -111,21 +111,48 @@ class Candidate_Factory {
         return false;
     }
     
-        public function getCandidateSearchJSON($areaid = 0, $partyid = 0, $name = "") {
-            $query = $this->_ci->db->select("candidate.id, user.firstname, user.lastname, party.name as party")
+    public function getCandidateSearchJSON($areaid = -1, $partyid = -1, $name = "") {
+        $areaid = (int) $areaid;
+        $partyid = (int) $partyid;
+        $query = $this->_ci->db->select("candidate.id, user.firstname, user.lastname, party.name as party, area.name as area")
                 ->from("candidate")
-            //    ->join('user', 'candidate.userid = user.id')
+                ->join('user', 'candidate.userid = user.id')
                 ->join('party', 'candidate.partyid = party.id')
                 ->join('area', 'candidate.areaid = area.id');
-        if($areaid != 0){
-            $query->where('candidate.areaid', $areaid);      
+        if ($areaid != -1) {
+            $query = $query->where('candidate.areaid', $areaid);
         }
-        if($partyid != 0){
-            $query->where('candidate.partyid', $partyid);
+        if ($partyid != -1) {
+            $query = $query->where('candidate.partyid', $partyid);
         }
-        $query->get();
-        if ($query->num_rows() > 0) {
-            return $query->result()[0];
+        if ($name != -1) {
+            //Split input at each space and check for matches in first/last name
+            $pieces = explode("%20", $name);
+            
+            //Build a huge stupid 'or' string because codeigniter doesn't support parentheses
+            $str = "(";
+            $first = true;
+            foreach ($pieces as $piece) {
+                if ($first) {
+                    $str = $str . 'user.firstname LIKE \'%' . $piece . '%\'';
+                    $first = false;
+                } else {
+                    $str = $str . ' OR user.firstname LIKE \'%' . $piece . '%\'';
+                }
+                $str = $str . ' OR user.lastname LIKE \'%' . $piece . '%\'';
+            }
+            $str = $str . ')';
+            $query = $query->where($str);
+        }
+        $result = $query->get();
+        if ($result->num_rows() > 0) {
+            $candidates = array();
+            foreach ($result->result() as $row) {
+                //Transform string ID to numerical ID
+                $row->id = (int) $row->id;
+                $candidates[] = $row;
+            }
+            return $candidates;
         }
         return false;
     }

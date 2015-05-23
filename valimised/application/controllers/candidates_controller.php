@@ -17,7 +17,7 @@ class Candidates_Controller extends CI_Controller {
             "title" => "Kandidaadid",
             "parties" => $this->party_factory->getParty(),
             "areas" => $this->area_factory->getArea(),
-            "scripts" => array("/valimised/js/CandidatesCtrl.js")
+            "scripts" => array("/valimised/js/CandidateAreaCtrl.js")
         );
 
         $this->load->view('templates/header.php', $data);
