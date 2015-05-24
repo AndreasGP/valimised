@@ -30,7 +30,7 @@ main.controller('VotingCtrl', function ($scope, $filter, $http, ngTableParams) {
     }
     
      $scope.cancelVote = function() {
-        $http.post('/valimised/haaleta').
+        $http.delete('/valimised/haaleta').
                 success(function () {
                     console.log("Success!");
                     $("#success_message2").show();
