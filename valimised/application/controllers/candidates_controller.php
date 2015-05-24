@@ -8,16 +8,21 @@ class Candidates_Controller extends CI_Controller {
     public function index() {
         $this->load->helper('url');
         $this->load->library('facebook');
+        $this->load->library("area_factory");
+        $this->load->library("party_factory");
         $this->load->library('session');
         $this->session->set_flashdata('fb', uri_string());
         $data = array(
             //Title of the page
             "title" => "Kandidaadid",
+            "parties" => $this->party_factory->getParty(),
+            "areas" => $this->area_factory->getArea(),
+            "scripts" => array("/valimised/js/CandidateAreaCtrl.js")
         );
 
         $this->load->view('templates/header.php', $data);
         $this->load->view('templates/navbar.php', $this->facebook->getLoginData());
-        $this->load->view('candidate_areas.php');
+        $this->load->view('candidate_areas.php', $data);
         $this->load->view('templates/footer.php');
     }
 
@@ -59,6 +64,12 @@ class Candidates_Controller extends CI_Controller {
     public function get($areaid = 0, $start = 0, $count = 20) {
         $this->load->library("candidate_factory");
         $candidates = $this->candidate_factory->getCandidatesJSON($areaid);
+        $this->output->set_content_type('application/json')->set_output(json_encode($candidates));
+    }
+    
+    public function search($areaid = 0, $partyid = 0, $name = "") {
+        $this->load->library("candidate_factory");
+        $candidates = $this->candidate_factory->getCandidateSearchJSON($areaid, $partyid, $name);
         $this->output->set_content_type('application/json')->set_output(json_encode($candidates));
     }
 

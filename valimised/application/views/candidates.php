@@ -15,16 +15,12 @@
                     <label for="name">Nime järgi:</label>
                     <input type="text" class="form-control" ng-model="name" id="name"/>
                     <label >Erakonna järgi:</label>
-                    <select class="form-control" ng-model="party" id="party" onchange="onPartyChange()">
+                    <select class="form-control" ng-model="party" id="party">
                         <option value="" class="hidden"></option>
                         <?php foreach ($parties as $row): ?>
                             <option><?php echo $row->getName(); ?></option>
                         <?php endforeach; ?>
                     </select>
-                    
-                  
-                    <br/>
-                    <button type="button" class="btn btn-lg btn-info pull-left">Otsi</button>
                 </div>
             </form>
         </div>

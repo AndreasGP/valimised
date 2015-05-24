@@ -1,7 +1,22 @@
-main.controller('CandidatesCtrl', function ($scope, $filter, $http, ngTableParams) {
+main.controller('CandidateAreaCtrl', function ($scope, $filter, $http, ngTableParams) {
 
-    $scope.$watch("areaid", function () {
-        $http.get('../kandidaadid/get/' + $scope.areaid + '/10/10').
+    $scope.search = function (areaid, partyid, name) {
+
+        console.log("areaid: " + areaid);
+        console.log("partyid: " + partyid);
+        console.log("name: " + name);
+
+        if (areaid === undefined) {
+            areaid = -1;
+        }
+        if (partyid === undefined) {
+            partyid = -1;
+        }
+        if (name === undefined) {
+            name = -1;
+        }
+        
+        $http.get('/valimised/kandidaadid/search/' + areaid + '/' + partyid + '/' + name).
                 success(function (data) {
                     $scope.data = data;
                     $scope.tableParams = new ngTableParams({
@@ -22,15 +37,14 @@ main.controller('CandidatesCtrl', function ($scope, $filter, $http, ngTableParam
 
                         }
                     });
+                    console.log("Success!");
+                    console.log($scope.data);
                 }).
                 error(function (data, status, headers, config) {
                     console.log("Fail!");
                 });
 
-        $scope.candidatePage = function (id) {
-            window.location.href = "morsakabi.planet.ee/valimised/kandidaat/nr/" + id;
-        };
-    });
+    }
     
 });
 
