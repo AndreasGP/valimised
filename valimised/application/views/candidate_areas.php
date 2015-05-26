@@ -21,7 +21,7 @@
                                 <option value="<?php echo $row->getId(); ?>"><?php echo $row->getName(); ?></option>
                             <?php endforeach; ?>
                         </select>
-                        <br>
+                        <br/>
                         <button type="button" class="btn btn-lg btn-info pull-right" ng-click="search(area, party, name)">Otsi</button>
                     </div>
                 </form>
